@@ -1,0 +1,823 @@
+FORMAT: 1A
+HOST: https://www.realmassive.com/api/v1
+
+# RealMassive API
+The RealMassive API is the first API for mining real-time commercial real estate information. We currently support
+developers **reading** from our cloud-based databases. Full
+functionality is being quickly developed.
+
+During this _beta period_, you can fetch **Buildings** and, fetch
+and search for **Spaces**.
+
+# RealMassive API Root [/api/v1]
+
+## Buildings [buildings]
+**Buildings** represent physical buildings. A building can have one or more spaces
+associated with it. Each building has the following attributes and more
+fields may be added.
+
+## Building Attributes
+ * **ac** - whether or not the building has air conditioning
+ * **address** - structured address with the following format. See [Address].
+ * **attachments** - a list of media attachments. See [Attachments].
+ * **building_class** - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
+ * **building_parking_ratio** - number of available parking spots, usually per thousand square feet
+ * **clear_height** - used in industrial space, the actual height from steel girders to the interior of the building.
+ * **cover** - 
+ * **created_at** - datetime
+ * **created_by** - database key pointing to the original author
+ * **edited_at** - datetime
+ * **id** - this record's unique identifier
+ * **key** - 
+ * **leed** - LEED rating: None, Certified, Gold, Silver, Platinum
+ * **lot_size** - 
+ * **lot_size_units** - units in which lot size is reported. Currently, square feet: 'SF'
+ * **manager** - database key pointing to the contact for this building's manager
+ * **notification_email** - database key pointing to this building's representative(s)
+ * **operating_expenses** - operating expenses for this building.
+ * **parking_rate** - Parking rate ($) per space.
+ * **promoted_spaces** - List of promoted spaces in this building.
+ * **property_owner** - database key pointing to this building's owner
+ * **reserved** - 
+ * **size** - building size in units listed below
+ * **size_units** - units in which the building size is reported
+ * **space_keys** - a list of database keys pointing to the spaces inside this building.
+ * **sprinkler** - whether or not this building has sprinklers
+ * **submarket** - the submarket in which this building resides
+ * **title** - building's title
+ * **type** - lease, sublease, for sale
+ * **year_built**
+
+## Building Collection [/buildings]
+Use this to retrieve a list of all the buildings.
+### List all Buildings [GET]
+Gets a list of all buildings.
+
+
++ Response 200 (application/json)
+
+        {
+          "cursor": "E-ABAIICK2oSc35yZWFsbWFzc2l2ZS1wcm9kchULEghCdWlsZGluZxiAgICA1aSBCAwU",
+          "results": [
+            {
+              "edited_at": "2014-04-24T18:41:01.592520+00:00",
+              "ac": true,
+              "reserved": "",
+              "attachments": [
+                {
+                  "category": "",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+                  "title": "",
+                  "url": "https://lh6.ggpht.com/3y57n6kjqaQhYrNtKFDVIdM5GyQjegP6OiG5HEzYaB3KQjjgKp53xiqxa5Qeb8Vt2q_MNBraf2KC_aTV8u3n55qIjnu_OZU",
+                  "uploaded_by": "",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC17OwIDA",
+                  "id": "",
+                  "youtube_id": "",
+                  "is_video": "",
+                  "approved": true
+                },
+                {
+                  "category": "",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+                  "title": "",
+                  "url": "https://lh6.ggpht.com/IjV4MDP4pkRovlv2aD5KkBhgIS4ta31RUdENeaOfzffSaQwS0i2RIbLGKL-8CGGovbrU9uAHUraMhOhrXOTGoN05WYhiOQ",
+                  "uploaded_by": "",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVpIEKDA",
+                  "id": "",
+                  "youtube_id": "",
+                  "is_video": "",
+                  "approved": true
+                }
+              ],
+              "lot_size_units": "",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAl_iSCgw",
+              "clear_height": "",
+              "size_units": "SF",
+              "submarket": "North",
+              "notification_email": "",
+              "id": "4509257441476608",
+              "size": "26313",
+              "sprinkler": "",
+              "title": "Bratton Square",
+              "building_class": "",
+              "created_by": null,
+              "property_owner": "",
+              "leed": "",
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDV2fAKDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVzrELDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC1ut0JDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC18JULDA"
+              ],
+              "type": "Retail",
+              "operating_expenses": "",
+              "parking_rate": "",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+              "address": {
+                "city": "Austin",
+                "state": "TX",
+                "street": "14735 Bratton Lane",
+                "geo": {
+                  "latitude": "30.4464221",
+                  "longitude": "-97.6857698"
+                },
+                "zipcode": "78728"
+              },
+              "promoted_spaces": "",
+              "year_built": "",
+              "created_at": "2014-04-10T16:44:21.244880+00:00",
+              "cover": {
+                "category": "",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/3y57n6kjqaQhYrNtKFDVIdM5GyQjegP6OiG5HEzYaB3KQjjgKp53xiqxa5Qeb8Vt2q_MNBraf2KC_aTV8u3n55qIjnu_OZU",
+                "uploaded_by": "",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC17OwIDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              "lot_size": "",
+              "building_parking_ratio": ""
+            },
+            # ... and more results here ...
+          ]
+        }        
+
+## Building Search [/buildings?address=true&{street}=street&{city}=city&{state}=state&{zipcode}=zipcode&{limit}=limit]
+### Search for a Building [GET]
+All query parameters are mandatory. If any of them is missing, it returns error code 400 with message "Wrong address parameters."
+
++ Parameters
+    + street (string) ... Number and street address
+    + city (string) ... Currently just 'Austin'
+    + state (string) ... Two letter abbreviation. Currently just 'TX'
+    + zipcode (string) ... 5-digit zip
+    + limit (integer) ... limit of results length, 10 by default
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/buildings?address=true&street=lamar&city=austin&state=TX&zipcode=78727
+
++ Response 200 (application/json)
+
+        {
+          "results": [
+            {
+              "edited_at": "2014-04-25T21:32:58.426260+00:00",
+              "ac": "",
+              "reserved": "",
+              "attachments": [
+                {
+                  "category": "exterior",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
+                  "title": "",
+                  "url": "https://lh4.ggpht.com/9uJOsswdIl2SomQ3eGDFnHuHzGyBVr6_CIiuJVwS-PM0eCF7RG_Ah45TpD385mgS9GgITqmdUAeuc2beFfyNRHMvAlIF",
+                  "uploaded_by": "",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC1uq0JDA",
+                  "id": "",
+                  "youtube_id": "",
+                  "is_video": "",
+                  "approved": true
+                },
+                {
+                  "category": "exterior",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
+                  "title": "",
+                  "url": "https://lh5.ggpht.com/_4OySmW-W0y3SS3ICYVtq3AqYZI9xh9k1V3SzBM9QGPK_aCZHb7r3eYl6eocL-iX2M89iSm7zKJxZvXXjrpFwpQWid13-4U",
+                  "uploaded_by": "",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg8kJDA",
+                  "id": "",
+                  "youtube_id": "",
+                  "is_video": "",
+                  "approved": true
+                }
+              ],
+              "lot_size_units": "",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAnsn3Cgw",
+              "clear_height": "",
+              "size_units": "SF",
+              "submarket": "Northeast",
+              "notification_email": "",
+              "id": "6547374042251264",
+              "size": "200000",
+              "sprinkler": "",
+              "title": "Lamar",
+              "building_class": "B",
+              "created_by": null,
+              "property_owner": "",
+              "leed": "",
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC18MUKDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVpO4KDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC17PQJDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVzuEJDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDV2bAIDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgICV9fsJDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVpO4JDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMDDq8IJDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCH3sIJDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCSvs0IDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCH3sILDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMDDtd0JDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCUt8EIDA"
+              ],
+              "type": "Office",
+              "operating_expenses": "0.5",
+              "parking_rate": "",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
+              "address": {
+                "city": "Austin",
+                "state": "TX",
+                "street": "5555 N. Lamar Blvd.",
+                "geo": {
+                  "latitude": "30.3233254",
+                  "longitude": "-97.725397"
+                },
+                "zipcode": "78751"
+              },
+              "promoted_spaces": "",
+              "year_built": "",
+              "created_at": "2014-04-09T19:40:07.510340+00:00",
+              "cover": {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
+                "title": "",
+                "url": "https://lh4.ggpht.com/9uJOsswdIl2SomQ3eGDFnHuHzGyBVr6_CIiuJVwS-PM0eCF7RG_Ah45TpD385mgS9GgITqmdUAeuc2beFfyNRHMvAlIF",
+                "uploaded_by": "",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC1uq0JDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              "lot_size": "",
+              "building_parking_ratio": ""
+            }
+          ],
+          "number_of_results": 1
+        }
+
++ Response 400 (application/json)
+
+        {"error": "Wrong address parameters."}
+
+## Spaces Collection [/api/v1/spaces]
+### Fetch all spaces [GET]
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/spaces/ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2014-07-08T05:00:46.457930+00:00",
+          "attachments": [
+            {
+              "category": "floor_plan",
+              "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA",
+              "title": "",
+              "url": "https://lh5.ggpht.com/wV4K55YFxVVUNr2xjfynr3--kKtEvkt5WiUE6IfwbPyme1oIEKqh_436LgEe1gw6f30A_kCq_p74Y6rmBUswC-EA-IYJ",
+              "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+              "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDeupILDA",
+              "id": "",
+              "youtube_id": "",
+              "is_video": "",
+              "approved": true
+            }
+          ],
+          "short_url": "http://real.ma/UbzgxX",
+          "rate": "24.0",
+          "notification_email": "",
+          "id": "4889407010111488",
+          "lease_term": "",
+          "portfolio_space_keys": [
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICg0I2YCQwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgICACgw",
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICAn7D3CgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgMOVCgw",
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgIDA8anHCAwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgPKICgw"
+          ],
+          "is_promoted": false,
+          "title": "823 Congress, Suite 225",
+          "editors": [],
+          "created_by": {
+            "first_name": "Lesley",
+            "last_name": "Sanchez",
+            "title": "Director of Marketing",
+            "photo": "https://media.licdn.com/mpr/mprx/0_i-QzCdYSkEPnMR3UbGXRkHpDCEu9RZSUbC4ZkHh_fODzxM0zLGFJ6mQWIGb",
+            "company": "Peloton Commercial Real Estate",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+            "is_premium": false,
+            "id": ""
+          },
+          "space_available_units": "SF",
+          "ti": "",
+          "space_available": "794",
+          "unit_number": "225",
+          "analysts": [],
+          "status": "Public",
+          "edited_by": {
+            "first_name": "Lesley",
+            "last_name": "Sanchez",
+            "title": "Director of Marketing",
+            "photo": "https://media.licdn.com/mpr/mprx/0_i-QzCdYSkEPnMR3UbGXRkHpDCEu9RZSUbC4ZkHh_fODzxM0zLGFJ6mQWIGb",
+            "company": "Peloton Commercial Real Estate",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+            "is_premium": false,
+            "id": ""
+          },
+          "description": "Rising 16 stories, 823 Congress features a cozy lobby with polished granite floors with African Mahogany detail. \n\nOne McQuay (425-ton), one Carrier (425-ton) and one York (180-ton) chiller are located in the basement. The McQuay was installed new in 2007. A Marley cooling tower is located on the roof of the third level and was upgraded in 2007. An Alerton energy management system located in the basement controls the HVAC equipment\n\nFour Dover gearless traction passenger elevators serve the building, The elevators were modernized in 1998 and the cabs were upgraded in 2007.\n\n220 spaces, 196 spaces in the six-level parking garage; 24 surface spaces under ground lease\n\nElectric, water, sewer - City of Austin\nNatural gas - Texas Gas Service\nTelephone - SBC\nFiber - SBC, Time Warner\n\nLocated at the intersections of 9th Street and Congress Avenue, 823 Congress resides in the heart of Austin’s widely popular Central Business District. Boasting numerous popular restaurant and night life destinations, a wide range of retail, Whole Foods’ flagship grocery, the highest concentration of downtown residential units and immediate access to Austin’s downtown hike and bike trail network, Downtown Austin represents Austin’s most complete mixed-use district where people can truly work, live and play.\n\nOver 2,000 residential apartments and condominiums are located within a 10 block radius of 823 Congress, of which over 1,400 units have been completed since 2008.\n\nMore than 2.2 million square feet of new office, retail, residential, and hotel space has been added to the downtown landscape over the past few years.",
+          "rate_units": "",
+          "availability_date": "",
+          "floor_number": "",
+          "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA",
+          "permissions": [
+            "Create",
+            "Read"
+          ],
+          "building": {
+            "ac": "",
+            "reserved": "",
+            "attachments": [
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+                "uploaded_by": "",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh5.ggpht.com/ppyRsHGp5tz5_Jou3vBpC9tsd44TywYlctmMW_DVXviXK9_LkfI6wRJFPwJIIXKlJQo7S7MiExQSUyoP8Stndt2xOIjPqA",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMCAoN0IDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/tFpVtPZnTfsXVn_1sZgkDPx6oE1uD4mJHwmEKf5D2XnNFBvz42bGxCDZasPQh_-skw5USmhPSdyBAMV83VOrZAWEuk5Q",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMCY65oLDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh5.ggpht.com/GVG_pozPVhWt14xif2nBOWh6ShW7PSe3P6n9kDzTKS_5G__sKW39eN4icgi-SQ9u3uIrqShiVv4bUi1OjQh9ezjRNJZ6h10",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksELDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/MezEro4uxwlxEtDQbaJreQoRsATK4UN7byH4z-N-Dkc6qR0Mukw_EfEsXIsRNsoEdbRf1thwYWzkyGpA7sL3zSd4DIUdaA",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDPqsgIDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/J_nx6oVEaSAKGqjqveW5FIh-2Y9QyjNeDb4wtOyC3ZO4ZVa6DXZK3qOpdUlq_mip6PHWYfOvrVQnMFlMFNp1ZxLgaE4p8g",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgID_-8wKDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/rK1iegJ8nWNKYqBXmQiW2wTdcDPQXrWEqc0Uuc8X8qukOjf_d9Ja9UnvZRfDcP20_V-8ryZcz_Lo4QODeXhFtfJ26TyP6A",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDznpcJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/eqVRebYIIcXXFRpnF6VsVl2FxL04Htc3953bjKp2_0Rx6BIJFLLC0NWdf8K50Y_2bzLCZXGht0xYp1o6I6QOHja4-N16",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDN6YkJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh4.ggpht.com/97KF-hWzRZrqmb9Jqyy1fAd38lyAUAFV2307XaL6qIlvgXlEeW2cU6D7vAIx-1k4yfhrN-hmZre1a2K-LckdOOhkvS_qVw",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDu9Y4JDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              }
+            ],
+            "lot_size_units": "",
+            "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDA9PrACQw",
+            "clear_height": "",
+            "size_units": "SF",
+            "submarket": "Central Business District",
+            "notification_email": "",
+            "id": "",
+            "size": "181381",
+            "sprinkler": "",
+            "title": "823 Congress",
+            "building_class": "A",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+            "property_owner": "",
+            "leed": "",
+            "type": "Office",
+            "operating_expenses": "15.61",
+            "parking_rate": "",
+            "number_of_spaces": "",
+            "address": {
+              "city": "Austin",
+              "state": "TX",
+              "street": "823 Congress Avenue",
+              "geo": {
+                "latitude": "30.270586",
+                "longitude": "-97.7416363"
+              },
+              "zipcode": "78701"
+            },
+            "permissions": [
+              "Create",
+              "Read"
+            ],
+            "year_built": "1974",
+            "cover": {
+              "category": "exterior",
+              "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+              "title": "",
+              "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+              "uploaded_by": "",
+              "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+              "id": "",
+              "youtube_id": "",
+              "is_video": "",
+              "approved": true
+            },
+            "lot_size": "",
+            "building_parking_ratio": "21.0"
+          },
+          "availableBuildingSquareFeet": 13950,
+          "divisible": "",
+          "created_at": "2014-06-18T17:02:18.302150+00:00",
+          "contacts": [],
+          "cover": {
+            "category": "exterior",
+            "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+            "title": "",
+            "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+            "uploaded_by": "",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+            "id": "",
+            "youtube_id": "",
+            "is_video": "",
+            "approved": true
+          },
+          "office_finish_percentage": "",
+          "space_type": "lease"
+        }
+
+## Fetch Spaces by id [/api/v1/spaces/{id}]
+### Fetch a space by id [GET]
+
++ Parameters
+
+    + id (string) ... unique id
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/spaces/ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2014-07-08T05:00:46.457930+00:00",
+          "attachments": [
+            {
+              "category": "floor_plan",
+              "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA",
+              "title": "",
+              "url": "https://lh5.ggpht.com/wV4K55YFxVVUNr2xjfynr3--kKtEvkt5WiUE6IfwbPyme1oIEKqh_436LgEe1gw6f30A_kCq_p74Y6rmBUswC-EA-IYJ",
+              "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+              "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDeupILDA",
+              "id": "",
+              "youtube_id": "",
+              "is_video": "",
+              "approved": true
+            }
+          ],
+          "short_url": "http://real.ma/UbzgxX",
+          "rate": "24.0",
+          "notification_email": "",
+          "id": "4889407010111488",
+          "lease_term": "",
+          "portfolio_space_keys": [
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICg0I2YCQwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgICACgw",
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICAn7D3CgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgMOVCgw",
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgIDA8anHCAwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgPKICgw"
+          ],
+          "is_promoted": false,
+          "title": "823 Congress, Suite 225",
+          "editors": [],
+          "created_by": {
+            "first_name": "Lesley",
+            "last_name": "Sanchez",
+            "title": "Director of Marketing",
+            "photo": "https://media.licdn.com/mpr/mprx/0_i-QzCdYSkEPnMR3UbGXRkHpDCEu9RZSUbC4ZkHh_fODzxM0zLGFJ6mQWIGb",
+            "company": "Peloton Commercial Real Estate",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+            "is_premium": false,
+            "id": ""
+          },
+          "space_available_units": "SF",
+          "ti": "",
+          "space_available": "794",
+          "unit_number": "225",
+          "analysts": [],
+          "status": "Public",
+          "edited_by": {
+            "first_name": "Lesley",
+            "last_name": "Sanchez",
+            "title": "Director of Marketing",
+            "photo": "https://media.licdn.com/mpr/mprx/0_i-QzCdYSkEPnMR3UbGXRkHpDCEu9RZSUbC4ZkHh_fODzxM0zLGFJ6mQWIGb",
+            "company": "Peloton Commercial Real Estate",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+            "is_premium": false,
+            "id": ""
+          },
+          "description": "Rising 16 stories, 823 Congress features a cozy lobby with polished granite floors with African Mahogany detail. \n\nOne McQuay (425-ton), one Carrier (425-ton) and one York (180-ton) chiller are located in the basement. The McQuay was installed new in 2007. A Marley cooling tower is located on the roof of the third level and was upgraded in 2007. An Alerton energy management system located in the basement controls the HVAC equipment\n\nFour Dover gearless traction passenger elevators serve the building, The elevators were modernized in 1998 and the cabs were upgraded in 2007.\n\n220 spaces, 196 spaces in the six-level parking garage; 24 surface spaces under ground lease\n\nElectric, water, sewer - City of Austin\nNatural gas - Texas Gas Service\nTelephone - SBC\nFiber - SBC, Time Warner\n\nLocated at the intersections of 9th Street and Congress Avenue, 823 Congress resides in the heart of Austin’s widely popular Central Business District. Boasting numerous popular restaurant and night life destinations, a wide range of retail, Whole Foods’ flagship grocery, the highest concentration of downtown residential units and immediate access to Austin’s downtown hike and bike trail network, Downtown Austin represents Austin’s most complete mixed-use district where people can truly work, live and play.\n\nOver 2,000 residential apartments and condominiums are located within a 10 block radius of 823 Congress, of which over 1,400 units have been completed since 2008.\n\nMore than 2.2 million square feet of new office, retail, residential, and hotel space has been added to the downtown landscape over the past few years.",
+          "rate_units": "",
+          "availability_date": "",
+          "floor_number": "",
+          "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA",
+          "permissions": [
+            "Create",
+            "Read"
+          ],
+          "building": {
+            "ac": "",
+            "reserved": "",
+            "attachments": [
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+                "uploaded_by": "",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh5.ggpht.com/ppyRsHGp5tz5_Jou3vBpC9tsd44TywYlctmMW_DVXviXK9_LkfI6wRJFPwJIIXKlJQo7S7MiExQSUyoP8Stndt2xOIjPqA",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMCAoN0IDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/tFpVtPZnTfsXVn_1sZgkDPx6oE1uD4mJHwmEKf5D2XnNFBvz42bGxCDZasPQh_-skw5USmhPSdyBAMV83VOrZAWEuk5Q",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMCY65oLDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh5.ggpht.com/GVG_pozPVhWt14xif2nBOWh6ShW7PSe3P6n9kDzTKS_5G__sKW39eN4icgi-SQ9u3uIrqShiVv4bUi1OjQh9ezjRNJZ6h10",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksELDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/MezEro4uxwlxEtDQbaJreQoRsATK4UN7byH4z-N-Dkc6qR0Mukw_EfEsXIsRNsoEdbRf1thwYWzkyGpA7sL3zSd4DIUdaA",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDPqsgIDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh6.ggpht.com/J_nx6oVEaSAKGqjqveW5FIh-2Y9QyjNeDb4wtOyC3ZO4ZVa6DXZK3qOpdUlq_mip6PHWYfOvrVQnMFlMFNp1ZxLgaE4p8g",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgID_-8wKDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/rK1iegJ8nWNKYqBXmQiW2wTdcDPQXrWEqc0Uuc8X8qukOjf_d9Ja9UnvZRfDcP20_V-8ryZcz_Lo4QODeXhFtfJ26TyP6A",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDznpcJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "interior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh3.ggpht.com/eqVRebYIIcXXFRpnF6VsVl2FxL04Htc3953bjKp2_0Rx6BIJFLLC0NWdf8K50Y_2bzLCZXGht0xYp1o6I6QOHja4-N16",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDN6YkJDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              },
+              {
+                "category": "exterior",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+                "title": "",
+                "url": "https://lh4.ggpht.com/97KF-hWzRZrqmb9Jqyy1fAd38lyAUAFV2307XaL6qIlvgXlEeW2cU6D7vAIx-1k4yfhrN-hmZre1a2K-LckdOOhkvS_qVw",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAwJWYzgsM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDu9Y4JDA",
+                "id": "",
+                "youtube_id": "",
+                "is_video": "",
+                "approved": true
+              }
+            ],
+            "lot_size_units": "",
+            "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDA9PrACQw",
+            "clear_height": "",
+            "size_units": "SF",
+            "submarket": "Central Business District",
+            "notification_email": "",
+            "id": "",
+            "size": "181381",
+            "sprinkler": "",
+            "title": "823 Congress",
+            "building_class": "A",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+            "property_owner": "",
+            "leed": "",
+            "type": "Office",
+            "operating_expenses": "15.61",
+            "parking_rate": "",
+            "number_of_spaces": "",
+            "address": {
+              "city": "Austin",
+              "state": "TX",
+              "street": "823 Congress Avenue",
+              "geo": {
+                "latitude": "30.270586",
+                "longitude": "-97.7416363"
+              },
+              "zipcode": "78701"
+            },
+            "permissions": [
+              "Create",
+              "Read"
+            ],
+            "year_built": "1974",
+            "cover": {
+              "category": "exterior",
+              "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+              "title": "",
+              "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+              "uploaded_by": "",
+              "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+              "id": "",
+              "youtube_id": "",
+              "is_video": "",
+              "approved": true
+            },
+            "lot_size": "",
+            "building_parking_ratio": "21.0"
+          },
+          "availableBuildingSquareFeet": 13950,
+          "divisible": "",
+          "created_at": "2014-06-18T17:02:18.302150+00:00",
+          "contacts": [],
+          "cover": {
+            "category": "exterior",
+            "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDV-cMLDA",
+            "title": "",
+            "url": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+            "uploaded_by": "",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDyxtMJDA",
+            "id": "",
+            "youtube_id": "",
+            "is_video": "",
+            "approved": true
+          },
+          "office_finish_percentage": "",
+          "space_type": "lease"
+        }
+
+## Search for a Space by full text query [/api/v1/spaces/search/{query}]
+### Full text space search [GET]
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/spaces/search/austin?limit=1
+
++ Response 200 (application/json)
+
+                {
+          "cursor": "False:CpMFCu4BCtEB_7_hkPdAAAAA9w06baz6uv5OjIGNmp6Tkp6MjJaJmtKPjZCb_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdjI-enJqgzf8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrqYjKy9qbGIpqixk7i2vL6YsrzHzLGctru-_wBzf56XtYWZkbWTpqiHi6ansYWep6WTs6e9hp3NrYa6mIysvamxiKaosZO4try-mLK8x8yxnLa7vv8A__4QASFMcw71s9sZvFAAWgsJHNxROgnoRjEQARINRG9jdW1lbnRJbmRleBrXAihBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic35yZWFsbWFzc2l2ZS1wcm9kIikgKElTICJuYW1lc3BhY2UiICIiKSAoSVMgImluZGV4X25hbWUiICJzcGFjZV8yIikgKEFORCAoT1IgKFFUICJhdXN0aW4iKSAoSVMgIl9fZ2F0b21fXyIgImF1c3RpbiIpKSAoQU5EIChJTl9MIHJnZW9fZ2VvIChMT0MgMzAuMjY2OTQ0NCAtOTcuNzQyNzc3OCkgMzIxODYuMDAwMDAwMDAwMDAwMCkgKExFIDQuMDAwMDAwMDAwMDAwMDAwMDAgInNuYnJfc3BhY2VfYXZhaWxhYmxlIikgKEdFIDEyMzQ1Njc4OTAuMDAwMDAwMDAgInNuYnJfc3BhY2VfYXZhaWxhYmxlIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KHAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJA6Ac",
+          "results": [
+            {
+              "manager_name": "Peloton Commercial Real Estate",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDA9PrACQw",
+              "street": "823 Congress Avenue",
+              "submarket": "Central Business District",
+              "size": 181381.0,
+              "city": "Austin",
+              "title": "823 Congress, Suite 225",
+              "building_class": "A",
+              "zipcode": "78701",
+              "state": "TX",
+              "space_available_units": "SF",
+              "attachment": "https://lh6.ggpht.com/IFbCXIBvr0CNI6-8Q3muGWidCPko3eTw3GhEIxpV7YPxUJoXHlptwMz5kYKtCE6Cty6x3DX4kwPRzLX2F5hGUlPrK87N",
+              "space_available": 794.0,
+              "type": "Office",
+              "unit_number": "225",
+              "description": "Rising 16 stories, 823 Congress features a cozy lobby with polished granite floors with African Mahogany detail. \n\nOne McQuay (425-ton), one Carrier (425-ton) and one York (180-ton) chiller are located in the basement. The McQuay was installed new in 2007. A Marley cooling tower is located on the roof of the third level and was upgraded in 2007. An Alerton energy management system located in the basement controls the HVAC equipment\n\nFour Dover gearless traction passenger elevators serve the building, The elevators were modernized in 1998 and the cabs were upgraded in 2007.\n\n220 spaces, 196 spaces in the six-level parking garage; 24 surface spaces under ground lease\n\nElectric, water, sewer - City of Austin\nNatural gas - Texas Gas Service\nTelephone - SBC\nFiber - SBC, Time Warner\n\nLocated at the intersections of 9th Street and Congress Avenue, 823 Congress resides in the heart of Austin’s widely popular Central Business District. Boasting numerous popular restaurant and night life destinations, a wide range of retail, Whole Foods’ flagship grocery, the highest concentration of downtown residential units and immediate access to Austin’s downtown hike and bike trail network, Downtown Austin represents Austin’s most complete mixed-use district where people can truly work, live and play.\n\nOver 2,000 residential apartments and condominiums are located within a 10 block radius of 823 Congress, of which over 1,400 units have been completed since 2008.\n\nMore than 2.2 million square feet of new office, retail, residential, and hotel space has been added to the downtown landscape over the past few years.",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMC83NcIDA",
+              "address": "823 Congress Avenue Austin 78701 TX",
+              "geo": {
+                "latitude": 30.270586000000002,
+                "longitude": -97.741636299999996
+              },
+              "number_of_attachments": 10.0,
+              "full_state": "Texas",
+              "year_built": 1974.0,
+              "space_id": "4889407010111488",
+              "rate": 24.0,
+              "operating_expenses": 15.609999999999999,
+              "space_type": "lease",
+              "building_parking_ratio": 21.0
+            }
+          ],
+          "number_found": 1175
+        }
+
