@@ -144,16 +144,17 @@ Gets a list of all buildings.
           ]
         }        
 
-## Building Search [/buildings?address=true&{street}=street&{city}=city&{state}=state&{zipcode}=zipcode&{limit}=limit]
+## Building Search [/buildings?address=true&{street,city,state,zipcode,limit}]
 ### Search for a Building [GET]
 All query parameters are mandatory. If any of them is missing, it returns error code 400 with message "Wrong address parameters."
 
 + Parameters
-    + street (string) ... Number and street address
+    + address (boolean) ... Search by address must be set to true
     + city (string) ... Currently just 'Austin'
-    + state (string) ... Two letter abbreviation. Currently just 'TX'
-    + zipcode (string) ... 5-digit zip
-    + limit (integer) ... limit of results length, 10 by default
+    + street (optional,string) ... Number and street address
+    + state (optional,string) ... Two letter abbreviation. Currently just 'TX'
+    + zipcode (optional,string) ... 5-digit zip
+    + limit =`10` (optional,integer) ... limit of results length
 
 + Request (application/json)
 
@@ -521,14 +522,42 @@ All query parameters are mandatory. If any of them is missing, it returns error 
           "space_type": "lease"
         }
 
-## Search for a Space by full text query [/spaces/search/{query}?{limit}=limit]
+## Search for a Space by full text query [/spaces/search/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
 
 + Parameters
 
     + query (string) ... urlencoded string
-    + limit (integer) ... constrain the results to _limit_ number of spaces
-    
+    + limit = `80` (optional, integer) ... constrain the results to _limit_
+    + rate_min = `0` (optional, integer) ... minimum rate
+    + rate_max = `unlimited` (optional, integer) ... maximum rate
+    + space_min = `0` (optional, integer) ... minimum available space
+    + space_max = `unlimited` (optional, integer) ... maximum available space
+    + types (optional) ... comma-separated list of space types :
+        + Values
+            + `Industrial`
+            + `Office`
+            + `Retail`
+            + `Land`
+            + `Flex Space`
+    + submarkets (optional) ... comma-separated list of submarkets
+        + Values
+            + `Central Business District`
+            + `Cedar Park`
+            + `Central`
+            + `East`
+            + `South`
+            + `Far Northeast`
+            + `Far Northwest`
+            + `Georgetown`
+            + `North`
+            + `Northeast`
+            + `Northwest`
+            + `Round Rock`
+            + `Southeast`
+            + `Southwest`
+            + `West Central`
+            + `North Central`
 
 
 + Request (application/json)
