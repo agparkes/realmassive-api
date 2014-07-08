@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>q3</title>
+    </head>
+    <body>
+        <ul class="listing">
+        </ul>
+    </body>
+
+    <script type="template" id='record-template'>
+        <li>
+            <div>
+                <img src="<%= attachment %>">
+            </div>
+            <div>
+                <label>Address</label> 
+                <div class="info"><%= street %>, <%= city %> <%= state %></div> 
+            </div>
+            <div>
+                <label>Submarket</label>
+                <div class="info"><%= submarket %></div>
+            </div>
+            <div>
+                <label>Description</label> 
+                <div class="info"><%= description %></div>
+            </div>
+        </li>
+    </script>
+</html>
