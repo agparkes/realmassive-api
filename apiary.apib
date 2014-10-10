@@ -710,3 +710,29 @@ Note:
         ],
         "available_positions": []
         }
+        
+        
+## Group Version
+
+The **Version** call is used to determine which verison of the RealMassive webapp and API are serving.
+
+## Version Attributes
+# Read only
+* **last_commit_time**
+* **commit_hash**
+* **version_string**
+
+## Version [/version]
+### Accessing version information [GET]
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/version
+
++ Response 200 (application/json)
+
+        {
+        "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
+        "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
+        "version_str": "4.1-43-g16c4e17"
+        }
