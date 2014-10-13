@@ -781,7 +781,7 @@ Note:
         ]
         }
 
-## Fetch a portfolios by id [/portfolios/{id}]
+## Fetch Portfolios by id [/portfolios/{id}]
 ### Fetch the details of a specific portfolio [GET]
 
 + Parameters
@@ -974,4 +974,50 @@ Note:
         "space_id": "5120632077418496"
         }
         ]
+        
+## Create a Portfolio [/portfolios?title={title_string}]
+### Create a Portfolio with a given title [POST]
+
+Note:
+
+* Make sure your portfolio name is safely URL encoded
+* Verify that you are passing in JSON
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios?title=Example%20Portfolio
+
++ Response 200 (application/json)
+
+
+        {
+        "edited_at": "2014-10-13T18:23:37.468100+00:00",
+        "archived": false,
+        "title": “Example Portfolio",
+        "short_url": "",
+        "created_at": "2014-10-13T18:23:37.468110+00:00",
+        "public": false,
+        "number_of_spaces": "",
+        "agents": [],
+        "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_JuYCgw",
+        "owner": {
+            "first_name": "John",
+            "last_name": "Doe",
+            "title": "Developer",
+            "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
+            "company": "RealMassive",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM",
+            "is_premium": false,
+            "id": ""
+        },
+        "id": "5736013817184256",
+        "viewers": [],
+        "permissions": [
+            "ChangePermissions",
+            "Write",
+            "Delete",
+            "Read",
+            "Create"
+        ]
+        }
 
