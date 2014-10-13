@@ -739,6 +739,25 @@ The **Version** call is used to determine which verison of the RealMassive webap
 
 
 # Group Portfolios
+
+## Introduction
+A Portfolio is collection for Space copies which are called Portfolio Spaces. Portfolio Space has revision system similiar to that which Spaces have. When original Space (called master) is changed, all related Portfolio Spaces are checked for conflict. If there is no conflict, changes from master are automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
+
+## Portfolio properties
+
+* **agents**
+* **archived**
+* **created_at**
+* **edited_at**
+* **id**
+* **key**
+* **number_of_spaces**
+* **owner**
+* **public**
+* **short_url**
+* **title**
+* **viewers**
+
 ## View Portfolios [/portfolios]
 ### Fetch all of the portfolios of the currently logged in user [GET]
 
