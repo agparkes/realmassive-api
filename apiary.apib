@@ -736,3 +736,242 @@ The **Version** call is used to determine which verison of the RealMassive webap
         "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
         "version_str": "4.1-43-g16c4e17"
         }
+
+
+# Group Portfolios
+## Portfolios [/portfolios]
+### Fetch the portfolios of the currently logged in user [GET]
+
+Note:
+
+* You must be logged into a user with the login cookies stored, review the User API for more information on this topic.
+
++ Request
+
+        https://www.realmassive.com/portfolios
+
++ Response 200 (application/json)
+
+        {
+        "cursor": null,
+        "results": [
+        {
+        "edited_at": "2014-10-08T14:01:37.032590+00:00",
+        "archived": false,
+        "title": “My 1st Portfolio",
+        "short_url": "http://real.ma/123456",
+        "created_at": "2014-10-07T14:55:22.919510+00:00",
+        "public": false,
+        "number_of_spaces": "1",
+        "agents": [],
+        "key": “abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvwxyx12345",
+        "owner": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "title": "Developer",
+        "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
+        "company": "RealMassive",
+        "master_key": "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvw",
+        "is_premium": false,
+        "id": ""
+        },
+        "id": "1234567890987654",
+        "viewers": []
+        }
+        ]
+        }
+
+## Fetch a portfolios by id [/portfolios/{id}]
+### Fetch the details of a specific portfolio [GET]
+
++ Parameters
+
+    + id (string) ... unique id
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/5669562083180544/spaces
+
++ Response 200 (application/json)
+
+        [
+        {
+        "edited_at": "2014-10-13T16:48:26.576960+00:00",
+        "attachments": [],
+        "manager_name": "HPI Office Division",
+        "rate": "25.0",
+        "master_state": {
+        "building": {
+        "ac": true,
+        "reserved": "",
+        "attachments": [
+        {
+        "category": "exterior",
+        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "title": "",
+        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
+        "uploaded_by": "",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
+        "id": "",
+        "youtube_id": "",
+        "is_video": "",
+        "approved": true
+        }
+        ],
+        "lot_size_units": "",
+        "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICApqzCCgw",
+        "clear_height": "",
+        "size_units": "",
+        "submarket": "Southwest",
+        "notification_email": "",
+        "id": "",
+        "market": "",
+        "size": "116368",
+        "sprinkler": "Yes",
+        "title": "Barton Oaks Plaza II",
+        "building_class": "A",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "property_owner": "BOP II & III, LLC",
+        "leed": "",
+        "type": "Office",
+        "operating_expenses": "13.45",
+        "parking_rate": "",
+        "number_of_spaces": "",
+        "address": {
+        "city": "Austin",
+        "state": "TX",
+        "street": "901 South MoPac Expressway",
+        "geo": {
+        "latitude": "30.2646345",
+        "longitude": "-97.7822573"
+        },
+        "zipcode": "78746"
+        },
+        "year_built": "1987",
+        "cover": {
+        "category": "exterior",
+        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "title": "",
+        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
+        "uploaded_by": "",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
+        "id": "",
+        "youtube_id": "",
+        "is_video": "",
+        "approved": true
+        },
+        "lot_size": "",
+        "building_parking_ratio": "2.8"
+        },
+        "status": "Public",
+        "is_promoted": false,
+        "description": "• Class A Building • Downtown & Greenbelt Views • Located at the intersection of MoPac & Bee Caves • Structured parking garage • Walking distance to restaurants • On Hike and Bike Trail UP TO 24,134 RSF AVAILABLE • Internet Provider: Grande Communications Networks, LLC.",
+        "lease_term": "",
+        "divisible": "",
+        "expiration_date": "",
+        "rate_frequency": "Yearly",
+        "rate_units": "",
+        "floor_number": "3",
+        "availability_date": "2015-02-01",
+        "rate": "25.0",
+        "space_available_units": "SF",
+        "office_finish_percentage": "",
+        "ti": "",
+        "space_available": "11073",
+        "space_type": "lease",
+        "unit_number": "350"
+        },
+        "portfolio": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_I2JCgw",
+        "id": "5629499534213120",
+        "lease_term": "",
+        "master_diff": {},
+        "is_promoted": false,
+        "title": "Barton Oaks Plaza II, Suite 350",
+        "created_by": null,
+        "space_available_units": "SF",
+        "ti": "",
+        "space_available": "11073",
+        "unit_number": "350",
+        "status": "Public",
+        "edited_by": null,
+        "description": "• Class A Building • Downtown & Greenbelt Views • Located at the intersection of MoPac & Bee Caves • Structured parking garage • Walking distance to restaurants • On Hike and Bike Trail UP TO 24,134 RSF AVAILABLE • Internet Provider: Grande Communications Networks, LLC.",
+        "rate_frequency": "Yearly",
+        "rate_units": "",
+        "availability_date": "2015-02-01",
+        "floor_number": "3",
+        "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgIDQ_I2JCgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgICACgw",
+        "number_of_attachments": "2",
+        "building": {
+        "ac": true,
+        "reserved": "",
+        "attachments": [
+        {
+        "category": "exterior",
+        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "title": "",
+        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
+        "uploaded_by": "",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
+        "id": "",
+        "youtube_id": "",
+        "is_video": "",
+        "approved": true
+        }
+        ],
+        "lot_size_units": "",
+        "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICApqzCCgw",
+        "clear_height": "",
+        "size_units": "",
+        "submarket": "Southwest",
+        "notification_email": "",
+        "id": "",
+        "market": "",
+        "size": "116368",
+        "sprinkler": "Yes",
+        "title": "Barton Oaks Plaza II",
+        "building_class": "A",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "property_owner": "BOP II & III, LLC",
+        "leed": "",
+        "type": "Office",
+        "operating_expenses": "13.45",
+        "parking_rate": "",
+        "number_of_spaces": "",
+        "address": {
+        "city": "Austin",
+        "state": "TX",
+        "street": "901 South MoPac Expressway",
+        "geo": {
+        "latitude": "30.2646345",
+        "longitude": "-97.7822573"
+        },
+        "zipcode": "78746"
+        },
+        "year_built": "1987",
+        "cover": {
+        "category": "exterior",
+        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
+        "title": "",
+        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
+        "uploaded_by": "",
+        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
+        "id": "",
+        "youtube_id": "",
+        "is_video": "",
+        "approved": true
+        },
+        "lot_size": "",
+        "building_parking_ratio": "2.8"
+        },
+        "divisible": "",
+        "expiration_date": "",
+        "created_at": "2014-10-13T16:48:26.577620+00:00",
+        "cover": null,
+        "search_rate": "25.0",
+        "master_space": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgICBpowJDA",
+        "office_finish_percentage": "",
+        "space_type": "lease",
+        "space_id": "5120632077418496"
+        }
+        ]
+
