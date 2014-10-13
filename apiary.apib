@@ -758,7 +758,7 @@ Note:
         {
         "edited_at": "2014-10-08T14:01:37.032590+00:00",
         "archived": false,
-        "title": “My 1st Portfolio",
+        "title": “Example Portfolio",
         "short_url": "http://real.ma/123456",
         "created_at": "2014-10-07T14:55:22.919510+00:00",
         "public": false,
@@ -782,7 +782,7 @@ Note:
         }
 
 ## Creating a Portfolio [/portfolios?title={title_string}]
-### Create a portfolio with a given title [PUT]
+### Create a portfolio with a given title [POST]
 
 Note
 
@@ -1063,3 +1063,19 @@ Note
         "space_id": "5120632077418496"
         }
         ]
+        
+## Archive or Unarchive a Portfolio [/portfolios/{id}/{archive|unarchive}]
+### Archive or Unarchive a Portfolio by id and parameter [POST]
+
++ Parameters
+
+    + unarchive (string) ... unarchive
+    + archive (string) ... archive
+
++ Request
+
+        https://www.realmassive.com/api/v1/portfolios/5669562083180544/unarchive
+
++ Response 200
+        
+
