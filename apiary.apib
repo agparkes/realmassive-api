@@ -1440,7 +1440,7 @@ Note:
 
 Note:
 
-* To view the history of a portfolio space, will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+* To view the history of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
 
 + Parameters
 
@@ -1497,3 +1497,33 @@ Note:
             "space_type": [],
             "unit_number": []
         }
+
+##  Portfolio Space Notifications [/portfolios/{id}/spaces/{key}/notifications]    
+### When a space is collaborated upon, a notification is sent to the other viewers of the portfolio to inform them something has changed [GET]
+
+Note:
+
+* To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}/notifications
+
++ Response 200 (application/json)
+
+        []
+
+### This request is to delete all of the notifications for a user [DELETE]
+
+Note:
+
+* To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}/notifications
+
++ Response 200 (application/json)
+
+           
+
