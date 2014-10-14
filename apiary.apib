@@ -1393,7 +1393,68 @@ Note:
 
 + Response 200 (application/json)
 
+##  Portfolio Collaborators [/portfolios/{id}/collaborators]    
+### Fetch all of the collaborators on a given portfolio [GET]
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/{id}/collaborators
+
++ Response 200 (application/json)
            
+        {
+            "agents": [
+                {
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "title": "developer",
+                    "photo": "https://pictures.com/pic",
+                    "company": "RealMassive",
+                    "master_key": "ahJzfnJlQ2xtYXNzaXZlLXByb2RyEQsSBBVzZ16CgICAgMy0lFoM",
+                    "is_premium": true,
+                    "id": "572366123456096"
+                }
+            ],
+            "viewers": []
+        }
+
+### Adding a collaborator to a portfolio [POST]
+
+Note:
+
+* set the permissions for a user using the 'write' property, to allow them to be a collaborate use 'write'
+* Make sure the body is url encoded
+* Content-Length may be required, if so, use the length of "Body"
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/{id}/collaborators
+        
+    + Body
+
+            email=johndoe@realmassive.com
+            write=write
+
+
+
++ Response 200 (application/json)
+           
+        {
+            "agents": [
+                {
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "title": "developer",
+                    "photo": "https://pictures.com/pic",
+                    "company": "RealMassive",
+                    "master_key": "ahJzfnJlQ2xtYXNzaXZlLXByb2RyEQsSBBVzZ16CgICAgMy0lFoM",
+                    "is_premium": true,
+                    "id": "572366123456096"
+                }
+            ],
+            "viewers": []
+        }
+
 ## Group Users
 
 The **User API** is used for logging into a preexisting “manually registered” RealMassive user. Logging in allows you to obtaining access to a users contact information, surveys, and organizations.
