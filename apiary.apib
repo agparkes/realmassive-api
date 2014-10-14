@@ -263,627 +263,6 @@ All query parameters are mandatory. If any of them is missing, it returns error 
 
         {"error": "Wrong address parameters."}
 
-# Group Portfolios
-
-## Introduction
-A Portfolio is collection for Space copies which are called Portfolio Spaces. Portfolio Space has revision system similiar to that which Spaces have. When original Space (called master) is changed, all related Portfolio Spaces are checked for conflict. If there is no conflict, changes from master are automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
-
-## Portfolio properties
-
-* **agents**
-* **archived**
-* **created_at**
-* **edited_at**
-* **id**
-* **key**
-* **number_of_spaces**
-* **owner**
-* **public**
-* **short_url**
-* **title**
-* **viewers**
-
-## View Portfolios [/portfolios]
-### Fetch all of the portfolios of the currently logged in user [GET]
-
-Note:
-
-* You must be logged into a user with the login cookies stored, review the User API for more information on this topic.
-
-+ Request
-
-        https://www.realmassive.com/portfolios
-
-+ Response 200 (application/json)
-
-        {
-        "cursor": null,
-        "results": [
-        {
-        "edited_at": "2014-10-08T14:01:37.032590+00:00",
-        "archived": false,
-        "title": “Example Portfolio",
-        "short_url": "http://real.ma/123456",
-        "created_at": "2014-10-07T14:55:22.919510+00:00",
-        "public": false,
-        "number_of_spaces": "1",
-        "agents": [],
-        "key": “abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvwxyx12345",
-        "owner": {
-        "first_name": "John",
-        "last_name": "Doe",
-        "title": "Developer",
-        "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
-        "company": "RealMassive",
-        "master_key": "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvw",
-        "is_premium": false,
-        "id": ""
-        },
-        "id": "1234567890987654",
-        "viewers": []
-        }
-        ]
-        }
-
-## Creating a Portfolio [/portfolios?title={title_string}]
-### Create a portfolio with a given title [POST]
-
-Note
-
-* make sure you portfolio title is URL encoded
-* verify that you that your PUT is using the JSON/Application format
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios?title=Example%20Portfolio
-
-+ Response 200 (application/json)
-
-
-
-## Fetch Portfolios by id [/portfolios/{id}]
-### Fetch the details of a portfolio by id [GET]
-
-+ Parameters
-
-    + id (string) ... unique id
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544
-
-+ Response 200 (application/json)
-
-        {
-            "cursor": null,
-            "results": [
-                {
-                    "edited_at": "2014-10-13T16:48:26.283250+00:00",
-                    "archived": false,
-                    "title": "Example Portfolio",
-                    "short_url": "http://real.ma/1sBnkoa",
-                    "created_at": "2014-10-13T16:48:22.924680+00:00",
-                    "public": false,
-                    "number_of_spaces": "1",
-                "agents": [],
-                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_I2JCgw",
-                "owner": {
-                    "first_name": "Richard",
-                    "last_name": "Armstrong",
-                    "title": "iOS Developer",
-                    "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw",
-                    "company": "RealMassive",
-                    "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM",
-                    "is_premium": false,
-                    "id": ""
-                },
-                "id": "5669562083180544",
-                "viewers": []
-            },
-            {
-                "edited_at": "2014-10-08T14:01:37.032590+00:00",
-                "archived": false,
-                "title": "Domain Retail Space",
-                "short_url": "http://real.ma/1s8prjc",
-                "created_at": "2014-10-07T14:55:22.919510+00:00",
-                "public": false,
-                "number_of_spaces": "2",
-                "agents": [],
-                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw",
-                "owner": {
-                    "first_name": "Richard",
-                    "last_name": "Armstrong",
-                    "title": "iOS Developer",
-                    "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw",
-                    "company": "RealMassive",
-                    "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM",
-                    "is_premium": false,
-                    "id": ""
-                },
-                "id": "5729041608867840",
-                "viewers": []
-            }
-        ]
-        }
-        
-### Delete portfolio by id [DELETE]
-
-+ Request
-
-        https://www.realmassive.com/portfolios/{id}
-
-+ Response 200
-
-## Fetch the Spaces within a Portfolio [/portfolios/{id}/spaces]
-### Fetch all the space data from a  portfolio by id [GET]
-
-+ Parameters
-
-    + id (string) ... unique id
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544/spaces
-
-+ Response 200 (application/json)
-
-        [
-        {
-        "edited_at": "2014-10-13T16:48:26.576960+00:00",
-        "attachments": [],
-        "manager_name": "HPI Office Division",
-        "rate": "25.0",
-        "master_state": {
-        "building": {
-        "ac": true,
-        "reserved": "",
-        "attachments": [
-        {
-        "category": "exterior",
-        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "title": "",
-        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
-        "uploaded_by": "",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
-        "id": "",
-        "youtube_id": "",
-        "is_video": "",
-        "approved": true
-        }
-        ],
-        "lot_size_units": "",
-        "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICApqzCCgw",
-        "clear_height": "",
-        "size_units": "",
-        "submarket": "Southwest",
-        "notification_email": "",
-        "id": "",
-        "market": "",
-        "size": "116368",
-        "sprinkler": "Yes",
-        "title": "Barton Oaks Plaza II",
-        "building_class": "A",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "property_owner": "BOP II & III, LLC",
-        "leed": "",
-        "type": "Office",
-        "operating_expenses": "13.45",
-        "parking_rate": "",
-        "number_of_spaces": "",
-        "address": {
-        "city": "Austin",
-        "state": "TX",
-        "street": "901 South MoPac Expressway",
-        "geo": {
-        "latitude": "30.2646345",
-        "longitude": "-97.7822573"
-        },
-        "zipcode": "78746"
-        },
-        "year_built": "1987",
-        "cover": {
-        "category": "exterior",
-        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "title": "",
-        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
-        "uploaded_by": "",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
-        "id": "",
-        "youtube_id": "",
-        "is_video": "",
-        "approved": true
-        },
-        "lot_size": "",
-        "building_parking_ratio": "2.8"
-        },
-        "status": "Public",
-        "is_promoted": false,
-        "description": "• Class A Building • Downtown & Greenbelt Views • Located at the intersection of MoPac & Bee Caves • Structured parking garage • Walking distance to restaurants • On Hike and Bike Trail UP TO 24,134 RSF AVAILABLE • Internet Provider: Grande Communications Networks, LLC.",
-        "lease_term": "",
-        "divisible": "",
-        "expiration_date": "",
-        "rate_frequency": "Yearly",
-        "rate_units": "",
-        "floor_number": "3",
-        "availability_date": "2015-02-01",
-        "rate": "25.0",
-        "space_available_units": "SF",
-        "office_finish_percentage": "",
-        "ti": "",
-        "space_available": "11073",
-        "space_type": "lease",
-        "unit_number": "350"
-        },
-        "portfolio": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_I2JCgw",
-        "id": "5629499534213120",
-        "lease_term": "",
-        "master_diff": {},
-        "is_promoted": false,
-        "title": "Barton Oaks Plaza II, Suite 350",
-        "created_by": null,
-        "space_available_units": "SF",
-        "ti": "",
-        "space_available": "11073",
-        "unit_number": "350",
-        "status": "Public",
-        "edited_by": null,
-        "description": "• Class A Building • Downtown & Greenbelt Views • Located at the intersection of MoPac & Bee Caves • Structured parking garage • Walking distance to restaurants • On Hike and Bike Trail UP TO 24,134 RSF AVAILABLE • Internet Provider: Grande Communications Networks, LLC.",
-        "rate_frequency": "Yearly",
-        "rate_units": "",
-        "availability_date": "2015-02-01",
-        "floor_number": "3",
-        "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgIDQ_I2JCgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgICACgw",
-        "number_of_attachments": "2",
-        "building": {
-        "ac": true,
-        "reserved": "",
-        "attachments": [
-        {
-        "category": "exterior",
-        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "title": "",
-        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
-        "uploaded_by": "",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
-        "id": "",
-        "youtube_id": "",
-        "is_video": "",
-        "approved": true
-        }
-        ],
-        "lot_size_units": "",
-        "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICApqzCCgw",
-        "clear_height": "",
-        "size_units": "",
-        "submarket": "Southwest",
-        "notification_email": "",
-        "id": "",
-        "market": "",
-        "size": "116368",
-        "sprinkler": "Yes",
-        "title": "Barton Oaks Plaza II",
-        "building_class": "A",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "property_owner": "BOP II & III, LLC",
-        "leed": "",
-        "type": "Office",
-        "operating_expenses": "13.45",
-        "parking_rate": "",
-        "number_of_spaces": "",
-        "address": {
-        "city": "Austin",
-        "state": "TX",
-        "street": "901 South MoPac Expressway",
-        "geo": {
-        "latitude": "30.2646345",
-        "longitude": "-97.7822573"
-        },
-        "zipcode": "78746"
-        },
-        "year_built": "1987",
-        "cover": {
-        "category": "exterior",
-        "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDomaYKDA",
-        "title": "",
-        "url": "https://lh5.ggpht.com/y9kq1DCr_VpwjJrvyc1v8VxubYUhpDtmKI-a_Z2XPYvj2jH2R5-sSsMrku91cLMR_OOmJmLsdcsS5JLVDZQGxSPjlabwQw",
-        "uploaded_by": "",
-        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICmrMoJDA",
-        "id": "",
-        "youtube_id": "",
-        "is_video": "",
-        "approved": true
-        },
-        "lot_size": "",
-        "building_parking_ratio": "2.8"
-        },
-        "divisible": "",
-        "expiration_date": "",
-        "created_at": "2014-10-13T16:48:26.577620+00:00",
-        "cover": null,
-        "search_rate": "25.0",
-        "master_space": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgICBpowJDA",
-        "office_finish_percentage": "",
-        "space_type": "lease",
-        "space_id": "5120632077418496"
-        }
-        ]
-        
-### Adding a space to a portfolio [POST]
-
-Required Headers:
-
-* **Content-Type:** application/json
-
-Required Body:
-
-* **Body:** space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3
-
-Note:
-
-* Make sure the body is url encoded
-* Content-Length may be required, if so, use the length of "Body"
-
-+ Request (application/json)
-
-        https://www.realmassive.com/auth
-
-    + Body
-
-            space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA
-            
-+ Response 200 (application/json)
-
-        {
-            attachments =     (
-            );
-            "availability_date" = "";
-            building =     {
-                ac = "";
-                address =         {
-                    city = Austin;
-                    geo =             {
-                        latitude = "30.3986365";
-                        longitude = "-97.7201568";
-                    };
-                    state = TX;
-                    street = "2901 Esperanza Crossing";
-                    zipcode = 78758;
-                };
-                attachments =         (
-                                {
-                        approved = 1;
-                        category = exterior;
-                        id = "";
-                        "is_video" = "";
-                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
-                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                        title = "";
-                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                        url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
-                        "youtube_id" = "";
-                    },
-                                {
-                        approved = 1;
-                        category = interior;
-                        id = "";
-                        "is_video" = "";
-                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDsxYcLDA;
-                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                        title = "";
-                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                        url = "https://lh5.ggpht.com/RVbezP-iVoOuSdPTe35GFQMjLGQ3xVUmznfXmOziy4yXCaNRfmI3n3yIXHxgCjxAQOF0kzmIBJz9jva0dyca7vdZ3JpqxA";
-                        "youtube_id" = "";
-                    },
-                                {
-                        approved = 1;
-                        category = interior;
-                        id = "";
-                        "is_video" = "";
-                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksEIDA;
-                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                        title = "";
-                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                        url = "https://lh6.ggpht.com/PEwYxwZX-rqPEKVSdI82UHkgtAJ9Tv_k0d971rghY95mgnm0a7yv3OTVn6IyPCLf1Lx1vhWrtZJmmTHHSQ2s4StBMwxdAUo";
-                        "youtube_id" = "";
-                    }
-                );
-                "building_class" = A;
-                "building_parking_ratio" = "3.7";
-                "clear_height" = "";
-                cover =         {
-                    approved = 1;
-                    category = exterior;
-                    id = "";
-                    "is_video" = "";
-                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
-                    target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                    title = "";
-                    "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                    url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
-                    "youtube_id" = "";
-                };
-                id = "";
-                leed = "";
-                "lot_size" = "";
-                "lot_size_units" = "";
-                manager = ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAg4SNCgw;
-                market = ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww;
-                "master_key" = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                "notification_email" = "";
-                "number_of_spaces" = "";
-                "operating_expenses" = "10.0";
-                "parking_rate" = "";
-                "property_owner" = "";
-                reserved = "";
-                size = 74787;
-                "size_units" = SF;
-                sprinkler = "";
-                submarket = Northwest;
-                title = "Domain 5";
-                type = Office;
-                "year_built" = 2015;
-            };
-            cover = "<null>";
-            "created_at" = "2014-10-13T20:19:09.011620+00:00";
-            "created_by" = "<null>";
-            description = "\U2022 Domain 5 located at 2901 Esperanza Crossing \U2022 74,787 RSF \U2022 3 floors \U2022 Under construction; available \U2022 August 2015 \U2022 Rate $28.00 NNN \U2022 Opex $10.00 \U2022 Parking Ratio 3.7:1000 \U2022 Additional unmetered street parking is available within The Domain.";
-            divisible = 1;
-            "edited_at" = "2014-10-13T20:19:09.010790+00:00";
-            "edited_by" = "<null>";
-            "expiration_date" = "";
-            "floor_number" = 1;
-            id = 5649050225344512;
-            "is_promoted" = 0;
-            key = ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICQh9GWCgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgLmECgw;
-            "lease_term" = "";
-            "manager_name" = "";
-            "master_diff" = "";
-            "master_space" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA;
-            "master_state" =     {
-                "availability_date" = "";
-                building =         {
-                    ac = "";
-                    address =             {
-                        city = Austin;
-                        geo =                 {
-                            latitude = "30.3986365";
-                            longitude = "-97.7201568";
-                        };
-                        state = TX;
-                        street = "2901 Esperanza Crossing";
-                        zipcode = 78758;
-                    };
-                    attachments =             (
-                                        {
-                            approved = 1;
-                            category = exterior;
-                            id = "";
-                            "is_video" = "";
-                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
-                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                            title = "";
-                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                            url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
-                            "youtube_id" = "";
-                        },
-                                        {
-                            approved = 1;
-                            category = interior;
-                            id = "";
-                            "is_video" = "";
-                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDsxYcLDA;
-                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                            title = "";
-                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                            url = "https://lh5.ggpht.com/RVbezP-iVoOuSdPTe35GFQMjLGQ3xVUmznfXmOziy4yXCaNRfmI3n3yIXHxgCjxAQOF0kzmIBJz9jva0dyca7vdZ3JpqxA";
-                            "youtube_id" = "";
-                        },
-                                        {
-                            approved = 1;
-                            category = interior;
-                            id = "";
-                            "is_video" = "";
-                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksEIDA;
-                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                            title = "";
-                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                            url = "https://lh6.ggpht.com/PEwYxwZX-rqPEKVSdI82UHkgtAJ9Tv_k0d971rghY95mgnm0a7yv3OTVn6IyPCLf1Lx1vhWrtZJmmTHHSQ2s4StBMwxdAUo";
-                            "youtube_id" = "";
-                        }
-                    );
-                    "building_class" = A;
-                    "building_parking_ratio" = "3.7";
-                    "clear_height" = "";
-                    cover =             {
-                        approved = 1;
-                        category = exterior;
-                        id = "";
-                        "is_video" = "";
-                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
-                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                        title = "";
-                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
-                        url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
-                        "youtube_id" = "";
-                    };
-                    id = "";
-                    leed = "";
-                    "lot_size" = "";
-                    "lot_size_units" = "";
-                    manager = ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAg4SNCgw;
-                    market = ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww;
-                    "master_key" = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
-                    "notification_email" = "";
-                    "number_of_spaces" = "";
-                    "operating_expenses" = "10.0";
-                    "parking_rate" = "";
-                    "property_owner" = "";
-                    reserved = "";
-                    size = 74787;
-                    "size_units" = SF;
-                    sprinkler = "";
-                    submarket = Northwest;
-                    title = "Domain 5";
-                    type = Office;
-                    "year_built" = 2015;
-                };
-                description = "\U2022 Domain 5 located at 2901 Esperanza Crossing \U2022 74,787 RSF \U2022 3 floors \U2022 Under construction; available \U2022 August 2015 \U2022 Rate $28.00 NNN \U2022 Opex $10.00 \U2022 Parking Ratio 3.7:1000 \U2022 Additional unmetered street parking is available within The Domain.";
-                divisible = 1;
-                "expiration_date" = "";
-                "floor_number" = 1;
-                "is_promoted" = 0;
-                "lease_term" = "";
-                "office_finish_percentage" = "";
-                rate = "26.0";
-                "rate_frequency" = Yearly;
-                "rate_units" = "";
-                "space_available" = 24929;
-                "space_available_units" = SF;
-                "space_type" = lease;
-                status = Public;
-                ti = "";
-                "unit_number" = 1;
-            };
-            "number_of_attachments" = "";
-            "office_finish_percentage" = "";
-            permissions =     (
-                Read,
-                ChangePermissions,
-                Write,
-                Delete
-            );
-            portfolio = ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw;
-            rate = "26.0";
-            "rate_frequency" = Yearly;
-            "rate_units" = "";
-            "search_rate" = "26.0";
-            "space_available" = 24929;
-            "space_available_units" = SF;
-            "space_id" = 5769079931535360;
-            "space_type" = lease;
-            status = Public;
-            ti = "";
-            title = "Domain 5, Suite 1";
-            "unit_number" = 1;
-        }
-
-## Archive or Unarchive a Portfolio [/portfolios/{id}/{archive|unarchive}]
-### Archive or Unarchive a Portfolio by id and parameter [POST]
-
-+ Parameters
-
-    + unarchive (string) ... unarchive
-    + archive (string) ... archive
-
-+ Request
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544/unarchive
-
-+ Response 200
-        
-
-
-
 # Group Spaces
 ## Fetch Spaces by id [/api/v1/spaces/{id}]
 ### Fetch a space by id [GET]
@@ -1187,7 +566,7 @@ Note:
 
 + Response 200 (application/json)
 
-                {
+        {
           "cursor": "False:CpMFCu4BCtEB_7_hkPdAAAAA9w06baz6uv5OjIGNmp6Tkp6MjJaJmtKPjZCb_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdjI-enJqgzf8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrqYjKy9qbGIpqixk7i2vL6YsrzHzLGctru-_wBzf56XtYWZkbWTpqiHi6ansYWep6WTs6e9hp3NrYa6mIysvamxiKaosZO4try-mLK8x8yxnLa7vv8A__4QASFMcw71s9sZvFAAWgsJHNxROgnoRjEQARINRG9jdW1lbnRJbmRleBrXAihBTkQgKElTICJjdXN0b21lcl9uYW1lIiAiYXBwZW5naW5lIikgKElTICJncm91cF9uYW1lIiAic35yZWFsbWFzc2l2ZS1wcm9kIikgKElTICJuYW1lc3BhY2UiICIiKSAoSVMgImluZGV4X25hbWUiICJzcGFjZV8yIikgKEFORCAoT1IgKFFUICJhdXN0aW4iKSAoSVMgIl9fZ2F0b21fXyIgImF1c3RpbiIpKSAoQU5EIChJTl9MIHJnZW9fZ2VvIChMT0MgMzAuMjY2OTQ0NCAtOTcuNzQyNzc3OCkgMzIxODYuMDAwMDAwMDAwMDAwMCkgKExFIDQuMDAwMDAwMDAwMDAwMDAwMDAgInNuYnJfc3BhY2VfYXZhaWxhYmxlIikgKEdFIDEyMzQ1Njc4OTAuMDAwMDAwMDAgInNuYnJfc3BhY2VfYXZhaWxhYmxlIikpKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KHAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJA6Ac",
           "results": [
             {
@@ -1288,8 +667,8 @@ Note:
 + Response 200 (application/json)
 
         {
-        "login_success" = 1,
-        "redirect_to" = "/",
+            "login_success" = 1,
+            "redirect_to" = "/",
         }
         
 ## Fetch Current User [/api/v1/users/current]
@@ -1353,7 +732,768 @@ The **Version** call is used to determine which verison of the RealMassive webap
 + Response 200 (application/json)
 
         {
-        "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
-        "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
-        "version_str": "4.1-43-g16c4e17"
+            "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
+            "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
+            "version_str": "4.1-43-g16c4e17"
+        }
+
+
+# Group Portfolios
+
+## Introduction
+A Portfolio is collection for Space copies which are called Portfolio Spaces. Portfolio Space has revision system similiar to that which Spaces have. When original Space (called master) is changed, all related Portfolio Spaces are checked for conflict. If there is no conflict, changes from master are automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
+
+## Portfolio properties
+
+* **agents**
+* **archived**
+* **created_at**
+* **edited_at**
+* **id**
+* **key**
+* **number_of_spaces**
+* **owner**
+* **public**
+* **short_url**
+* **title**
+* **viewers**
+
+## View Portfolios [/portfolios]
+### Fetch all of the portfolios of the currently logged in user [GET]
+
+Note:
+
+* You must be logged into a user with the login cookies stored, review the User API for more information on this topic.
+
++ Request
+
+        https://www.realmassive.com/portfolios
+
++ Response 200 (application/json)
+
+        {
+            "cursor": null,
+            "results": [
+                {
+                "edited_at": "2014-10-08T14:01:37.032590+00:00",
+                "archived": false,
+                "title": “Example Portfolio",
+                "short_url": "http://real.ma/123456",
+                "created_at": "2014-10-07T14:55:22.919510+00:00",
+                "public": false,
+                "number_of_spaces": "1",
+                "agents": [],
+                "key": “abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvwxyx12345",
+                "owner": {
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "title": "Developer",
+                    "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
+                    "company": "RealMassive",
+                    "master_key": "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvw",
+                    "is_premium": false,
+                    "id": ""
+                },
+                "id": "1234567890987654",
+                "viewers": []
+                }
+            ]
+        }
+
+## Creating a Portfolio [/portfolios?title={title_string}]
+### Create a portfolio with a given title [POST]
+
+Note
+
+* make sure you portfolio title is URL encoded
+* verify that you that your PUT is using the JSON/Application format
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios?title=Example%20Portfolio
+
++ Response 200 (application/json)
+
+
+
+## Fetch Portfolios by id [/portfolios/{id}]
+### Fetch the details of a portfolio by id [GET]
+
++ Parameters
+
+    + id (string) ... unique id
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/5669562083180544
+
++ Response 200 (application/json)
+
+        {
+            "cursor": null,
+            "results": [
+                {
+                    "edited_at": "2014-10-13T16:48:26.283250+00:00",
+                    "archived": false,
+                    "title": "Example Portfolio",
+                    "short_url": "http://real.ma/1sBnkoa",
+                    "created_at": "2014-10-13T16:48:22.924680+00:00",
+                    "public": false,
+                    "number_of_spaces": "1",
+                "agents": [],
+                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_I2JCgw",
+                "owner": {
+                    "first_name": "Richard",
+                    "last_name": "Armstrong",
+                    "title": "iOS Developer",
+                    "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw",
+                    "company": "RealMassive",
+                    "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM",
+                    "is_premium": false,
+                    "id": ""
+                },
+                "id": "5669562083180544",
+                "viewers": []
+            },
+            {
+                "edited_at": "2014-10-08T14:01:37.032590+00:00",
+                "archived": false,
+                "title": "Domain Retail Space",
+                "short_url": "http://real.ma/1s8prjc",
+                "created_at": "2014-10-07T14:55:22.919510+00:00",
+                "public": false,
+                "number_of_spaces": "2",
+                "agents": [],
+                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw",
+                "owner": {
+                    "first_name": "Richard",
+                    "last_name": "Armstrong",
+                    "title": "iOS Developer",
+                    "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw",
+                    "company": "RealMassive",
+                    "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM",
+                    "is_premium": false,
+                    "id": ""
+                },
+                "id": "5729041608867840",
+                "viewers": []
+            }
+        ]
+        }
+        
+### Delete portfolio by id [DELETE]
+
++ Request
+
+        https://www.realmassive.com/portfolios/{id}
+
++ Response 200
+
+## Archive or Unarchive a Portfolio [/portfolios/{id}/{archive|unarchive}]
+### Archive or Unarchive a Portfolio by id and parameter [POST]
+
++ Parameters
+
+    + unarchive (string) ... unarchive
+    + archive (string) ... archive
+
++ Request
+
+        https://www.realmassive.com/api/v1/portfolios/5669562083180544/unarchive
+
++ Response 200
+
+## Spaces within a Portfolio [/portfolios/{id}/spaces]
+### Fetch all the space data from a  portfolio by id [GET]
+
++ Parameters
+
+    + id (string) ... unique id
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/5669562083180544/spaces
+
++ Response 200 (application/json)
+
+        {
+        attachments =         (
+        );
+        "availability_date" = "";
+        building =         {
+            ac = 1;
+            address =             {
+                city = Austin;
+                geo =                 {
+                    latitude = "30.39442";
+                    longitude = "-97.720187";
+                };
+                state = TX;
+                street = "11005 Burnet Road";
+                zipcode = 78758;
+            };
+            attachments =             (
+                                {
+                    approved = 1;
+                    category = "";
+                    id = "";
+                    "is_video" = "";
+                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg5kKDA;
+                    target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                    title = "";
+                    "uploaded_by" = "";
+                    url = "https://lh5.ggpht.com/0NAbdnX9a54twWQZeNIOkipKu89qmTeMQn1JquAPNXvJtAX3fFFEOvW7P40TO3r7ePjW_3rQt4JBAUnwN_vXFqj6_x5CWA";
+                    "youtube_id" = "";
+                },
+                                {
+                    approved = 1;
+                    category = "";
+                    id = "";
+                    "is_video" = "";
+                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVl4QKDA;
+                    target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                    title = "";
+                    "uploaded_by" = "";
+                    url = "https://lh3.ggpht.com/kBCQhy1yRF6Y8UYhwxKosbiOPwKkmvwyXt_m1b4UzhIGlvp0JwbG49XqI7o5GFrSCcLKrI8AK7yO_9jUMXxT_m99t1bX";
+                    "youtube_id" = "";
+                },
+                                {
+                    approved = 1;
+                    category = "";
+                    id = "";
+                    "is_video" = "";
+                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICV9ecIDA;
+                    target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                    title = "";
+                    "uploaded_by" = "";
+                    url = "https://lh3.ggpht.com/uUx5xiqeYVqurRAlIOJZAEK9jQ3S24FW1YxIBKG5bz61VByGzTxXXsu_BURpI9Meyap007tZISMzNIbFiQLT8J6LboVqv5w";
+                    "youtube_id" = "";
+                }
+            );
+            "building_class" = A;
+            "building_parking_ratio" = "";
+            "clear_height" = "";
+            cover =             {
+                approved = 1;
+                category = "";
+                id = "";
+                "is_video" = "";
+                "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg5kKDA;
+                target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                title = "";
+                "uploaded_by" = "";
+                url = "https://lh5.ggpht.com/0NAbdnX9a54twWQZeNIOkipKu89qmTeMQn1JquAPNXvJtAX3fFFEOvW7P40TO3r7ePjW_3rQt4JBAUnwN_vXFqj6_x5CWA";
+                "youtube_id" = "";
+            };
+            id = "";
+            leed = "";
+            "lot_size" = "";
+            "lot_size_units" = "";
+            manager = "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAp-nfCgw";
+            market = "";
+            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+            "notification_email" = "";
+            "number_of_spaces" = "";
+            "operating_expenses" = "";
+            "parking_rate" = "";
+            "property_owner" = "";
+            reserved = "";
+            size = 12000;
+            "size_units" = SF;
+            sprinkler = "";
+            submarket = North;
+            title = "Edge Eleven";
+            type = Retail;
+            "year_built" = "";
+        };
+        cover = "<null>";
+        "created_at" = "2014-10-14T15:45:26.256150+00:00";
+        "created_by" = "<null>";
+        description = "\U2022 Future cross access to the Domain  \U2022 Domain Phase II under construction \U2022 Located at Burnet and Kramer between The Domain and the new Kramer Rail Station \U2022 Top Golf, just down the street, now open \U2022 Close by large industrial business / great day pops";
+        divisible = "";
+        "edited_at" = "2014-10-14T17:48:12.765490+00:00";
+        "edited_by" =         {
+            company = RealMassive;
+            "first_name" = Richard;
+            id = "";
+            "is_premium" = 0;
+            "last_name" = Armstrong;
+            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM;
+            photo = "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw";
+            title = "iOS Developer";
+        };
+        "expiration_date" = "";
+        "floor_number" = "";
+        id = 5724160613416960;
+        "is_promoted" = 0;
+        key = ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICQh9GWCgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgMOVCgw;
+        "lease_term" = "";
+        "manager_name" = "Live Oak-Gottesman";
+        "master_diff" =         {
+            "rate_frequency" =             (
+                Yearly,
+                "<null>"
+            );
+        };
+        "master_space" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVl4QJDA;
+        "master_state" =         {
+            "availability_date" = "";
+            building =             {
+                ac = 1;
+                address =                 {
+                    city = Austin;
+                    geo =                     {
+                        latitude = "30.39442";
+                        longitude = "-97.720187";
+                    };
+                    state = TX;
+                    street = "11005 Burnet Road";
+                    zipcode = 78758;
+                };
+                attachments =                 (
+                                        {
+                        approved = 1;
+                        category = "";
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg5kKDA;
+                        target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                        title = "";
+                        "uploaded_by" = "";
+                        url = "https://lh5.ggpht.com/0NAbdnX9a54twWQZeNIOkipKu89qmTeMQn1JquAPNXvJtAX3fFFEOvW7P40TO3r7ePjW_3rQt4JBAUnwN_vXFqj6_x5CWA";
+                        "youtube_id" = "";
+                    },
+                                        {
+                        approved = 1;
+                        category = "";
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVl4QKDA;
+                        target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                        title = "";
+                        "uploaded_by" = "";
+                        url = "https://lh3.ggpht.com/kBCQhy1yRF6Y8UYhwxKosbiOPwKkmvwyXt_m1b4UzhIGlvp0JwbG49XqI7o5GFrSCcLKrI8AK7yO_9jUMXxT_m99t1bX";
+                        "youtube_id" = "";
+                    },
+                                        {
+                        approved = 1;
+                        category = "";
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgICV9ecIDA;
+                        target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                        title = "";
+                        "uploaded_by" = "";
+                        url = "https://lh3.ggpht.com/uUx5xiqeYVqurRAlIOJZAEK9jQ3S24FW1YxIBKG5bz61VByGzTxXXsu_BURpI9Meyap007tZISMzNIbFiQLT8J6LboVqv5w";
+                        "youtube_id" = "";
+                    }
+                );
+                "building_class" = A;
+                "building_parking_ratio" = "";
+                "clear_height" = "";
+                cover =                 {
+                    approved = 1;
+                    category = "";
+                    id = "";
+                    "is_video" = "";
+                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg5kKDA;
+                    target = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                    title = "";
+                    "uploaded_by" = "";
+                    url = "https://lh5.ggpht.com/0NAbdnX9a54twWQZeNIOkipKu89qmTeMQn1JquAPNXvJtAX3fFFEOvW7P40TO3r7ePjW_3rQt4JBAUnwN_vXFqj6_x5CWA";
+                    "youtube_id" = "";
+                };
+                id = "";
+                leed = "";
+                "lot_size" = "";
+                "lot_size_units" = "";
+                manager = "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAp-nfCgw";
+                market = "";
+                "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICV69YLDA;
+                "notification_email" = "";
+                "number_of_spaces" = "";
+                "operating_expenses" = "";
+                "parking_rate" = "";
+                "property_owner" = "";
+                reserved = "";
+                size = 12000;
+                "size_units" = SF;
+                sprinkler = "";
+                submarket = North;
+                title = "Edge Eleven";
+                type = Retail;
+                "year_built" = "";
+            };
+            description = "\U2022 Future cross access to the Domain  \U2022 Domain Phase II under construction \U2022 Located at Burnet and Kramer between The Domain and the new Kramer Rail Station \U2022 Top Golf, just down the street, now open \U2022 Close by large industrial business / great day pops";
+            divisible = "";
+            "expiration_date" = "";
+            "floor_number" = "";
+            "is_promoted" = 0;
+            "lease_term" = "";
+            "office_finish_percentage" = "";
+            rate = "35.0";
+            "rate_frequency" = Yearly;
+            "rate_units" = "$/SF";
+            "space_available" = 1500;
+            "space_available_units" = SF;
+            "space_type" = lease;
+            status = Public;
+            ti = "";
+            "unit_number" = 105;
+        };
+        "number_of_attachments" = 3;
+        "office_finish_percentage" = "";
+        portfolio = ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw;
+        rate = "28.0";
+        "rate_frequency" = Yearly;
+        "rate_units" = "$/SF";
+        "search_rate" = "28.0";
+        "space_available" = 1650;
+        "space_available_units" = SF;
+        "space_id" = 5084954857832448;
+        "space_type" = lease;
+        status = Public;
+        ti = "";
+        title = "Edge Eleven, Suite 105";
+        "unit_number" = 105;
+        }
+
+        
+### Adding a space to a portfolio [POST]
+
+Required Headers:
+
+* **Content-Type:** application/json
+
+Required Body:
+
+* **Body:** space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3
+
+Note:
+
+* Make sure the body is url encoded
+* Content-Length may be required, if so, use the length of "Body"
+
++ Request (application/json)
+
+        https://www.realmassive.com/portfolio/{id}/spaces
+
+    + Body
+
+            space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA
+            
++ Response 200 (application/json)
+
+        {
+            attachments =     (
+            );
+            "availability_date" = "";
+            building =     {
+                ac = "";
+                address =         {
+                    city = Austin;
+                    geo =             {
+                        latitude = "30.3986365";
+                        longitude = "-97.7201568";
+                    };
+                    state = TX;
+                    street = "2901 Esperanza Crossing";
+                    zipcode = 78758;
+                };
+                attachments =         (
+                                {
+                        approved = 1;
+                        category = exterior;
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
+                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                        title = "";
+                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                        url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
+                        "youtube_id" = "";
+                    },
+                                {
+                        approved = 1;
+                        category = interior;
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDsxYcLDA;
+                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                        title = "";
+                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                        url = "https://lh5.ggpht.com/RVbezP-iVoOuSdPTe35GFQMjLGQ3xVUmznfXmOziy4yXCaNRfmI3n3yIXHxgCjxAQOF0kzmIBJz9jva0dyca7vdZ3JpqxA";
+                        "youtube_id" = "";
+                    },
+                                {
+                        approved = 1;
+                        category = interior;
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksEIDA;
+                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                        title = "";
+                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                        url = "https://lh6.ggpht.com/PEwYxwZX-rqPEKVSdI82UHkgtAJ9Tv_k0d971rghY95mgnm0a7yv3OTVn6IyPCLf1Lx1vhWrtZJmmTHHSQ2s4StBMwxdAUo";
+                        "youtube_id" = "";
+                    }
+                );
+                "building_class" = A;
+                "building_parking_ratio" = "3.7";
+                "clear_height" = "";
+                cover =         {
+                    approved = 1;
+                    category = exterior;
+                    id = "";
+                    "is_video" = "";
+                    "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
+                    target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                    title = "";
+                    "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                    url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
+                    "youtube_id" = "";
+                };
+                id = "";
+                leed = "";
+                "lot_size" = "";
+                "lot_size_units" = "";
+                manager = ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAg4SNCgw;
+                market = ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww;
+                "master_key" = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                "notification_email" = "";
+                "number_of_spaces" = "";
+                "operating_expenses" = "10.0";
+                "parking_rate" = "";
+                "property_owner" = "";
+                reserved = "";
+                size = 74787;
+                "size_units" = SF;
+                sprinkler = "";
+                submarket = Northwest;
+                title = "Domain 5";
+                type = Office;
+                "year_built" = 2015;
+            };
+            cover = "<null>";
+            "created_at" = "2014-10-13T20:19:09.011620+00:00";
+            "created_by" = "<null>";
+            description = "\U2022 Domain 5 located at 2901 Esperanza Crossing \U2022 74,787 RSF \U2022 3 floors \U2022 Under construction; available \U2022 August 2015 \U2022 Rate $28.00 NNN \U2022 Opex $10.00 \U2022 Parking Ratio 3.7:1000 \U2022 Additional unmetered street parking is available within The Domain.";
+            divisible = 1;
+            "edited_at" = "2014-10-13T20:19:09.010790+00:00";
+            "edited_by" = "<null>";
+            "expiration_date" = "";
+            "floor_number" = 1;
+            id = 5649050225344512;
+            "is_promoted" = 0;
+            key = ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICQh9GWCgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgLmECgw;
+            "lease_term" = "";
+            "manager_name" = "";
+            "master_diff" = "";
+            "master_space" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA;
+            "master_state" =     {
+                "availability_date" = "";
+                building =         {
+                    ac = "";
+                    address =             {
+                        city = Austin;
+                        geo =                 {
+                            latitude = "30.3986365";
+                            longitude = "-97.7201568";
+                        };
+                        state = TX;
+                        street = "2901 Esperanza Crossing";
+                        zipcode = 78758;
+                    };
+                    attachments =             (
+                                        {
+                            approved = 1;
+                            category = exterior;
+                            id = "";
+                            "is_video" = "";
+                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
+                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                            title = "";
+                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                            url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
+                            "youtube_id" = "";
+                        },
+                                        {
+                            approved = 1;
+                            category = interior;
+                            id = "";
+                            "is_video" = "";
+                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDsxYcLDA;
+                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                            title = "";
+                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                            url = "https://lh5.ggpht.com/RVbezP-iVoOuSdPTe35GFQMjLGQ3xVUmznfXmOziy4yXCaNRfmI3n3yIXHxgCjxAQOF0kzmIBJz9jva0dyca7vdZ3JpqxA";
+                            "youtube_id" = "";
+                        },
+                                        {
+                            approved = 1;
+                            category = interior;
+                            id = "";
+                            "is_video" = "";
+                            "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNksEIDA;
+                            target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                            title = "";
+                            "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                            url = "https://lh6.ggpht.com/PEwYxwZX-rqPEKVSdI82UHkgtAJ9Tv_k0d971rghY95mgnm0a7yv3OTVn6IyPCLf1Lx1vhWrtZJmmTHHSQ2s4StBMwxdAUo";
+                            "youtube_id" = "";
+                        }
+                    );
+                    "building_class" = A;
+                    "building_parking_ratio" = "3.7";
+                    "clear_height" = "";
+                    cover =             {
+                        approved = 1;
+                        category = exterior;
+                        id = "";
+                        "is_video" = "";
+                        "master_key" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgMDNhN8IDA;
+                        target = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                        title = "";
+                        "uploaded_by" = ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM;
+                        url = "https://lh6.ggpht.com/uNVrjOr009Kh_IGerd1iy-HmM_5kFHZwWbpJXSyFKHpwZh7N9oJ0Qgme2YfjTqRQq_o4v8JxCL38EmJREVeiyaRygwhPkW4";
+                        "youtube_id" = "";
+                    };
+                    id = "";
+                    leed = "";
+                    "lot_size" = "";
+                    "lot_size_units" = "";
+                    manager = ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAg4SNCgw;
+                    market = ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww;
+                    "master_key" = "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMDJ-5sJDA";
+                    "notification_email" = "";
+                    "number_of_spaces" = "";
+                    "operating_expenses" = "10.0";
+                    "parking_rate" = "";
+                    "property_owner" = "";
+                    reserved = "";
+                    size = 74787;
+                    "size_units" = SF;
+                    sprinkler = "";
+                    submarket = Northwest;
+                    title = "Domain 5";
+                    type = Office;
+                    "year_built" = 2015;
+                };
+                description = "\U2022 Domain 5 located at 2901 Esperanza Crossing \U2022 74,787 RSF \U2022 3 floors \U2022 Under construction; available \U2022 August 2015 \U2022 Rate $28.00 NNN \U2022 Opex $10.00 \U2022 Parking Ratio 3.7:1000 \U2022 Additional unmetered street parking is available within The Domain.";
+                divisible = 1;
+                "expiration_date" = "";
+                "floor_number" = 1;
+                "is_promoted" = 0;
+                "lease_term" = "";
+                "office_finish_percentage" = "";
+                rate = "26.0";
+                "rate_frequency" = Yearly;
+                "rate_units" = "";
+                "space_available" = 24929;
+                "space_available_units" = SF;
+                "space_type" = lease;
+                status = Public;
+                ti = "";
+                "unit_number" = 1;
+            };
+            "number_of_attachments" = "";
+            "office_finish_percentage" = "";
+            permissions =     (
+                Read,
+                ChangePermissions,
+                Write,
+                Delete
+            );
+            portfolio = ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw;
+            rate = "26.0";
+            "rate_frequency" = Yearly;
+            "rate_units" = "";
+            "search_rate" = "26.0";
+            "space_available" = 24929;
+            "space_available_units" = SF;
+            "space_id" = 5769079931535360;
+            "space_type" = lease;
+            status = Public;
+            ti = "";
+            title = "Domain 5, Suite 1";
+            "unit_number" = 1;
+        }
+    
+## Spaces within a Portfolio [/portfolios/{id}/spaces/{key}]    
+### Deleting a space from a portfolio [DELETE]
+
+Note:
+
+* To remove a space from a portfolio you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/id/spaces/key
+
++ Response 200 (application/json)
+
+        {
+            "message": ""
+        }
+        
+##  History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history={building|lease_term|description|title|expiration_date|rate_units|floor_number|availability_date|rate|space_available_units|office_finish_percentage|ti|space_available|space_type|unit_number}]    
+### Changes can be made to a portfolio space allowing collaboration, to get the history of the changes use this request [GET]
+
+Note:
+
+* To view the history of a portfolio space, will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+
++ Parameters
+
+
+    
+    + building (string)
+    + lease_term (string)
+    + description (string)
+    + title (string)
+    + expiration_date (string)
+    + rate_units (string)
+    + floor_number (string)
+    + availability_date (string)
+    + rate (string)
+    + space_available_units (string)
+    + office_finish_percentage (string)
+    + ti (string)
+    + space_available (string)
+    + space_type (string)
+    + unit_number (string)
+
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}?history=space_available
+
++ Response 200 (application/json)
+
+        {
+            "building": null,
+            "lease_term": [],
+            "description": [],
+            "title": [],
+            "expiration_date": [],
+            "rate_units": [],
+            "floor_number": [],
+            "availability_date": [],
+            "rate": [],
+            "space_available_units": [],
+            "office_finish_percentage": [],
+            "ti": [],
+            "space_available": [
+                {
+                    "edited_at": "2014-10-14T15:45:26.547080+00:00",
+                    "editor": "",
+                    "value": "1500"
+                },
+                {
+                    "edited_at": "2014-10-14T16:06:24.111670+00:00",
+                    "editor": "John Doe",
+                    "value": "1600"
+                }
+            ],
+            "space_type": [],
+            "unit_number": []
         }
