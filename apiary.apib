@@ -605,138 +605,6 @@ All query parameters are mandatory. If any of them is missing, it returns error 
           "number_found": 1175
         }
         
-## Group Users
-
-The **User API** is used for logging into a preexisting “manually registered” RealMassive user. Logging in allows you to obtaining access to a users contact information, surveys, and organizations.
-
-Note: Creation of a RealMassive user is in development and will be documented upon completion.
-
-## User Attributes
-# Read only
-* **edited_at**
-* **created_at**
-* **first_name**
-* **last_name**
-* **preferences**
-* **login_count**
-* **is_premium**
-* **last_login**
-* **key**
-* **permissions**
-* **auth_providers**
-* **id**
-* **organizations**
-* **available_positions**
-
-# Editable
-* **email**
-* **secondary_email**
-* **photo**
-* **title**
-* **company**
-* **phone**
-
-## User Authentication [/auth]
-### Logging into a preexisting, manually registered user [POST]
-
-Required Headers:
-
-* **Content-Type:** application/x-www-form-urlencoded
-
-Required Body:
-
-* **Body:** email=johndoe@realmassive.com&password=123
-
-Note:
-
-* Make sure the body is url encoded
-* Content-Length may be required, if so, use the length of "Body"
-
-+ Request
-
-        https://www.realmassive.com/auth
-        
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-
-    + Body
-
-            email=johndoe@realmassive.com&password=123
-
-+ Response 200 (application/json)
-
-        {
-            "login_success" = 1,
-            "redirect_to" = "/",
-        }
-        
-## Fetch Current User [/api/v1/users/current]
-### Accessing user information [GET]
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/users/current
-
-+ Response 200 (application/json)
-
-        {
-        "edited_at": "2014-10-07T21:26:23.997860+00:00",
-        "created_at": "2014-10-06T18:55:14.239740+00:00",
-        "first_name": "John",
-        "last_name": "Doe",
-        "preferences": "",
-        "title": "Developer",
-        "secondary_email": "",
-        "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
-        "company": "RealMassive",
-        "login_count": "",
-        "email": "johndoe@realmassive.com",
-        "is_premium": false,
-        "phone": "5128675309",
-        "last_login": "",
-        "key": "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnop",
-        "permissions": [
-            "Write",
-            "Read",
-            "Delete"
-        ],
-        "auth_providers": [
-            "email"
-        ],
-        "id": "1234567890987654",
-        "organizations": [
-            "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvwxyx1"
-        ],
-        "available_positions": []
-        }
-        
-        
-## Group Version
-
-The **Version** call is used to determine which verison of the RealMassive webapp and API are serving.
-
-## Version Attributes
-# Read only
-* **last_commit_time**
-* **commit_hash**
-* **version_string**
-
-## Version [/version]
-### Accessing version information [GET]
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/version
-
-+ Response 200 (application/json)
-
-        {
-            "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
-            "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
-            "version_str": "4.1-43-g16c4e17"
-        }
-
 
 # Group Portfolios
 
@@ -1526,4 +1394,135 @@ Note:
 + Response 200 (application/json)
 
            
+## Group Users
+
+The **User API** is used for logging into a preexisting “manually registered” RealMassive user. Logging in allows you to obtaining access to a users contact information, surveys, and organizations.
+
+Note: Creation of a RealMassive user is in development and will be documented upon completion.
+
+## User Attributes
+# Read only
+* **edited_at**
+* **created_at**
+* **first_name**
+* **last_name**
+* **preferences**
+* **login_count**
+* **is_premium**
+* **last_login**
+* **key**
+* **permissions**
+* **auth_providers**
+* **id**
+* **organizations**
+* **available_positions**
+
+# Editable
+* **email**
+* **secondary_email**
+* **photo**
+* **title**
+* **company**
+* **phone**
+
+## User Authentication [/auth]
+### Logging into a preexisting, manually registered user [POST]
+
+Required Headers:
+
+* **Content-Type:** application/x-www-form-urlencoded
+
+Required Body:
+
+* **Body:** email=johndoe@realmassive.com&password=123
+
+Note:
+
+* Make sure the body is url encoded
+* Content-Length may be required, if so, use the length of "Body"
+
++ Request
+
+        https://www.realmassive.com/auth
+        
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            email=johndoe@realmassive.com&password=123
+
++ Response 200 (application/json)
+
+        {
+            "login_success" = 1,
+            "redirect_to" = "/",
+        }
+        
+## Fetch Current User [/api/v1/users/current]
+### Accessing user information [GET]
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/users/current
+
++ Response 200 (application/json)
+
+        {
+        "edited_at": "2014-10-07T21:26:23.997860+00:00",
+        "created_at": "2014-10-06T18:55:14.239740+00:00",
+        "first_name": "John",
+        "last_name": "Doe",
+        "preferences": "",
+        "title": "Developer",
+        "secondary_email": "",
+        "photo": "https://s3.amazonaws.com/ksr/assets/000/493/960/3713cce70e04338e0ced4f4f7d46e73d_large.jpg?1365139395",
+        "company": "RealMassive",
+        "login_count": "",
+        "email": "johndoe@realmassive.com",
+        "is_premium": false,
+        "phone": "5128675309",
+        "last_login": "",
+        "key": "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnop",
+        "permissions": [
+            "Write",
+            "Read",
+            "Delete"
+        ],
+        "auth_providers": [
+            "email"
+        ],
+        "id": "1234567890987654",
+        "organizations": [
+            "abcdefghijklmnopqrstuvwxyx1234567890abcdefghijklmnopqrstuvwxyx1"
+        ],
+        "available_positions": []
+        }
+        
+        
+## Group Version
+
+The **Version** call is used to determine which verison of the RealMassive webapp and API are serving.
+
+## Version Attributes
+# Read only
+* **last_commit_time**
+* **commit_hash**
+* **version_string**
+
+## Version [/version]
+### Accessing version information [GET]
+
++ Request (application/json)
+
+        https://www.realmassive.com/api/v1/version
+
++ Response 200 (application/json)
+
+        {
+            "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
+            "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
+            "version_str": "4.1-43-g16c4e17"
+        }
 
