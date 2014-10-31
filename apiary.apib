@@ -6,11 +6,11 @@ The RealMassive API is the first API for mining real-time commercial real estate
 developers **reading** from our cloud-based databases. Full
 functionality is being quickly developed.
 
-During this _beta period_, you can fetch **Buildings** and, fetch
+During this _beta period_, you can fetch **Buildings**, and fetch
 and search for **Spaces**.
 
 # Introduction
-One communicates with the RealMassive Search API via the HTTP protocol. The HTTP verb GET is all used in search requests.
+One communicates with the RealMassive API via the HTTP protocol. The HTTP verb GET is all used in search requests.
 We use simple authorization and OAuth for API call authorization. HTTPS should be used to communicate with the server. 
 
 The root endpoint for the realmassive API is, https://www.realmassive.com/api/v1.
@@ -22,7 +22,6 @@ Several specific HTTP request headers are used as described in the following tab
 |---|---|---|---|
 | Accept  | Comma-delimited list of media types or media type patterns.  | Indicates to the server what media type(s) this client is prepared to accept.  | Recommended, on requests that will produce a response message body.  |
 | Authorization | "Basic " plus username and password (per RFC 2617).  | Identifies the authorized user making this request.  | Yes, on all requests not using OAuth.  |
-
 
 ## Standard HTTP Status Codes
 API calls will return standard HTTP response codes as described in the following table, under the conditions listed in the description.
