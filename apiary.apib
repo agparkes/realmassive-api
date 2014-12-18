@@ -2,48 +2,23 @@ FORMAT: 1A
 HOST: https://www.realmassive.com
 
 # RealMassive API — The first API for real-time commercial real estate information
- 
-**The root endpoint for the realmassive API is https://www.realmassive.com/api/v1.**
 
-One communicates with the RealMassive API via the HTTP protocol. The HTTP verb GET is all used in search requests.
-We use simple authorization and OAuth for API call authorization. HTTPS should be used to communicate with the server. 
+The RealMassive API is a RESTful API that communicates overs the HTTP protocol. Here's what you need to know to get started quickly:
+  * **https://www.realmassive.com/api/v1** is the root endpoint.
+  * You need an API token to make API calls. Apply for one in our [Developer's Area]().
+  * Use simple authorization (email/password) and/or your API token for API call authorization.
+  * Consider using something like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client-packa/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) to easily test the live server
+  
+## Quickstart
+| API Call | Meaning |
+| -------- | ------- |
+| GET /api/v1/spaces/*:id* | Get space identified by uinque ID, *:id* |
+| GET /api/v1/buildings/*:id*| Get building identified by uinque ID, *:id* |
+| GET /api/v1/markets| Get a list of all markets |
+| GET /api/v1/markets/geo?latitude=30&longitude=-97 | Find markets near (30,-97) (central Texas) |
+| GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX| Find all spaces in Austin, TX |
 
-## Request Headers
-Several specific HTTP request headers are used as described in the following table:
-
-| Header  | Supported Values  | Description | Required? | 
-|---|---|---|---|
-| Accept  | Comma-delimited list of media types or media type patterns.  | Indicates to the server what media type(s) this client is prepared to accept.  | Recommended, on requests that will produce a response message body.  |
-| Authorization | "Basic " plus username and password (per RFC 2617).  | Identifies the authorized user making this request.  | Yes, on all requests not using OAuth.  |
-
-## Standard HTTP Status Codes
-API calls will return standard HTTP response codes as described in the following table, under the conditions listed in the description.
-
-| HTTP Status | Description |
-|---|---|
-| 200 OK | The request was successfully completed. |
-| 400 Bad Request | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). |
-| 401 Unauthorized | The authentication credentials included with this request are missing or invalid. |
-| 403 Forbidden | The server recognized your credentials, but you do not possess authorization to perform this request. |
-| 404 Not Found | The request specified a URI of a resource that does not exist.|
-| 405 Method Not Allowed | The HTTP verb specified in the request (DELETE, GET, HEAD, POST, PUT) is not supported for this request URI. |
-| 406 Not Acceptable | The resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header of the request.
-| 500 Internal Server Error | The server encountered an unexpected condition which prevented it from fulfilling the request. |
-| 501 Not Implemented | The server does not (currently) support the functionality required to fulfill the request. |
-| 503 Service Unavailable | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.|
-
-## Error Response Message Bodies
-### Introduction
-Successful requests will generally return an HTTP status code of 200 (OK), 201 (Created), or 204 (No Content), to indicate that 
-the requested action has been successfully performed. In addition, they might include a response message body (with an appropriate media type)
-containing a representation of the requested information. However, it is possible for a number of things to go wrong. The various underlying
-causes are described (as discussed in the previous section) by various HTTP status codes in the range 400-499 (for client side errors)
-or 500-599 (for server side problems). The description of each request type should list the possible status codes returned by that request type.
-If a response is returned with an error status code (400-499 or 500-599), the server should also return a response message body containing
-a messages data model, containing zero or more message data models, describing what went wrong. The text values of such messages might be used,
-for example, to communicate with a human user of the client side application.
-
-## Resources
+### Resources
 A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns,
 nouns that hopefully that make sense to the API consumer. Services—special resources that perform actions on other resources— are exposed as verbs.
 Services attached to resources operate specifically on that resource. All resources are returned in JSON, unless other formats are specifically
@@ -52,7 +27,7 @@ the specific Market identified by its market-id value.
 
 All requests must be properly URL encoded, including parameters and values.
 
-### URI Space
+#### URI Space
 The following resources are exposed and accessible via resource URIs.
 
 | Resource | URI | Notes |
@@ -1642,4 +1617,55 @@ The **Version** call is used to determine which verison of the RealMassive webap
             "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
             "version_str": "4.1-43-g16c4e17"
         }
+
+
+## Group HTTP Transport Details
+### Request Headers
+Several specific HTTP request headers are used as described in the following table:
+
+| Header  | Supported Values  | Description | Required? | 
+|---|---|---|---|
+| Accept  | Comma-delimited list of media types or media type patterns.  | Indicates to the server what media type(s) this client is prepared to accept.  | Recommended, on requests that will produce a response message body.  |
+| Authorization | "Basic " plus username and password (per RFC 2617).  | Identifies the authorized user making this request.  | Yes, on all requests not using OAuth.  |
+
+### Response Headers
+API calls are rate limited. Read the response headers to determine how many calls you have left for a given time period
+
+| Response Header | Meaning |
+| --------------- | ------- |
+| cache-control | We cache agressively for best performance |
+| content-encoding | We gzip most responses for reduced payload size |
+| content-type | The format of the data we're returning, usually, "application/json" |
+| status | See the [Standard HTTP Status Codes](/status_codes) |
+| x-ratelimit-limit | You starting rate limit for this time period|
+| x-ratelimit-remaining | How many API calls left you have this rate period. |
+
+
+### Standard HTTP Status Codes [/status_codes]
+API calls will return standard HTTP response codes as described in the following table, under the conditions listed in the description.
+
+| HTTP Status | Description |
+|---|---|
+| 200 OK | The request was successfully completed. |
+| 400 Bad Request | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). |
+| 401 Unauthorized | The authentication credentials included with this request are missing or invalid. |
+| 403 Forbidden | The server recognized your credentials, but you do not possess authorization to perform this request. |
+| 404 Not Found | The request specified a URI of a resource that does not exist.|
+| 405 Method Not Allowed | The HTTP verb specified in the request (DELETE, GET, HEAD, POST, PUT) is not supported for this request URI. |
+| 406 Not Acceptable | The resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header of the request.
+| 500 Internal Server Error | The server encountered an unexpected condition which prevented it from fulfilling the request. |
+| 501 Not Implemented | The server does not (currently) support the functionality required to fulfill the request. |
+| 503 Service Unavailable | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.|
+
+### Error Response Message Bodies
+#### Introduction
+Successful requests will generally return an HTTP status code of 200 (OK), 201 (Created), or 204 (No Content), to indicate that 
+the requested action has been successfully performed. In addition, they might include a response message body (with an appropriate media type)
+containing a representation of the requested information. However, it is possible for a number of things to go wrong. The various underlying
+causes are described (as discussed in the previous section) by various HTTP status codes in the range 400-499 (for client side errors)
+or 500-599 (for server side problems). The description of each request type should list the possible status codes returned by that request type.
+If a response is returned with an error status code (400-499 or 500-599), the server should also return a response message body containing
+a messages data model, containing zero or more message data models, describing what went wrong. The text values of such messages might be used,
+for example, to communicate with a human user of the client side application.
+
 
