@@ -78,103 +78,248 @@ fields may be added.
  * **type** - lease, sublease, for sale
  * **year_built**
 
-## Building Collection [/api/v1/buildings]
-Use this to retrieve a list of all the buildings.
-### List all Buildings [GET]
-Gets a list of all buildings.
+## Building Collection [/api/v1/buildings?{limit}]
+Use this to retrieve a list of all buildings in the RealMassive Database. 
+### Notes
+  * This query is not optimized for speed, it is optimized for sifting through the entire Building Collection. For speedy searches use Building Search.
+  * Results are batched (default batch size is 70).
+  * Rerun the query with the cursor provided in the results to receive the next batch.
+  * You may adjust your limit size on the query by passing the optional limit paramter.
 
+### List all Buildings [GET]
 
 + Response 200 (application/json)
 
         {
-          "cursor": "E-ABAIICK2oSc35yZWFsbWFzc2l2ZS1wcm9kchULEghCdWlsZGluZxiAgICA1aSBCAwU",
+          "cursor": "False:CqAECpQCCvcBgPcO6T1K_7X81YyBjZqek5KejIyWiZrSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXb2KlpOblpGYoJ6ez8fLzJ6d0pzOx8nSy8bKztKdysbO0sucx8vGysrMx83Jnv8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrmujKy8urXOnqiHlJ6oypG4try-mLKshpbKmLW7vv8Ac3-el7WFmZG1k6aoh4ump7GFnqelk7OnvYadza2Gua6MrLy6tc6eqIeUnqjKkbi2vL6YsqyGlsqYtbu-_wD__hADIQTdBJAdPBsZUABaCwnesRGuij-imhABEg1Eb2N1bWVudEluZGV4GqoBKEFORCAoSVMgImN1c3RvbWVyX25hbWUiICJhcHBlbmdpbmUiKSAoSVMgImdyb3VwX25hbWUiICJzfnJlYWxtYXNzaXZlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgIkJ1aWxkaW5nX2FhMDg0M2FiLWMxODYtNDk1MS1iNTkxLTRjODQ5NTUzODI2YSIpIChUUlVFKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KMAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJAkE5KEgsQgKKFBRoJCgdlc2NvcmVyDA",
           "results": [
             {
-              "edited_at": "2014-04-24T18:41:01.592520+00:00",
-              "ac": true,
+              "edited_at": "2014-12-18T17:35:52.068600+00:00",
+              "ac": "",
+              "reserved": "",
+              "attachments": [],
+              "lot_size_units": "",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDE1rmFCgw",
+              "clear_height": "",
+              "size_units": "SF",
+              "submarket": "",
+              "notification_email": "",
+              "id": "5708540228403200",
+              "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgIDQ2YrWCAw",
+              "size": "506",
+              "sprinkler": "",
+              "title": "11650 Iberia Pl.",
+              "building_class": "",
+              "created_by": {
+                "first_name": "RealMassive",
+                "last_name": "San Diego",
+                "title": "",
+                "photo": "/static/img/default_profile.jpg",
+                "company": "RealMassive",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                "is_premium": false,
+                "id": ""
+              },
+              "property_owner": "",
+              "leed": "",
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMTwhtUJDA"
+              ],
+              "type": "Office",
+              "operating_expenses": "0.0",
+              "parking_rate": "",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSx_JEKDA",
+              "address": {
+                "city": "San Diego",
+                "state": "CA",
+                "street": "11650 Iberia Place",
+                "geo": {
+                  "latitude": "33.0159612",
+                  "longitude": "-117.0774562"
+                },
+                "zipcode": "92128"
+              },
+              "location_url": "/us/ca/san-diego/11650-iberia-pl/5708540228403200",
+              "promoted_spaces": "",
+              "year_built": "",
+              "created_at": "2014-12-17T04:26:38.691162+00:00",
+              "cover": null,
+              "lot_size": "",
+              "building_parking_ratio": ""
+            },
+            {
+              "edited_at": "2014-12-18T17:24:18.948340+00:00",
+              "ac": "",
               "reserved": "",
               "attachments": [
                 {
-                  "category": "",
-                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+                  "category": "exterior",
+                  "gs_path": "/gs/realmassive-production-images/us-ca-san-diego-old-town-professional-building-6248629144649728-1418790866.jpe",
+                  "raw_url": "https://storage.googleapis.com/realmassive-production-images/us-ca-san-diego-old-town-professional-building-6248629144649728-1418790866.jpe",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSF44wLDA",
                   "title": "",
-                  "url": "https://lh6.ggpht.com/3y57n6kjqaQhYrNtKFDVIdM5GyQjegP6OiG5HEzYaB3KQjjgKp53xiqxa5Qeb8Vt2q_MNBraf2KC_aTV8u3n55qIjnu_OZU",
-                  "uploaded_by": "",
-                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC17OwIDA",
-                  "id": "",
+                  "url": "https://lh6.ggpht.com/V9MfJPirI_TJI9VaLnM4Av9g2gnM9FjtWCe52XeTnTXScMLMaUnqxOJR8GOIg5CQ-fqmsPupGRDZduid89yY3ZOzhdw_pmM",
+                  "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgITplucKDA",
+                  "preview_info": null,
                   "youtube_id": "",
-                  "is_video": "",
-                  "approved": true
-                },
-                {
-                  "category": "",
-                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
-                  "title": "",
-                  "url": "https://lh6.ggpht.com/IjV4MDP4pkRovlv2aD5KkBhgIS4ta31RUdENeaOfzffSaQwS0i2RIbLGKL-8CGGovbrU9uAHUraMhOhrXOTGoN05WYhiOQ",
-                  "uploaded_by": "",
-                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVpIEKDA",
                   "id": "",
-                  "youtube_id": "",
                   "is_video": "",
                   "approved": true
                 }
               ],
               "lot_size_units": "",
-              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAl_iSCgw",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDE1rmFCgw",
               "clear_height": "",
               "size_units": "SF",
-              "submarket": "North",
+              "submarket": "",
               "notification_email": "",
-              "id": "4509257441476608",
-              "size": "26313",
+              "id": "6248629144649728",
+              "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgIDQ2YrWCAw",
+              "size": "2277",
               "sprinkler": "",
-              "title": "Bratton Square",
-              "building_class": "",
-              "created_by": null,
+              "title": "Old Town Professional Building",
+              "building_class": "A",
+              "created_by": {
+                "first_name": "RealMassive",
+                "last_name": "San Diego",
+                "title": "",
+                "photo": "/static/img/default_profile.jpg",
+                "company": "RealMassive",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                "is_premium": false,
+                "id": ""
+              },
               "property_owner": "",
               "leed": "",
               "space_keys": [
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDV2fAKDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVzrELDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC1ut0JDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC18JULDA"
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMThjNcKDA",
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMSx25ULDA"
               ],
-              "type": "Retail",
-              "operating_expenses": "",
+              "type": "Office",
+              "operating_expenses": "0.0",
               "parking_rate": "",
-              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSF44wLDA",
               "address": {
-                "city": "Austin",
-                "state": "TX",
-                "street": "14735 Bratton Lane",
+                "city": "San Diego",
+                "state": "CA",
+                "street": "2356 Moore Street",
                 "geo": {
-                  "latitude": "30.4464221",
-                  "longitude": "-97.6857698"
+                  "latitude": "32.749156",
+                  "longitude": "-117.194165"
                 },
-                "zipcode": "78728"
+                "zipcode": "92110"
               },
+              "location_url": "/us/ca/san-diego/old-town-professional-building/6248629144649728",
               "promoted_spaces": "",
               "year_built": "",
-              "created_at": "2014-04-10T16:44:21.244880+00:00",
+              "created_at": "2014-12-17T04:28:44.789921+00:00",
               "cover": {
-                "category": "",
-                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDVpIEIDA",
+                "category": "exterior",
+                "gs_path": "/gs/realmassive-production-images/us-ca-san-diego-old-town-professional-building-6248629144649728-1418790866.jpe",
+                "raw_url": "https://storage.googleapis.com/realmassive-production-images/us-ca-san-diego-old-town-professional-building-6248629144649728-1418790866.jpe",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSF44wLDA",
                 "title": "",
-                "url": "https://lh6.ggpht.com/3y57n6kjqaQhYrNtKFDVIdM5GyQjegP6OiG5HEzYaB3KQjjgKp53xiqxa5Qeb8Vt2q_MNBraf2KC_aTV8u3n55qIjnu_OZU",
-                "uploaded_by": "",
-                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC17OwIDA",
-                "id": "",
+                "url": "https://lh6.ggpht.com/V9MfJPirI_TJI9VaLnM4Av9g2gnM9FjtWCe52XeTnTXScMLMaUnqxOJR8GOIg5CQ-fqmsPupGRDZduid89yY3ZOzhdw_pmM",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgITplucKDA",
+                "preview_info": null,
                 "youtube_id": "",
+                "id": "",
                 "is_video": "",
                 "approved": true
               },
               "lot_size": "",
               "building_parking_ratio": ""
             },
-            # ... and more results here ...
-          ]
-        }        
-
+            {
+              "edited_at": "2014-12-18T17:21:38.539680+00:00",
+              "ac": "",
+              "reserved": "",
+              "attachments": [
+                {
+                  "category": "exterior",
+                  "gs_path": "/gs/realmassive-production-images/us-ca-san-diego-8925-carroll-way-5172494218559488-1418923223.png",
+                  "raw_url": "https://storage.googleapis.com/realmassive-production-images/us-ca-san-diego-8925-carroll-way-5172494218559488-1418923223.png",
+                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSyi5gJDA",
+                  "title": "",
+                  "url": "https://lh4.ggpht.com/XwZOFvnhybwZgXKErrJJBpWzI-G_jVrw25J09KoK6oNtn0C7WU1T2blGtXQVrLCtmp-vk59q49jII3cfebkUDjCvRzDndL8",
+                  "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgKSY6c4JDA",
+                  "preview_info": null,
+                  "youtube_id": "",
+                  "id": "",
+                  "is_video": "",
+                  "approved": true
+                }
+              ],
+              "lot_size_units": "",
+              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDE1rmFCgw",
+              "clear_height": "",
+              "size_units": "SF",
+              "submarket": "",
+              "notification_email": "",
+              "id": "5172494218559488",
+              "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgIDQ2YrWCAw",
+              "size": "21500",
+              "sprinkler": "",
+              "title": "8925 Carroll Way",
+              "building_class": "",
+              "created_by": {
+                "first_name": "RealMassive",
+                "last_name": "San Diego",
+                "title": "",
+                "photo": "/static/img/default_profile.jpg",
+                "company": "RealMassive",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                "is_premium": false,
+                "id": ""
+              },
+              "property_owner": "",
+              "leed": "",
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMTHqZYLDA"
+              ],
+              "type": "Office",
+              "operating_expenses": "0.0",
+              "parking_rate": "",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSyi5gJDA",
+              "address": {
+                "city": "San Diego",
+                "state": "CA",
+                "street": "8925 Carroll Road",
+                "geo": {
+                  "latitude": "32.8820686",
+                  "longitude": "-117.1562406"
+                },
+                "zipcode": "92126"
+              },
+              "location_url": "/us/ca/san-diego/8925-carroll-way/5172494218559488",
+              "promoted_spaces": "",
+              "year_built": "",
+              "created_at": "2014-12-17T04:28:58.359914+00:00",
+              "cover": {
+                "category": "exterior",
+                "gs_path": "/gs/realmassive-production-images/us-ca-san-diego-8925-carroll-way-5172494218559488-1418923223.png",
+                "raw_url": "https://storage.googleapis.com/realmassive-production-images/us-ca-san-diego-8925-carroll-way-5172494218559488-1418923223.png",
+                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSyi5gJDA",
+                "title": "",
+                "url": "https://lh4.ggpht.com/XwZOFvnhybwZgXKErrJJBpWzI-G_jVrw25J09KoK6oNtn0C7WU1T2blGtXQVrLCtmp-vk59q49jII3cfebkUDjCvRzDndL8",
+                "uploaded_by": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgKSY6c4JDA",
+                "preview_info": null,
+                "youtube_id": "",
+                "id": "",
+                "is_video": "",
+                "approved": true
+              },
+              "lot_size": "",
+              "building_parking_ratio": ""
+            }
+          ],
+          "number_found": 10100
+        }
+        
 ## Building Search [/api/v1/buildings?address=true&{street,city,state,zipcode,limit}]
 ### Search for a Building [GET]
 All query parameters are mandatory. If any of them is missing, it returns error code 400 with message "Wrong address parameters."
