@@ -78,11 +78,11 @@ fields may be added.
  * **type** - lease, sublease, for sale
  * **year_built**
  
-## Building [/api/v1/buildings/{?id}]
+## Fetch a Building by id [/api/v1/buildings/{?id}]
 
-### Fetch a building by id [GET]
+### Example: Fetch a building by its ID [GET]
 
-Use this to retrieve a building by its id.
+Use this to retrieve a building by its unique id.
 
 + Parameters
     + id (required, integer) ... the unique ID for this building
@@ -403,7 +403,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
           "number_found": 10100
         }
 
-## Building Search [/api/v1/buildings/search{?address.address,address.city,address.full_state,address.geo,address.geo.latitude,address.geo.longitude,address.state,address.street,address.zipcode,building_class,building_parking_ratio,cover.raw_url,created_at,created_by.master_key,created_by.is_premium,created_by.last_name,created_by.first_name,key,location_url,lot_size,manager.admins.created_at,manager.admins.edited_at,manager.admins.first_name,manager.admins.is_premium,manager.admins.last_name,manager.admins.photo,manager.key,manager.members.created_at,manager.members.edited_at,manager.members.first_name,manager.members.is_premium,manager.members.last_name,manager.members.photo,manager.name,manager.owner.created_at,manager.owner.edited_at,manager.owner.first_name,manager.owner.is_premium,manager.owner.last_name,manager.owner.photo,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
+## Building Search [/api/v1/buildings/search{?address%2Eaddress,address%2Ecity,address%2Efull_state,address%2Egeo,address%2Egeo%2Elatitude,address%2Egeo%2Elongitude,address%2Estate,address%2Estreet,address%2Ezipcode,building_class,building_parking_ratio,cover%2Eraw_url,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,key,location_url,lot_size,manager%2Eadmins%2Ecreated_at,manager%2Eadmins%2Eedited_at,manager%2Eadmins%2Efirst_name,manager%2Eadmins%2Eis_premium,manager%2Eadmins%2Elast_name,manager%2Eadmins%2Ephoto,manager%2Ekey,manager%2Emembers%2Ecreated_at,manager%2Emembers%2Eedited_at,manager%2Emembers%2Efirst_name,manager%2Emembers%2Eis_premium,manager%2Emembers%2Elast_name,manager%2Emembers%2Ephoto,manager%2Ename,manager%2Eowner%2Ecreated_at,manager%2Eowner%2Eedited_at,manager%2Eowner%2Efirst_name,manager%2Eowner%2Eis_premium,manager%2Eowner%2Elast_name,manager%2Eowner%2Ephoto,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Notes
 Building search is very flexible. Right now there are too many parameters for Apiary to parse. Please click
 "Switch to Console" to see them all.
@@ -411,50 +411,50 @@ Building search is very flexible. Right now there are too many parameters for Ap
 ### Search for a Building [GET]
 
 + Parameters
-    + address.address (optional, string) ... The full building address
-    + address.city (optional, string) ... The building's city
-    + address.full_state (optional, string) ...The building's state; currently only in the United States
-    + address.geo (optional, string) ... The building's geolocation
-    + address.geo.latitude (optional, string) ... The building's latitude
-    + address.geo.longitude (optional, string) ... The building's longitude
-    + address.state (optional, string) ...The building's state
-    + address.street (optional, string) ... The building's  street name
-    + address.zipcode (optional, string) ... The building's  zipcode
+    + address%2Eaddress (optional, string) ... The full building address
+    + address%2Ecity (optional, string) ... The building's city
+    + address%2Efull_state (optional, string) ...The building's state; currently only in the United States
+    + address%2Egeo (optional, string) ... The building's geolocation
+    + address%2Egeo%2Elatitude (optional, string) ... The building's latitude
+    + address%2Egeo%2Elongitude (optional, string) ... The building's longitude
+    + address%2Estate (optional, string) ...The building's state
+    + address%2Estreet (optional, string) ... The building's  street name
+    + address%2Ezipcode (optional, string) ... The building's  zipcode
     + building_class (optional, string) ... The building's class
         + Values
             + `A`
             + `B`
             + `C`
     + building_parking_ratio (optional, float) ... Minimum parking ratio in spaces per thousand SF
-    + cover.raw_url (optional, string) ... Building's cover image's URL
+    + cover%2Eraw_url (optional, string) ... Building's cover image's URL
     + created_at (optional, string) ... 
-    + created_by.master_key (optional, string) ... Building's creator's master record key
-    + created_by.is_premium (optional, string) ... Building's creator's premium status
-    + created_by.last_name (optional, string) ...  Building's creator's last name
-    + created_by.first_name (optional, string) ... Building's creator's first name
+    + created_by%2Emaster_key (optional, string) ... Building's creator's master record key
+    + created_by%2Eis_premium (optional, string) ... Building's creator's premium status
+    + created_by%2Elast_name (optional, string) ...  Building's creator's last name
+    + created_by%2Efirst_name (optional, string) ... Building's creator's first name
     + key (optional, string) ... Building's database key
     + location_url (optional, string) ... SEO-optimized URL for this building
     + lot_size (optional, string) ... 
-    + manager.admins.created_at (optional, string) ... 
-    + manager.admins.edited_at (optional, string) ... 
-    + manager.admins.first_name (optional, string) ... 
-    + manager.admins.is_premium (optional, string) ... 
-    + manager.admins.last_name (optional, string) ... 
-    + manager.admins.photo (optional, string) ... 
-    + manager.key (optional, string) ... 
-    + manager.members.created_at (optional, string) ... 
-    + manager.members.edited_at (optional, string) ... 
-    + manager.members.first_name (optional, string) ... 
-    + manager.members.is_premium (optional, string) ... 
-    + manager.members.last_name (optional, string) ... 
-    + manager.members.photo (optional, string) ... 
-    + manager.name (optional, string) ... This building's manager's name
-    + manager.owner.created_at (optional, string) ...  This building's owner's created at date
-    + manager.owner.edited_at (optional, string) ...  This building's owner's edited at date
-    + manager.owner.first_name (optional, string) ...  This building's owner's first name
-    + manager.owner.is_premium (optional, string) ...  This building's owner's premium status
-    + manager.owner.last_name (optional, string) ...  This building's owner's last name
-    + manager.owner.photo (optional, string) ... This building's owner's photo
+    + manager%2Eadmins%2Ecreated_at (optional, string) ... 
+    + manager%2Eadmins%2Eedited_at (optional, string) ... 
+    + manager%2Eadmins%2Efirst_name (optional, string) ... 
+    + manager%2Eadmins%2Eis_premium (optional, string) ... 
+    + manager%2Eadmins%2Elast_name (optional, string) ... 
+    + manager%2Eadmins%2Ephoto (optional, string) ... 
+    + manager%2Ekey (optional, string) ... 
+    + manager%2Emembers%2Ecreated_at (optional, string) ... 
+    + manager%2Emembers%2Eedited_at (optional, string) ... 
+    + manager%2Emembers%2Efirst_name (optional, string) ... 
+    + manager%2Emembers%2Eis_premium (optional, string) ... 
+    + manager%2Emembers%2Elast_name (optional, string) ... 
+    + manager%2Emembers%2Ephoto (optional, string) ... 
+    + manager%2Ename (optional, string) ... This building's manager's name
+    + manager%2Eowner%2Ecreated_at (optional, string) ...  This building's owner's created at date
+    + manager%2Eowner%2Eedited_at (optional, string) ...  This building's owner's edited at date
+    + manager%2Eowner%2Efirst_name (optional, string) ...  This building's owner's first name
+    + manager%2Eowner%2Eis_premium (optional, string) ...  This building's owner's premium status
+    + manager%2Eowner%2Elast_name (optional, string) ...  This building's owner's last name
+    + manager%2Eowner%2Ephoto (optional, string) ... This building's owner's photo
     + market (optional, string) ... The market in which this building resides
     + operating_expenses (optional, string) ... This building's operating expenses (OPEX)
     + real_score_val (optional, string) ... This building's RealScore value
