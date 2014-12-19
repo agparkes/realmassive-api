@@ -2040,6 +2040,263 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
           ],
           "number_found": 35191
         }
+        
+## Search for a space [/api/v1/spaces/search{?}]
+### Fast search for spaces
+
++ s
+    + building.ac (optional, integer) ... Whether or not the space's building is air conditioned (1=yes, 0=no)
+    + building.address.address (optional, string) ... The spaces's building's address
+    + building.address.city (optional, string) ... The spaces's building's city
+    + building.address.full_state (optional, string) ... The spaces's building's full state name
+    + building.address.geo (optional, string) ... The spaces's building's 
+    + building.address.geo.latitude (optional, string) ... The spaces's building's latitude
+    + building.address.geo.longitude (optional, string) ... The spaces's building's longitude
+    + building.address.state (optional, string) ... The spaces's building's state
+    + building.address.street (optional, string) ... The spaces's building's street name
+    + building.address.zipcode (optional, string) ... The spaces's building's zipcode
+    + building.building_class (optional, string) ... The spaces's building's class
+        + Values
+            + `A`
+            + `B`
+            + `C`
+    + building.building_parking_ratio (optional, string) ... The spaces's building's parking ratio
+    + building.clear_height (optional, string) ... The spaces's building's clear height (used for industrial buildings)
+    + building.created_at (optional, string) ... The spaces's building's creation date
+    + building.created_by.first_name (optional, string) ... The spaces's building's  owner's first name
+    + building.created_by.is_premium (optional, string) ... The spaces's building's  owner's premium status
+    + building.created_by.last_name (optional, string) ... The spaces's building's  owner's last name
+    + building.created_by.master_key (optional, string) ... The spaces's building's owner's master key
+    + building.edited_at (optional, string) ... The spaces's building's last edited time
+    + building.lot_size (optional, string) ... The spaces's building's lot size
+    + building.lot_size_units (optional, string) ... The spaces's building's lot size units
+    + building.manager.admins.created_at (optional, string) ... The spaces's building's 
+    + building.manager.admins.edited_at (optional, string) ... The spaces's building's 
+    + building.manager.admins.first_name (optional, string) ... The spaces's building's 
+    + building.manager.admins.is_premium (optional, string) ... The spaces's building's 
+    + building.manager.admins.last_name (optional, string) ... The spaces's building's 
+    + building.manager.admins.photo (optional, string) ... The spaces's building's 
+    + building.manager.key (optional, string) ... The spaces's building's manager's key
+    + building.manager.key (optional, string) ... The spaces's building's manager's key
+    + building.manager.members.created_at (optional, string) ... The spaces's building's 
+    + building.manager.members.edited_at (optional, string) ... The spaces's building's 
+    + building.manager.members.first_name (optional, string) ... The spaces's building's 
+    + building.manager.members.is_premium (optional, string) ... The spaces's building's 
+    + building.manager.members.last_name (optional, string) ... The spaces's building's 
+    + building.manager.members.photo (optional, string) ... The spaces's building's member's photo(s)
+    + building.manager.name (optional, string) ... Thes paces's building's manager's name
+    + building.manager.owner.created_at (optional, string) ... The spaces's building's 
+    + building.manager.owner.edited_at (optional, string) ... The spaces's building's 
+    + building.manager.owner.first_name (optional, string) ... The spaces's building's owner's first name
+    + building.manager.owner.is_premium (optional, string) ... The spaces's building's 
+    + building.manager.owner.last_name (optional, string) ... The spaces's building's owner's last name
+    + building.manager.owner.photo (optional, string) ... The spaces's building's owner's photo
+    + building.market (optional, string) ... The spaces's building's market
+    + building.master_key (optional, string) ... The spaces's building's 
+    + building.operating_expenses (optional, string) ... The spaces's building's operational expenses (OPEX)
+    + building.parking_rate (optional, float) ... The spaces's building's parking rate per thousand SF
+    + building.property_owner (optional, string) ... The spaces's building's 
+    + building.size (optional, float) ... The spaces's building's size in 'size units'
+    + building.size_units (optional, string) ... The spaces's building's abbreviation for size units, currently 'SF'
+    + building.sprinkler (optional, boolean) ... Whether or not this space's building has sprinklers (0=no, 1=yes)
+    + building.submarket (optional, string) ... The spaces's building's submarket
+    + building.title (optional, string) ... The spaces's building's title
+    + building.type (optional, string) ... The spaces's building's type
+        + Values
+            + `Retail`
+            + `Industrial`
+            + `Office`
+            + `Flex Space`
+            + `Medical Office`
+    + building.year_built (optional, string) ... The spaces's building's year that contstruction completed
+    + contacts.created_at (optional, string) ... The space's contact's created date
+    + contacts.edited_at (optional, string) ... The space's contact's last edited date
+    + contacts.first_name (optional, string) ... The space's contact's fist name
+    + contacts.is_premium (optional, boolean) ... The space's contact's premium status
+    + contacts.last_name (optional, string) ... The space's contact's last name
+    + contacts.photo (optional, string) ... The space's contact's photo
+    + cover.url (optional, string) ... The space's cover media URL
+    + created_at (optional, string) ... The space's created date
+    + created_by.first_name (optional, string) ... The space's creator's first naem
+    + created_by.is_premium (optional, string) ... The space's creator's premium status
+    + created_by.last_name (optional, string) ... The space's creator's last name
+    + created_by.master_key (optional, string) ... The space's creator's master key
+    + description (optional, string) ... The space's description
+    + divisible (optional, boolean) ... Whether or not this space is divisible (0=no, 1=yes)
+    + expiration_date (optional, string) ... This sublease's expiration date; not valid for 'lease' and 'sale' properties
+    + floor_number (optional, number) ... This space's building's floor number
+    + is_promoted (optional, boolean) ... Whether or not this space is promoted
+    + key (optional, string) ... The space's unique key
+    + lease_term (optional, string) ... The space's lease term
+    + location_url (optional, string) ... The space's SEO optimized URL
+    + marketed_cost (optional, string) ... The space's marketed cost
+    + num_parking_spaces (optional, string) ... The space's number of allotted parking spaces
+    + number_of_attachments (optional, string) ... The number of attachments this space has
+    + rate (optional, string) ... The space's marketed rate
+    + reserved (optional, string) ... Whether or not this space has reserved parking
+    + search_rate (optional, string) ... The space's annualized search rate (see notes)
+    + space_available (optional, string) ... The size of the marketed space
+    + space_available_units (optional, string) ... The size units the marketed space displays
+    + space_id (optional, string) ... The space's unique id
+    + space_type (optional, string) ... The space's type, one of the following
+        + Values
+            + `lease`
+            + `sublease`
+            + `sale` (coming soon)
+            + `licensed` (coming soon)
+            + `executive suites` (coming soon)
+    + status (optional, string) ... The space's status
+        + Values
+            + `public`
+            + `archive`
+    + ti (optional, string) ... The space's tenant improvement costs (TI)
+    + title (optional, string) ... The space's title
+    + total_cost (optional, string) ... The space's total cost
+    + unit_number (optional, string) ... The space's unit number
+
++ Request (application/jason)
+
+        https://www.realmassive.com/api/v1/spaces/search?building.address.city=Houston&space_available=[25000:]&limit=2
+
++ Response 200 (application/json)
+
+        {
+          "cursor": "False:CpYFCpECCvQB_7_SDSXAAAAA9w7q-nL_6ebUjIGNmp6Tkp6MjJaJmtKPjZCb_wB0baCgmYuMoKD_AF2ej4-akZiWkZr_AHN0bZaRm5qH_wBdrI-enJqgmZrOx5rKxp3Sm8bIm9LLz56e0sbHy53Sm5nOzZvGzczIzcjP_wBzdG2bkJyglpv_AF2el7WFmZG1k6aoh4ump7GFnqelk7OnvYadza2GupiMrL2psYimqLGTuLa8vpixvMiHxpS2u77_AHN_npe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrqYjKy9qbGIpqixk7i2vL6YsbzIh8aUtru-_wD__hACIQTdBJAdPBsZUABaCwmYi0dscSnFERABEg1Eb2N1bWVudEluZGV4GqMCKEFORCAoSVMgImN1c3RvbWVyX25hbWUiICJhcHBlbmdpbmUiKSAoSVMgImdyb3VwX25hbWUiICJzfnJlYWxtYXNzaXZlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgIlNwYWNlX2ZlMThlNTliLWQ5N2QtNDBhYS05ODRiLWRmMTJkOTIzNzI3MCIpIChBTkQgKFFUUCAiUHVibGljIiAicnRleHRfc3RhdHVzIikgKElTICJyYXRvbV9idWlsZGluZ19fYWRkcmVzc19fY2l0eSIgImhvdXN0b24iKSAoTEUgMjUwMDAuMDAwMDAwMDAwMDAwMCAic25icl9zcGFjZV9hdmFpbGFibGUiKSkpOhkKDChOIG9yZGVyX2lkKRABGQAAAAAAAPD_SjAIAToVc3Q6YnRpX2dlbmVyaWNfc2NvcmVyQJBOShILEICihQUaCQoHZXNjb3Jlcgw",
+          "results": [
+            {
+              "status": "Public",
+              "building": {
+                "edited_at": "2014-11-08T03:22:44.654000",
+                "year_built": 1993,
+                "title": "Stone & Webster Building",
+                "created_at": "2014-10-27T04:44:59.324000",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgLC4-YsLDA",
+                "manager": {
+                  "owner": {
+                    "edited_at": "2014-12-18T22:45:01.447000",
+                    "first_name": "RealMassive",
+                    "last_name": "Houston",
+                    "photo": "/static/img/default_profile.jpg",
+                    "created_at": "2014-10-16T14:28:52.099000",
+                    "is_premium": "0"
+                  },
+                  "name": "CBRE - Houston",
+                  "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDQ39yyCgw"
+                },
+                "address": {
+                  "city": "Houston",
+                  "zipcode": "77077",
+                  "state": "TX",
+                  "street": "1430 Enclave Parkway",
+                  "address": "1430 Enclave Parkway Houston TX 77077",
+                  "full_state": "Texas",
+                  "geo": {
+                    "latitude": 29.7558145,
+                    "longitude": -95.6198545
+                  }
+                },
+                "type": "Office",
+                "operating_expenses": 0,
+                "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQguKfCww",
+                "size": 152790
+              },
+              "title": "Stone & Webster Building",
+              "total_cost": 692354,
+              "created_at": "2014-10-27T04:45:03.476000",
+              "num_parking_spaces": 0,
+              "search_rate": 13,
+              "created_by": {
+                "is_premium": "0",
+                "first_name": "RealMassive",
+                "last_name": "Houston",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA0JnbiwoM"
+              },
+              "number_of_attachments": 2,
+              "rate": 13,
+              "space_available_units": "SF",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgLCOvY4LDA",
+              "space_available": 53258,
+              "space_type": "lease",
+              "marketed_cost": 692354,
+              "space_id": "6256121941590016",
+              "location_url": "/us/tx/houston/office-space/stone-webster-building/details/6256121941590016"
+            },
+            {
+              "status": "Public",
+              "building": {
+                "edited_at": "2014-12-09T15:32:32.810000",
+                "year_built": 1981,
+                "title": "Blankenship Distribution Center",
+                "created_at": "2014-10-27T04:52:28.246000",
+                "building_class": "A",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgLDKj6wIDA",
+                "manager": {
+                  "owner": {
+                    "edited_at": "2014-12-18T15:45:44.207000",
+                    "first_name": "Anna",
+                    "last_name": "Bethe",
+                    "photo": "https://d2ojpxxtu63wzl.cloudfront.net/static/c2fa298f2b9ca9b4eff4e7c99d4615ba_06e9106a858f503f20c2d8d9b76b8e4d1f82ff5b790eacbaa487c56624e672a9",
+                    "created_at": "2014-09-16T19:41:29.159000",
+                    "is_premium": "0"
+                  },
+                  "admins": {
+                    "edited_at": "2014-12-18T15:45:44.207000",
+                    "photo": "https://media.licdn.com/mpr/mprx/0_iaXmsDPEUTksuzZCLSI8Ju0oOlU9SnNCXssiy22krLVzdB62QO5CO6CjM6s",
+                    "first_name": "Angela",
+                    "last_name": "Franz",
+                    "is_premium": "1"
+                  },
+                  "name": "Stream Realty Partners - Houston",
+                  "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICQ5u_BCAw"
+                },
+                "size_units": "SF",
+                "submarket": "Northwest",
+                "address": {
+                  "city": "Houston",
+                  "zipcode": "77055",
+                  "state": "TX",
+                  "street": "7818 Kempwood Drive",
+                  "address": "7818 Kempwood Drive Houston TX 77055",
+                  "full_state": "Texas",
+                  "geo": {
+                    "latitude": 29.8176901,
+                    "longitude": -95.4867099
+                  }
+                },
+                "type": "Industrial",
+                "operating_expenses": 0,
+                "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQguKfCww",
+                "size": 27613
+              },
+              "space_id": "4897481313746944",
+              "title": "Blankenship Distribution Center, Suite 7812",
+              "total_cost": 198813.6,
+              "created_at": "2014-10-27T04:52:28.382000",
+              "num_parking_spaces": 0,
+              "cover": {
+                "url": "https://lh4.ggpht.com/Ttrnmy9fmjXQtA9wEW4pXueUPSH3jZIKlAkrAy1jbGZncaG0PO9fzDb9wDDJ319PS94E_0ayUc6JnM3LNN3g-X30-OhzrFE"
+              },
+              "search_rate": 7.2,
+              "created_by": {
+                "is_premium": "0",
+                "first_name": "RealMassive",
+                "last_name": "Houston",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA0JnbiwoM"
+              },
+              "number_of_attachments": 1,
+              "rate": 7.2,
+              "space_available_units": "SF",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgNC7x9kIDA",
+              "space_available": 27613,
+              "space_type": "Entire Building",
+              "marketed_cost": 198813.6,
+              "unit_number": "7812",
+              "location_url": "/us/tx/houston/industrial-space/blankenship-distribution-center/7812/4897481313746944"
+            }
+          ],
+          "number_found": 432
+        }
+
 
 ## Search for a Space by full text query [/api/v1/spaces/search/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
