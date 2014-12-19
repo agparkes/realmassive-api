@@ -329,7 +329,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
           "number_found": 10100
         }
         
-## Building Search [/api/v1/buildings?address=true&{address.address,address.city,address.full_state,address.geo,address.geo.latitude,address.geo.longitude,address.state,address.street,address.zipcode,building_class,building_parking_ratio,cover.raw_url,created_at,created_by.master_key,created_by.is_premium,created_by.last_name,created_by.first_name,key,location_url,lot_size,manager.admins.created_at,manager.admins.edited_at,manager.admins.first_name,manager.admins.is_premium,manager.admins.last_name,manager.admins.photo,manager.key,manager.members.created_at,manager.members.edited_at,manager.members.first_name,manager.members.is_premium,manager.members.last_name,manager.members.photo,manager.name,manager.owner.created_at,manager.owner.edited_at,manager.owner.first_name,manager.owner.is_premium,manager.owner.last_name,manager.owner.photo,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
+## Building Search [/api/v1/buildings/search{?address.address,address.city,address.full_state,address.geo,address.geo.latitude,address.geo.longitude,address.state,address.street,address.zipcode,building_class,building_parking_ratio,cover.raw_url,created_at,created_by.master_key,created_by.is_premium,created_by.last_name,created_by.first_name,key,location_url,lot_size,manager.admins.created_at,manager.admins.edited_at,manager.admins.first_name,manager.admins.is_premium,manager.admins.last_name,manager.admins.photo,manager.key,manager.members.created_at,manager.members.edited_at,manager.members.first_name,manager.members.is_premium,manager.members.last_name,manager.members.photo,manager.name,manager.owner.created_at,manager.owner.edited_at,manager.owner.first_name,manager.owner.is_premium,manager.owner.last_name,manager.owner.photo,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Search for a Building [GET]
 All query parameters are mandatory. If any of them is missing, it returns error code 400 with message "Wrong address parameters."
 
@@ -394,107 +394,142 @@ All query parameters are mandatory. If any of them is missing, it returns error 
 
 + Request (application/json)
 
-        https://www.realmassive.com/api/v1/buildings?address=true&street=lamar&city=austin&state=TX&zipcode=78727
+        https://www.realmassive.com/api/v1/buildings/search?address.city=Austin&limit=2
 
 + Response 200 (application/json)
 
-        {
+{
+          "cursor": "False:Cr0ECpQCCvcBgPcO6vQ2_5TzOoyBjZqek5KejIyWiZrSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXb2KlpOblpGYoMfMyMibzM2d0pnMys3Sy8ucndKdmcjM0szNx8aanc7KmcuZnf8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrmujKy8urXOnqiHlJ6oypG4try-mLa8jKC2prS7vv8Ac3-el7WFmZG1k6aoh4ump7GFnqelk7OnvYadza2Gua6MrLy6tc6eqIeUnqjKkbi2vL6YtryMoLamtLu-_wD__hACIQTdBJAdPBsZUABaCwkWb2wzO9x7DRABEg1Eb2N1bWVudEluZGV4GscBKEFORCAoSVMgImN1c3RvbWVyX25hbWUiICJhcHBlbmdpbmUiKSAoSVMgImdyb3VwX25hbWUiICJzfnJlYWxtYXNzaXZlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgIkJ1aWxkaW5nXzgzNzdkMzJiLWYzNTItNDRjYi1iZjczLTMyODllYjE1ZjRmYiIpIChJUyAicmF0b21fYWRkcmVzc19fY2l0eSIgImF1c3RpbiIpKToZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_0owCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckCQTkoSCxCAooUFGgkKB2VzY29yZXIM",
           "results": [
             {
-              "edited_at": "2014-04-25T21:32:58.426260+00:00",
-              "ac": "",
-              "reserved": "",
-              "attachments": [
-                {
-                  "category": "exterior",
-                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
-                  "title": "",
-                  "url": "https://lh4.ggpht.com/9uJOsswdIl2SomQ3eGDFnHuHzGyBVr6_CIiuJVwS-PM0eCF7RG_Ah45TpD385mgS9GgITqmdUAeuc2beFfyNRHMvAlIF",
-                  "uploaded_by": "",
-                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC1uq0JDA",
-                  "id": "",
-                  "youtube_id": "",
-                  "is_video": "",
-                  "approved": true
-                },
-                {
-                  "category": "exterior",
-                  "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
-                  "title": "",
-                  "url": "https://lh5.ggpht.com/_4OySmW-W0y3SS3ICYVtq3AqYZI9xh9k1V3SzBM9QGPK_aCZHb7r3eYl6eocL-iX2M89iSm7zKJxZvXXjrpFwpQWid13-4U",
-                  "uploaded_by": "",
-                  "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIDVg8kJDA",
-                  "id": "",
-                  "youtube_id": "",
-                  "is_video": "",
-                  "approved": true
-                }
-              ],
-              "lot_size_units": "",
-              "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAnsn3Cgw",
-              "clear_height": "",
-              "size_units": "SF",
-              "submarket": "Northeast",
-              "notification_email": "",
-              "id": "6547374042251264",
-              "size": "200000",
-              "sprinkler": "",
-              "title": "Lamar",
-              "building_class": "B",
-              "created_by": null,
-              "property_owner": "",
-              "leed": "",
-              "space_keys": [
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC18MUKDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVpO4KDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIC17PQJDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVzuEJDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDV2bAIDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgICV9fsJDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgIDVpO4JDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMDDq8IJDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCH3sIJDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCSvs0IDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCH3sILDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMDDtd0JDA",
-                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCUt8EIDA"
-              ],
-              "type": "Office",
-              "operating_expenses": "0.5",
-              "parking_rate": "",
-              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
+              "title": "718 Congress",
+              "created_at": "2014-09-09T15:38:03.812000",
               "address": {
                 "city": "Austin",
+                "zipcode": "78701",
                 "state": "TX",
-                "street": "5555 N. Lamar Blvd.",
+                "street": "718 Congress Avenue",
+                "address": "718 Congress Avenue Austin TX 78701",
+                "full_state": "Texas",
                 "geo": {
-                  "latitude": "30.3233254",
-                  "longitude": "-97.725397"
-                },
-                "zipcode": "78751"
+                  "latitude": 30.269787,
+                  "longitude": -97.742637
+                }
               },
-              "promoted_spaces": "",
-              "year_built": "",
-              "created_at": "2014-04-09T19:40:07.510340+00:00",
               "cover": {
-                "category": "exterior",
-                "target": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgIDV2dALDA",
-                "title": "",
-                "url": "https://lh4.ggpht.com/9uJOsswdIl2SomQ3eGDFnHuHzGyBVr6_CIiuJVwS-PM0eCF7RG_Ah45TpD385mgS9GgITqmdUAeuc2beFfyNRHMvAlIF",
-                "uploaded_by": "",
-                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBU1lZGlhGICAgIC1uq0JDA",
-                "id": "",
-                "youtube_id": "",
-                "is_video": "",
-                "approved": true
+                "raw_url": "https://lh4.ggpht.com/3h4ibCG2UZHF1-G89n2yfRbXMOgZ2sakc7oJNmJOFuGoLKxu4jjGYOWE3rbxIAq9jHinfjVMlIlf1odd67huWIBXhGAw"
               },
-              "lot_size": "",
-              "building_parking_ratio": ""
+              "real_score_val": 100,
+              "created_by": {
+                "is_premium": "1",
+                "first_name": "Angela",
+                "last_name": "Franz",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgPypnwkM"
+              },
+              "manager": {
+                "owner": {
+                  "edited_at": "2014-12-17T15:34:43.053000",
+                  "first_name": "Landree",
+                  "last_name": "Dillinger",
+                  "photo": "https://media.licdn.com/mpr/mprx/0_--L8rlg2ybptgPF116FmPrDhyb--UqI111UD9K_Gt1PA0zMglGkuNs5-ZFT",
+                  "created_at": "2014-04-16T16:44:40.476000",
+                  "is_premium": "0"
+                },
+                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAg4TNCQw",
+                "admins": {
+                  "edited_at": "2014-12-17T15:34:43.053000",
+                  "first_name": "Matthew",
+                  "last_name": "Salois",
+                  "photo": "https://lh3.ggpht.com/74zzu4k7UYxiyqIbcrOrUutihHjCYfGIwtCyVvJusQG7Dgrx-sOogRf6zztLzAgcL5Cts5n9kUeOQ5L7J1u9c5AyFw1bris",
+                  "created_at": "2014-04-18T18:16:10.676000",
+                  "is_premium": "0"
+                },
+                "name": "ECR",
+                "members": {
+                  "edited_at": "2014-12-17T15:34:43.053000",
+                  "first_name": "Haley",
+                  "last_name": "Berry",
+                  "photo": "/static/img/default_profile.jpg",
+                  "created_at": "2014-05-20T16:48:40.985000",
+                  "is_premium": "0"
+                }
+              },
+              "location_url": "/us/tx/austin/718-congress/5671705842286592",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgOCuzIkKDA",
+              "submarket": "Central Business District",
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgODXgpQKDA"
+              ],
+              "type": "Office",
+              "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww",
+              "size": 7246
+            },
+            {
+              "title": "9410 Reid",
+              "building_class": "B",
+              "cover": {
+                "raw_url": "https://lh4.ggpht.com/i1rynZb6SRbAJbDYAoQJ25HKzTm_WkiLR0Hqw8s306uCZmY6O5KMenY4c_-gId7CnAkDIqqmbjHqkxW2MpVpkTMtYZJ7VQ"
+              },
+              "real_score_val": 0,
+              "created_by": {
+                "is_premium": "1",
+                "first_name": "Christy",
+                "last_name": "Hightower",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICAgKi_ogsM"
+              },
+              "manager": {
+                "owner": {
+                  "edited_at": "2014-12-17T15:34:31.952000",
+                  "photo": "https://media.licdn.com/mpr/mprx/0_YkBR4zQm_tB7JVY2jqBzUNI85ALf0p-2pbdnONVuSXku4j8CYN9cy-ePG0X",
+                  "first_name": "Christy",
+                  "last_name": "Hightower",
+                  "is_premium": "1"
+                },
+                "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgICAptqDCAw",
+                "admins": {
+                  "edited_at": "2014-12-17T15:34:31.952000",
+                  "first_name": "Mark",
+                  "last_name": "Hernandez",
+                  "photo": "/static/img/default_profile.jpg",
+                  "created_at": "2014-05-21T20:53:19.899000",
+                  "is_premium": "0"
+                },
+                "name": "HPI Real Estate",
+                "members": {
+                  "edited_at": "2014-12-17T15:34:31.952000",
+                  "first_name": "Dick",
+                  "last_name": "Anderson",
+                  "photo": "http://m.c.lnkd.licdn.com/mpr/mprx/0_u1nHT0CACJXE0yAn2AlUTgbmCj-Ej0KnmlCBTyklgU6sGUb9hzQXfprxurtvY4lsSrN9mRVJn7Gr",
+                  "created_at": "2014-05-07T21:05:42.935000",
+                  "is_premium": "0"
+                }
+              },
+              "location_url": "/us/tx/austin/9410-reid/5660160231997440",
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgICs_IYKDA",
+              "submarket": "North",
+              "address": {
+                "city": "Austin",
+                "zipcode": "78758",
+                "state": "TX",
+                "street": "9410 Reid Drive",
+                "address": "9410 Reid Drive Austin TX 78758",
+                "full_state": "Texas",
+                "geo": {
+                  "latitude": 30.379863,
+                  "longitude": -97.727369
+                }
+              },
+              "space_keys": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgICmi_4IDA"
+              ],
+              "type": "Industrial",
+              "operating_expenses": 0.09,
+              "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww",
+              "size": 5000
             }
           ],
-          "number_of_results": 1
+          "number_found": 829
         }
-
 + Response 400 (application/json)
 
         {"error": "Wrong address parameters."}
