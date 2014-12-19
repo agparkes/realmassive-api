@@ -331,7 +331,6 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
         
 ## Building Search [/api/v1/buildings/search{?address.address,address.city,address.full_state,address.geo,address.geo.latitude,address.geo.longitude,address.state,address.street,address.zipcode,building_class,building_parking_ratio,cover.raw_url,created_at,created_by.master_key,created_by.is_premium,created_by.last_name,created_by.first_name,key,location_url,lot_size,manager.admins.created_at,manager.admins.edited_at,manager.admins.first_name,manager.admins.is_premium,manager.admins.last_name,manager.admins.photo,manager.key,manager.members.created_at,manager.members.edited_at,manager.members.first_name,manager.members.is_premium,manager.members.last_name,manager.members.photo,manager.name,manager.owner.created_at,manager.owner.edited_at,manager.owner.first_name,manager.owner.is_premium,manager.owner.last_name,manager.owner.photo,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Search for a Building [GET]
-All query parameters are mandatory. If any of them is missing, it returns error code 400 with message "Wrong address parameters."
 
 + Parameters
     + address.address (optional, string) ... The full building address
@@ -344,9 +343,10 @@ All query parameters are mandatory. If any of them is missing, it returns error 
     + address.street (optional, string) ... The building's  street name
     + address.zipcode (optional, string) ... The building's  zipcode
     + building_class (optional, string) ... The building's class
-        + `A`
-        + `B`
-        + `C`
+        + Values
+            + `A`
+            + `B`
+            + `C`
     + building_parking_ratio (optional, float) ... Minimum parking ratio in spaces per thousand SF
     + cover.raw_url (optional, string) ... Building's cover image's URL
     + created_at (optional, string) ... 
@@ -385,11 +385,12 @@ All query parameters are mandatory. If any of them is missing, it returns error 
     + submarket (optional, string) ... The building's submarket
     + title (optional, string) ... The building's title
     + type (optional, string) ... 
-        + `office`
-        + `retail`
-        + `indsutrial`
-        + `flex space`
-        + `medical office`
+        + Values
+            + `office`
+            + `retail`
+            + `indsutrial`
+            + `flex space`
+            + `medical office`
     + limit =`10` (optional,integer) ... limit of results length
 
 + Request (application/json)
