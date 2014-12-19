@@ -77,6 +77,81 @@ fields may be added.
  * **title** - building's title
  * **type** - lease, sublease, for sale
  * **year_built**
+ 
+## Building [/api/v1/buildings/{?id}]
+
+### Fetch a building by id [GET]
+
+Use this to retrieve a building by its id.
+
++ Parameters
+    + id (required, integer) ... the unique ID for this building
+
++ Request
+
+        https://www.realmassive.com/api/v1/buildings/5708540228403200
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2014-12-18T17:35:52.068600+00:00",
+          "ac": "",
+          "reserved": "",
+          "attachments": [],
+          "lot_size_units": "",
+          "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDE1rmFCgw",
+          "clear_height": "",
+          "size_units": "SF",
+          "submarket": "",
+          "notification_email": "",
+          "id": "5708540228403200",
+          "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgIDQ2YrWCAw",
+          "size": "506",
+          "sprinkler": "",
+          "title": "11650 Iberia Pl.",
+          "building_class": "",
+          "created_by": {
+            "first_name": "RealMassive",
+            "last_name": "San Diego",
+            "title": "",
+            "photo": "/static/img/default_profile.jpg",
+            "company": "RealMassive",
+            "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8LGlngoM",
+            "is_premium": false,
+            "id": ""
+          },
+          "property_owner": "",
+          "leed": "",
+          "space_keys": [
+            "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMTwhtUJDA"
+          ],
+          "type": "Office",
+          "operating_expenses": "0.0",
+          "parking_rate": "",
+          "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMSx_JEKDA",
+          "address": {
+            "city": "San Diego",
+            "state": "CA",
+            "street": "11650 Iberia Place",
+            "geo": {
+              "latitude": "33.0159612",
+              "longitude": "-117.0774562"
+            },
+            "zipcode": "92128"
+          },
+          "location_url": "/us/ca/san-diego/11650-iberia-pl/5708540228403200",
+          "permissions": [
+            "Create",
+            "Read"
+          ],
+          "promoted_spaces": "",
+          "year_built": "",
+          "created_at": "2014-12-17T04:26:38.691162+00:00",
+          "cover": null,
+          "lot_size": "",
+          "building_parking_ratio": ""
+        }
+
 
 ## Building Collection [/api/v1/buildings{?limit,cursor}]
 Use this to retrieve a list of all buildings in the RealMassive Database. 
@@ -89,7 +164,6 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
 ### List all Buildings [GET]
 
 + Parameters
-
     + limit = `70` (optional, integer) ... Number of results to return in this batch
     + cursor (optional, cursor) ... Provide the cursor to continue to your next batch of results
 
@@ -100,7 +174,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
 + Response 200 (application/json)
 
         {
-          "cursor": "False:CqAECpQCCvcBgPcO6T1K_7X81YyBjZqek5KejIyWiZrSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXb2KlpOblpGYoJ6ez8fLzJ6d0pzOx8nSy8bKztKdysbO0sucx8vGysrMx83Jnv8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrmujKy8urXOnqiHlJ6oypG4try-mLKshpbKmLW7vv8Ac3-el7WFmZG1k6aoh4ump7GFnqelk7OnvYadza2Gua6MrLy6tc6eqIeUnqjKkbi2vL6YsqyGlsqYtbu-_wD__hADIQTdBJAdPBsZUABaCwnesRGuij-imhABEg1Eb2N1bWVudEluZGV4GqoBKEFORCAoSVMgImN1c3RvbWVyX25hbWUiICJhcHBlbmdpbmUiKSAoSVMgImdyb3VwX25hbWUiICJzfnJlYWxtYXNzaXZlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgIkJ1aWxkaW5nX2FhMDg0M2FiLWMxODYtNDk1MS1iNTkxLTRjODQ5NTUzODI2YSIpIChUUlVFKSk6GQoMKE4gb3JkZXJfaWQpEAEZAAAAAAAA8P9KMAgBOhVzdDpidGlfZ2VuZXJpY19zY29yZXJAkE5KEgsQgKKFBRoJCgdlc2NvcmVyDA",
+          "cursor": "False:Cq...DA",
           "results": [
             {
               "edited_at": "2014-12-18T17:35:52.068600+00:00",
@@ -328,8 +402,12 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
           ],
           "number_found": 10100
         }
-        
+
 ## Building Search [/api/v1/buildings/search{?address.address,address.city,address.full_state,address.geo,address.geo.latitude,address.geo.longitude,address.state,address.street,address.zipcode,building_class,building_parking_ratio,cover.raw_url,created_at,created_by.master_key,created_by.is_premium,created_by.last_name,created_by.first_name,key,location_url,lot_size,manager.admins.created_at,manager.admins.edited_at,manager.admins.first_name,manager.admins.is_premium,manager.admins.last_name,manager.admins.photo,manager.key,manager.members.created_at,manager.members.edited_at,manager.members.first_name,manager.members.is_premium,manager.members.last_name,manager.members.photo,manager.name,manager.owner.created_at,manager.owner.edited_at,manager.owner.first_name,manager.owner.is_premium,manager.owner.last_name,manager.owner.photo,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
+### Notes
+Building search is very flexible. Right now there are too many parameters for Apiary to parse. Please click
+"Switch to Console" to see them all.
+
 ### Search for a Building [GET]
 
 + Parameters
@@ -400,7 +478,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
 + Response 200 (application/json)
 
         {
-          "cursor": "False:Cr0ECpQCCvcBgPcO6vQ2_5TzOoyBjZqek5KejIyWiZrSj42Qm_8AdG2goJmLjKCg_wBdno-PmpGYlpGa_wBzdG2WkZuah_8AXb2KlpOblpGYoMfMyMibzM2d0pnMys3Sy8ucndKdmcjM0szNx8aanc7KmcuZnf8Ac3Rtm5CcoJab_wBdnpe1hZmRtZOmqIeLpqexhZ6npZOzp72Gnc2thrmujKy8urXOnqiHlJ6oypG4try-mLa8jKC2prS7vv8Ac3-el7WFmZG1k6aoh4ump7GFnqelk7OnvYadza2Gua6MrLy6tc6eqIeUnqjKkbi2vL6YtryMoLamtLu-_wD__hACIQTdBJAdPBsZUABaCwkWb2wzO9x7DRABEg1Eb2N1bWVudEluZGV4GscBKEFORCAoSVMgImN1c3RvbWVyX25hbWUiICJhcHBlbmdpbmUiKSAoSVMgImdyb3VwX25hbWUiICJzfnJlYWxtYXNzaXZlLXByb2QiKSAoSVMgIm5hbWVzcGFjZSIgIiIpIChJUyAiaW5kZXhfbmFtZSIgIkJ1aWxkaW5nXzgzNzdkMzJiLWYzNTItNDRjYi1iZjczLTMyODllYjE1ZjRmYiIpIChJUyAicmF0b21fYWRkcmVzc19fY2l0eSIgImF1c3RpbiIpKToZCgwoTiBvcmRlcl9pZCkQARkAAAAAAADw_0owCAE6FXN0OmJ0aV9nZW5lcmljX3Njb3JlckCQTkoSCxCAooUFGgkKB2VzY29yZXIM",
+          "cursor": "False:Cr...IM",
           "results": [
             {
               "title": "718 Congress",
@@ -531,6 +609,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
           ],
           "number_found": 829
         }
+        
 + Response 400 (application/json)
 
         {"error": "Wrong address parameters."}
