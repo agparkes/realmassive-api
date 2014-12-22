@@ -2051,116 +2051,6 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
 
 ### Fast search for spaces
 
-+ Parameters
-
-    + building%2Eac (optional, integer) ... Whether or not the space's building is air conditioned (1=yes, 0=no)
-    + building%2Eaddress%2Eaddress (optional, string) ... The spaces's building's address
-    + building%2Eaddress%2Ecity (optional, string) ... The spaces's building's city
-    + building%2Eaddress%2Efull_state (optional, string) ... The spaces's building's full state name
-    + building%2Eaddress%2Egeo (optional, string) ... The spaces's building's 
-    + building%2Eaddress%2Egeo%2Elatitude (optional, string) ... The spaces's building's latitude
-    + building%2Eaddress%2Egeo%2Elongitude (optional, string) ... The spaces's building's longitude
-    + building%2Eaddress%2Estate (optional, string) ... The spaces's building's state
-    + building%2Eaddress%2Estreet (optional, string) ... The spaces's building's street name
-    + building%2Eaddress%2Ezipcode (optional, string) ... The spaces's building's zipcode
-    + building%2Ebuilding_class (optional, string) ... The spaces's building's class
-        + Values
-            + `A`
-            + `B`
-            + `C`
-    + building%2Ebuilding_parking_ratio (optional, string) ... The spaces's building's parking ratio
-    + building%2Eclear_height (optional, string) ... The spaces's building's clear height (used for industrial buildings)
-    + building%2Ecreated_at (optional, string) ... The spaces's building's creation date
-    + building%2Ecreated_by%2Efirst_name (optional, string) ... The spaces's building's  owner's first name
-    + building%2Ecreated_by%2Eis_premium (optional, string) ... The spaces's building's  owner's premium status
-    + building%2Ecreated_by%2Elast_name (optional, string) ... The spaces's building's  owner's last name
-    + building%2Ecreated_by%2Emaster_key (optional, string) ... The spaces's building's owner's master key
-    + building%2Eedited_at (optional, string) ... The spaces's building's last edited time
-    + building%2Elot_size (optional, string) ... The spaces's building's lot size
-    + building%2Elot_size_units (optional, string) ... The spaces's building's lot size units
-    + building%2Emanager%2Eadmins%2Ecreated_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eadmins%2Eedited_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eadmins%2Efirst_name (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eadmins%2Eis_premium (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eadmins%2Elast_name (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eadmins%2Ephoto (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Ekey (optional, string) ... The spaces's building's manager's key
-    + building%2Emanager%2Emembers%2Ecreated_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Emembers%2Eedited_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Emembers%2Efirst_name (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Emembers%2Eis_premium (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Emembers%2Elast_name (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Emembers%2Ephoto (optional, string) ... The spaces's building's member's photo(s)
-    + building%2Emanager%2Ename (optional, string) ... Thes paces's building's manager's name
-    + building%2Emanager%2Eowner%2Ecreated_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eowner%2Eedited_at (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eowner%2Efirst_name (optional, string) ... The spaces's building's owner's first name
-    + building%2Emanager%2Eowner%2Eis_premium (optional, string) ... The spaces's building's 
-    + building%2Emanager%2Eowner%2Elast_name (optional, string) ... The spaces's building's owner's last name
-    + building%2Emanager%2Eowner%2Ephoto (optional, string) ... The spaces's building's owner's photo
-    + building%2Emarket (optional, string) ... The spaces's building's market
-    + building%2Emaster_key (optional, string) ... The spaces's building's 
-    + building%2Eoperating_expenses (optional, string) ... The spaces's building's operational expenses (OPEX)
-    + building%2Eparking_rate (optional, float) ... The spaces's building's parking rate per thousand SF
-    + building%2Eproperty_owner (optional, string) ... The spaces's building's 
-    + building%2Esize (optional, float) ... The spaces's building's size in 'size units'
-    + building%2Esize_units (optional, string) ... The spaces's building's abbreviation for size units, currently 'SF'
-    + building%2Esprinkler (optional, boolean) ... Whether or not this space's building has sprinklers (0=no, 1=yes)
-    + building%2Esubmarket (optional, string) ... The spaces's building's submarket
-    + building%2Etitle (optional, string) ... The spaces's building's title
-    + building%2Etype (optional, string) ... The spaces's building's type
-        + Values
-            + `Retail`
-            + `Industrial`
-            + `Office`
-            + `Flex Space`
-            + `Medical Office`
-    + building%2Eyear_built (optional, string) ... The spaces's building's year that contstruction completed
-    + contacts%2Ecreated_at (optional, string) ... The space's contact's created date
-    + contacts%2Eedited_at (optional, string) ... The space's contact's last edited date
-    + contacts%2Efirst_name (optional, string) ... The space's contact's fist name
-    + contacts%2Eis_premium (optional, boolean) ... The space's contact's premium status
-    + contacts%2Elast_name (optional, string) ... The space's contact's last name
-    + contacts%2Ephoto (optional, string) ... The space's contact's photo
-    + cover%2Eurl (optional, string) ... The space's cover media URL
-    + created_at (optional, string) ... The space's created date
-    + created_by%2Efirst_name (optional, string) ... The space's creator's first naem
-    + created_by%2Eis_premium (optional, string) ... The space's creator's premium status
-    + created_by%2Elast_name (optional, string) ... The space's creator's last name
-    + created_by%2Emaster_key (optional, string) ... The space's creator's master key
-    + description (optional, string) ... The space's description
-    + divisible (optional, boolean) ... Whether or not this space is divisible (0=no, 1=yes)
-    + expiration_date (optional, string) ... This sublease's expiration date; not valid for 'lease' and 'sale' properties
-    + floor_number (optional, number) ... This space's building's floor number
-    + is_promoted (optional, boolean) ... Whether or not this space is promoted
-    + key (optional, string) ... The space's unique key
-    + lease_term (optional, string) ... The space's lease term
-    + location_url (optional, string) ... The space's SEO optimized URL
-    + marketed_cost (optional, string) ... The space's marketed cost
-    + num_parking_spaces (optional, string) ... The space's number of allotted parking spaces
-    + number_of_attachments (optional, string) ... The number of attachments this space has
-    + rate (optional, string) ... The space's marketed rate
-    + reserved (optional, string) ... Whether or not this space has reserved parking
-    + search_rate (optional, string) ... The space's annualized search rate (see notes)
-    + space_available (optional, string) ... The size of the marketed space
-    + space_available_units (optional, string) ... The size units the marketed space displays
-    + space_id (optional, string) ... The space's unique id
-    + space_type (optional, string) ... The space's type, one of the following
-        + Values
-            + `lease`
-            + `sublease`
-            + `sale` (coming soon)
-            + `licensed` (coming soon)
-            + `executive suites` (coming soon)
-    + status (optional, string) ... The space's status
-        + Values
-            + `public`
-            + `archive`
-    + ti (optional, string) ... The space's tenant improvement costs (TI)
-    + title (optional, string) ... The space's title
-    + total_cost (optional, string) ... The space's total cost
-    + unit_number (optional, string) ... The space's unit number
-    
 + Request (application/jason)
 
         https://www.realmassive.com/api/v1/spaces/search?building.address.city=Houston&space_available=[25000:]&limit=2
@@ -2304,6 +2194,117 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
           "number_found": 432
         }
 
++ Parameters
+
+    + k (optional, string) ... Keyword, a token to search for on the back end
+    + building%2Eac (optional, integer) ... Whether or not the space's building is air conditioned (1=yes, 0=no)
+    + building%2Eaddress%2Eaddress (optional, string) ... The spaces's building's address
+    + building%2Eaddress%2Ecity (optional, string) ... The spaces's building's city
+    + building%2Eaddress%2Efull_state (optional, string) ... The spaces's building's full state name
+    + building%2Eaddress%2Egeo (optional, string) ... The spaces's building's 
+    + building%2Eaddress%2Egeo%2Elatitude (optional, string) ... The spaces's building's latitude
+    + building%2Eaddress%2Egeo%2Elongitude (optional, string) ... The spaces's building's longitude
+    + building%2Eaddress%2Estate (optional, string) ... The spaces's building's state
+    + building%2Eaddress%2Estreet (optional, string) ... The spaces's building's street name
+    + building%2Eaddress%2Ezipcode (optional, string) ... The spaces's building's zipcode
+    + building%2Ebuilding_class (optional, string) ... The spaces's building's class
+        + Values
+            + `A`
+            + `B`
+            + `C`
+    + building%2Ebuilding_parking_ratio (optional, string) ... The spaces's building's parking ratio
+    + building%2Eclear_height (optional, string) ... The spaces's building's clear height (used for industrial buildings)
+    + building%2Ecreated_at (optional, string) ... The spaces's building's creation date
+    + building%2Ecreated_by%2Efirst_name (optional, string) ... The spaces's building's  owner's first name
+    + building%2Ecreated_by%2Eis_premium (optional, string) ... The spaces's building's  owner's premium status
+    + building%2Ecreated_by%2Elast_name (optional, string) ... The spaces's building's  owner's last name
+    + building%2Ecreated_by%2Emaster_key (optional, string) ... The spaces's building's owner's master key
+    + building%2Eedited_at (optional, string) ... The spaces's building's last edited time
+    + building%2Elot_size (optional, string) ... The spaces's building's lot size
+    + building%2Elot_size_units (optional, string) ... The spaces's building's lot size units
+    + building%2Emanager%2Eadmins%2Ecreated_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eadmins%2Eedited_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eadmins%2Efirst_name (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eadmins%2Eis_premium (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eadmins%2Elast_name (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eadmins%2Ephoto (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Ekey (optional, string) ... The spaces's building's manager's key
+    + building%2Emanager%2Emembers%2Ecreated_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Emembers%2Eedited_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Emembers%2Efirst_name (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Emembers%2Eis_premium (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Emembers%2Elast_name (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Emembers%2Ephoto (optional, string) ... The spaces's building's member's photo(s)
+    + building%2Emanager%2Ename (optional, string) ... Thes paces's building's manager's name
+    + building%2Emanager%2Eowner%2Ecreated_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eowner%2Eedited_at (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eowner%2Efirst_name (optional, string) ... The spaces's building's owner's first name
+    + building%2Emanager%2Eowner%2Eis_premium (optional, string) ... The spaces's building's 
+    + building%2Emanager%2Eowner%2Elast_name (optional, string) ... The spaces's building's owner's last name
+    + building%2Emanager%2Eowner%2Ephoto (optional, string) ... The spaces's building's owner's photo
+    + building%2Emarket (optional, string) ... The spaces's building's market
+    + building%2Emaster_key (optional, string) ... The spaces's building's 
+    + building%2Eoperating_expenses (optional, string) ... The spaces's building's operational expenses (OPEX)
+    + building%2Eparking_rate (optional, float) ... The spaces's building's parking rate per thousand SF
+    + building%2Eproperty_owner (optional, string) ... The spaces's building's 
+    + building%2Esize (optional, float) ... The spaces's building's size in 'size units'
+    + building%2Esize_units (optional, string) ... The spaces's building's abbreviation for size units, currently 'SF'
+    + building%2Esprinkler (optional, boolean) ... Whether or not this space's building has sprinklers (0=no, 1=yes)
+    + building%2Esubmarket (optional, string) ... The spaces's building's submarket
+    + building%2Etitle (optional, string) ... The spaces's building's title
+    + building%2Etype (optional, string) ... The spaces's building's type
+        + Values
+            + `Retail`
+            + `Industrial`
+            + `Office`
+            + `Flex Space`
+            + `Medical Office`
+    + building%2Eyear_built (optional, string) ... The spaces's building's year that contstruction completed
+    + contacts%2Ecreated_at (optional, string) ... The space's contact's created date
+    + contacts%2Eedited_at (optional, string) ... The space's contact's last edited date
+    + contacts%2Efirst_name (optional, string) ... The space's contact's fist name
+    + contacts%2Eis_premium (optional, boolean) ... The space's contact's premium status
+    + contacts%2Elast_name (optional, string) ... The space's contact's last name
+    + contacts%2Ephoto (optional, string) ... The space's contact's photo
+    + cover%2Eurl (optional, string) ... The space's cover media URL
+    + created_at (optional, string) ... The space's created date
+    + created_by%2Efirst_name (optional, string) ... The space's creator's first naem
+    + created_by%2Eis_premium (optional, string) ... The space's creator's premium status
+    + created_by%2Elast_name (optional, string) ... The space's creator's last name
+    + created_by%2Emaster_key (optional, string) ... The space's creator's master key
+    + description (optional, string) ... The space's description
+    + divisible (optional, boolean) ... Whether or not this space is divisible (0=no, 1=yes)
+    + expiration_date (optional, string) ... This sublease's expiration date; not valid for 'lease' and 'sale' properties
+    + floor_number (optional, number) ... This space's building's floor number
+    + is_promoted (optional, boolean) ... Whether or not this space is promoted
+    + key (optional, string) ... The space's unique key
+    + lease_term (optional, string) ... The space's lease term
+    + location_url (optional, string) ... The space's SEO optimized URL
+    + marketed_cost (optional, string) ... The space's marketed cost
+    + num_parking_spaces (optional, string) ... The space's number of allotted parking spaces
+    + number_of_attachments (optional, string) ... The number of attachments this space has
+    + rate (optional, string) ... The space's marketed rate
+    + reserved (optional, string) ... Whether or not this space has reserved parking
+    + search_rate (optional, string) ... The space's annualized search rate (see notes)
+    + space_available (optional, string) ... The size of the marketed space
+    + space_available_units (optional, string) ... The size units the marketed space displays
+    + space_id (optional, string) ... The space's unique id
+    + space_type (optional, string) ... The space's type, one of the following
+        + Values
+            + `lease`
+            + `sublease`
+            + `sale` (coming soon)
+            + `licensed` (coming soon)
+            + `executive suites` (coming soon)
+    + status (optional, string) ... The space's status
+        + Values
+            + `public`
+            + `archive`
+    + ti (optional, string) ... The space's tenant improvement costs (TI)
+    + title (optional, string) ... The space's title
+    + total_cost (optional, string) ... The space's total cost
+    + unit_number (optional, string) ... The space's unit number
+    
 
 ## Search for a Space by full text query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
