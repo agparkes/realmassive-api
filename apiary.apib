@@ -889,6 +889,7 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
 ### List all Spaces [GET]
 
 + Parameters
+
     + limit = `70` (optional, integer) ... Number of results to return in this batch
     + cursor (optional, cursor) ... Provide the cursor to continue to your next batch of results
 
@@ -2047,9 +2048,11 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
         }
         
 ## Search for a space [/api/v1/spaces/search{?building%2Eac,building%2Eaddress%2Eaddress,building%2Eaddress%2Ecity,building%2Eaddress%2Efull_state,building%2Eaddress%2Egeo,building%2Eaddress%2Egeo%2Elatitude,building%2Eaddress%2Egeo%2Elongitude,building%2Eaddress%2Estate,building%2Eaddress%2Estreet,building%2Eaddress%2Ezipcode,building%2Ebuilding_class,building%2Ebuilding_parking_ratio,building%2Eclear_height,building%2Ecreated_at,building%2Ecreated_by%2Emaster_key,building%2Ecreated_by%2Eis_premium,building%2Ecreated_by%2Elast_name,building%2Ecreated_by%2Efirst_name,building%2Eedited_at,building%2Elot_size,building%2Elot_size_units,building%2Emanager%2Ekey,building%2Emarket,building%2Emaster_key,building%2Emanager%2Ename,building%2Emanager%2Ekey,building%2Emanager%2Eowner%2Efirst_name,building%2Emanager%2Eowner%2Elast_name,building%2Emanager%2Eowner%2Ecreated_at,building%2Emanager%2Eowner%2Eedited_at,building%2Emanager%2Eowner%2Eis_premium,building%2Emanager%2Eowner%2Ephoto,building%2Emanager%2Emembers%2Ephoto,building%2Emanager%2Eadmins%2Ecreated_at,building%2Emanager%2Emembers%2Eis_premium,building%2Emanager%2Emembers%2Eedited_at,building%2Emanager%2Emembers%2Efirst_name,building%2Emanager%2Eadmins%2Efirst_name,building%2Emanager%2Eadmins%2Ephoto,building%2Emanager%2Eadmins%2Eis_premium,building%2Emanager%2Eadmins%2Elast_name,building%2Emanager%2Eadmins%2Eedited_at,building%2Emanager%2Emembers%2Ecreated_at,building%2Emanager%2Emembers%2Elast_name,building%2Eoperating_expenses,building%2Eparking_rate,building%2Eproperty_owner,building%2Esize,building%2Esize_units,building%2Esprinkler,building%2Esubmarket,building%2Etitle,building%2Etype,building%2Eyear_built,contacts%2Ecreated_at,contacts%2Eedited_at,contacts%2Efirst_name,contacts%2Elast_name,contacts%2Ephoto,contacts%2Eis_premium,cover%2Eurl,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,description,divisible,expiration_date,floor_number,is_promoted,key,lease_term,location_url,marketed_cost,num_parking_spaces,number_of_attachments,rate,reserved,search_rate,space_available,space_available_units,space_id,space_type,status,ti,title,total_cost,unit_number}]
+
 ### Fast search for spaces
 
 + Parameters
+
     + building%2Eac (optional, integer) ... Whether or not the space's building is air conditioned (1=yes, 0=no)
     + building%2Eaddress%2Eaddress (optional, string) ... The spaces's building's address
     + building%2Eaddress%2Ecity (optional, string) ... The spaces's building's city
@@ -2157,8 +2160,7 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
     + title (optional, string) ... The space's title
     + total_cost (optional, string) ... The space's total cost
     + unit_number (optional, string) ... The space's unit number
-
-
+    
 + Request (application/jason)
 
         https://www.realmassive.com/api/v1/spaces/search?building.address.city=Houston&space_available=[25000:]&limit=2
