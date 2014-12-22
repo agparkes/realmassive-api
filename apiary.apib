@@ -2313,7 +2313,7 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
 
 ## Search for a Space by full text query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
-This search works, but is deprecated in favor of our fast search using the "/search" path.
+This search works, but is deprecated in favor of our fast search using the ```/search``` path.
 
 + Parameters
 
@@ -2399,8 +2399,13 @@ This search works, but is deprecated in favor of our fast search using the "/sea
 # Group Portfolios
 
 ## Introduction
-A Portfolio is collection for Space copies which are called Portfolio Spaces. Portfolio Space has revision system similiar to that which Spaces have. When original Space (called master) is changed, all related Portfolio Spaces are checked for conflict. If there is no conflict, changes from master are automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
+You can create market surveys by using our Portfolio resource. A portfolio, like a market survey, is a list of spaces under consideration. Spaces added to a Portfolio
+are copies of the original spaces; changes made to Portfolio spaces do not propagate down to the original space. You can use the Portfolio API to share, manage, and
+edit portfolio spaces with the portfolio. You can also use the API to receive real-time updates made in the portfolio or original spaces. Please note, changes to the
+original spaces may propagate down to the portfolio space if the portfolio owner allows it. The Portfolio Space has a revision system similiar to that which Spaces have. 
+When the original Space (called the master) is changed, all related Portfolio Spaces are checked for a conflict. If there is no conflict, changes from master are 
 
+automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
 ## Portfolio properties
 
 * ``agents``
