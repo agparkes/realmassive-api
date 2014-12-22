@@ -14,6 +14,7 @@ The RealMassive API is a RESTful API that communicates overs the HTTP protocol. 
   * **https://www.realmassive.com/api/v1** is the root endpoint.
   * You need an API token to make API calls. Apply for one in our [Developer's Area]().
   * Use simple authorization (email/password) and/or your API token for API call authorization.
+  * All requests must be properly URL encoded, including parameters and values.
 
 ### A Few Example API Calls
 | API Call | Meaning |
@@ -29,8 +30,6 @@ A resource is a network-accessible data object or service accessed by a URI. A c
 nouns that hopefully that make sense to the API consumer. All resources are returned in JSON, unless other formats are specifically
 requested. Relations are used to specialize the results of a resource. For example, ``/markets/market-id/submarkets`` would return the Submarkets for
 the specific Market identified by its market-id value.
-
-All requests must be properly URL encoded, including parameters and values.
 
 #### URI Space
 The following resources are exposed and accessible via resource URIs.
