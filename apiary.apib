@@ -18,11 +18,11 @@ The RealMassive API is a RESTful API that communicates overs the HTTP protocol. 
 
 | API Call | Meaning |
 | -------- | ------- |
-| GET /api/v1/spaces/:id | Get space identified by uinque ID, *:id* |
-| GET /api/v1/buildings/:id | Get building identified by uinque ID, *:id* |
-| GET /api/v1/markets| Get a list of all markets |
-| GET /api/v1/markets/geo?latitude=30&longitude=-97 | Find markets near (30,-97) (central Texas) |
-| GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX| Find all spaces in Austin, TX |
+| `GET /api/v1/spaces/:id` | Get space identified by uinque ID, *:id* |
+| `GET /api/v1/buildings/:id` | Get building identified by uinque ID, *:id* |
+| `GET /api/v1/markets` | Get a list of all markets |
+| `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find markets near (30,-97) (central Texas) |
+| `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all spaces in Austin, TX |
 
 ### Resources
 A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns,
@@ -38,12 +38,12 @@ The following resources are exposed and accessible via resource URIs.
 
 | Resource | URI | Notes |
 |---|---|---|
-| Building | /building | Represents physical buildings in our database. |
-| Market | /market | Represents the markets in which we operate. |
-| Organization | /organization | Represents Users' organizations. |
-| Portfolio | /portfolio | Represents a collection of spaces. |
-| Space | /space | Represents and available Space for lease. |
-| User | /user | Represents Users on our system. |
+| Building | `/building` | Represents physical buildings in our database. |
+| Market | `/market` | Represents the markets in which we operate. |
+| Organization | `/organization` | Represents Users' organizations. |
+| Portfolio | `/portfolio` | Represents a collection of spaces. |
+| Space | `/space` | Represents and available Space for lease. |
+| User | `/user` | Represents Users on our system. |
 
 
 ## Group Buildings
@@ -53,36 +53,36 @@ associated with it. Each building has the following attributes and more
 fields may be added.
 
 ## Building Attributes
- * **ac** - whether or not the building has air conditioning
- * **address** - structured address with the following format. See [Address].
- * **attachments** - a list of media attachments. See [Attachments].
- * **building_class** - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
- * **building_parking_ratio** - number of available parking spots, usually per thousand square feet
- * **clear_height** - used in industrial space, the actual height from steel girders to the interior of the building.
- * **cover** - 
- * **created_at** - datetime
- * **created_by** - database key pointing to the original author
- * **edited_at** - datetime
- * **id** - this record's unique identifier
- * **key** - 
- * **leed** - LEED rating: None, Certified, Gold, Silver, Platinum
- * **lot_size** - 
- * **lot_size_units** - units in which lot size is reported. Currently, square feet: 'SF'
- * **manager** - database key pointing to the contact for this building's manager
- * **notification_email** - database key pointing to this building's representative(s)
- * **operating_expenses** - operating expenses for this building.
- * **parking_rate** - Parking rate ($) per space.
- * **promoted_spaces** - List of promoted spaces in this building.
- * **property_owner** - database key pointing to this building's owner
- * **reserved** - 
- * **size** - building size in units listed below
- * **size_units** - units in which the building size is reported
- * **space_keys** - a list of database keys pointing to the spaces inside this building.
- * **sprinkler** - whether or not this building has sprinklers
- * **submarket** - the submarket in which this building resides
- * **title** - building's title
- * **type** - lease, sublease, for sale
- * **year_built**
+ * `ac` - whether or not the building has air conditioning
+ * ``address`` - structured address with the following format. See [Address].
+ * ``attachments`` - a list of media attachments. See [Attachments].
+ * ``building_class`` - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
+ * ``building_parking_ratio`` - number of available parking spots, usually per thousand square feet
+ * ``clear_height`` - used in industrial space, the actual height from steel girders to the interior of the building.
+ * ``cover`` - 
+ * ``created_at`` - datetime
+ * ``created_by`` - database key pointing to the original author
+ * ``edited_at`` - datetime
+ * ``id`` - this record's unique identifier
+ * ``key`` - 
+ * ``leed`` - LEED rating: None, Certified, Gold, Silver, Platinum
+ * ``lot_size`` - 
+ * ``lot_size_units`` - units in which lot size is reported. Currently, square feet: 'SF'
+ * ``manager`` - database key pointing to the contact for this building's manager
+ * ``notification_email`` - database key pointing to this building's representative(s)
+ * ``operating_expenses`` - operating expenses for this building.
+ * ``parking_rate`` - Parking rate ($) per space.
+ * ``promoted_spaces`` - List of promoted spaces in this building.
+ * ``property_owner`` - database key pointing to this building's owner
+ * ``reserved`` - 
+ * ``size`` - building size in units listed below
+ * ``size_units`` - units in which the building size is reported
+ * ``space_keys`` - a list of database keys pointing to the spaces inside this building.
+ * ``sprinkler`` - whether or not this building has sprinklers
+ * ``submarket`` - the submarket in which this building resides
+ * ``title`` - building's title
+ * ``type`` - lease, sublease, for sale
+ * ``year_built``
  
 ## Fetch a Building by id [/api/v1/buildings/{?id}]
 
@@ -2405,18 +2405,18 @@ A Portfolio is collection for Space copies which are called Portfolio Spaces. Po
 
 ## Portfolio properties
 
-* **agents**
-* **archived**
-* **created_at**
-* **edited_at**
-* **id**
-* **key**
-* **number_of_spaces**
-* **owner**
-* **public**
-* **short_url**
-* **title**
-* **viewers**
+* ``agents``
+* ``archived``
+* ``created_at``
+* ``edited_at``
+* ``id``
+* ``key``
+* ``number_of_spaces``
+* ``owner``
+* ``public``
+* ``short_url``
+* ``title``
+* ``viewers``
 
 ## View Portfolios [/portfolios]
 ### Fetch all of the portfolios of the currently logged in user [GET]
@@ -3110,8 +3110,6 @@ Note:
 
 + Parameters
 
-
-    
     + building (string)
     + lease_term (string)
     + description (string)
@@ -3261,28 +3259,28 @@ Note: Creation of a RealMassive user is in development and will be documented up
 
 ## User Attributes
 # Read only
-* **edited_at**
-* **created_at**
-* **first_name**
-* **last_name**
-* **preferences**
-* **login_count**
-* **is_premium**
-* **last_login**
-* **key**
-* **permissions**
-* **auth_providers**
-* **id**
-* **organizations**
-* **available_positions**
+    * ``edited_at``
+    * ``created_at``
+    * ``first_name``
+    * ``last_name``
+    * ``preferences``
+    * ``login_count``
+    * ``is_premium``
+    * ``last_login``
+    * ``key``
+    * ``permissions``
+    * ``auth_providers``
+    * ``id``
+    * ``organizations``
+    * ``available_positions``
 
 # Editable
-* **email**
-* **secondary_email**
-* **photo**
-* **title**
-* **company**
-* **phone**
+* ``email``
+* ``secondary_email``
+* ``photo``
+* ``title``
+* ``company``
+* ``phone``
 
 ## User Authentication [/auth]
 ### Logging into a preexisting, manually registered user [POST]
@@ -3366,9 +3364,9 @@ The **Version** call is used to determine which verison of the RealMassive webap
 
 ## Version Attributes
 # Read only
-* **last_commit_time**
-* **commit_hash**
-* **version_string**
+* ``last_commit_time``
+* ``commit_hash``
+* ``version_string``
 
 ## Version [/version]
 ### Accessing version information [GET]
