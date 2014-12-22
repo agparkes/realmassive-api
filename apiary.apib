@@ -416,6 +416,7 @@ Building search is very flexible. You can search, filter, and sort.
 ### Search for a Building [GET]
 
 + Parameters
+    + k (optional, string) ... A token keyword associated with this building
     + address%2Eaddress (optional, string) ... The full building address
     + address%2Ecity (optional, string) ... The building's city
     + address%2Efull_state (optional, string) ...The building's state; currently only in the United States
@@ -2054,6 +2055,12 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
 + Request (application/jason)
 
         https://www.realmassive.com/api/v1/spaces/search?building.address.city=Houston&space_available=[25000:]&limit=2
+        
++ Repsonse 400 (application/json)
+
+        {
+          "error": "At least one of the following is required to search: building.master_key, building.market, building.address.city, building.address.zipcode, building.manager.key, building.manager.owner.master_key, building.manager.members.master_key, geo"
+        }
 
 + Response 200 (application/json)
 
@@ -2308,6 +2315,7 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
 
 ## Search for a Space by full text query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
+This search works, but is deprecated in favor of our fast search using the "/search" path.
 
 + Parameters
 
@@ -2450,6 +2458,12 @@ Note:
                 "viewers": []
                 }
             ]
+        }
+
++ Response 401 (application/json)
+
+        {
+          "error": "This server could not verify that you are authorized to access the document you requested. Either you supplied the wrong credentials (e.g., bad password), or your browser does not understand how to supply the credentials required."
         }
 
 ## Creating a Portfolio [/portfolios?title={title_string}]
