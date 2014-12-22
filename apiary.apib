@@ -26,9 +26,8 @@ The RealMassive API is a RESTful API that communicates overs the HTTP protocol. 
 
 ### Resources
 A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns,
-nouns that hopefully that make sense to the API consumer. Services—special resources that perform actions on other resources— are exposed as verbs.
-Services attached to resources operate specifically on that resource. All resources are returned in JSON, unless other formats are specifically
-requested. Relations are used to specialize the results of a resource. For example, /markets/market-id/submarkets would return the Submarkets for
+nouns that hopefully that make sense to the API consumer. All resources are returned in JSON, unless other formats are specifically
+requested. Relations are used to specialize the results of a resource. For example, ``/markets/market-id/submarkets`` would return the Submarkets for
 the specific Market identified by its market-id value.
 
 All requests must be properly URL encoded, including parameters and values.
