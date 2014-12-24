@@ -10,7 +10,7 @@ The RealMassive API gives you real time access to our nationwide database of com
  
 ## Quickstart
 
-The RealMassive API is a RESTful API that communicates overs the HTTP protocol. Here's what you need to know to get started quickly:
+The RealMassive API is a RESTful API that communicates over the HTTP protocol. Here's what you need to know to get started quickly:
   * **https://www.realmassive.com/api/v1** is the root endpoint.
   * You need an API token to make API calls. Apply for one in our [Developer's Area]().
   * Use simple authorization (email/password) and/or your API token for API call authorization.
@@ -22,12 +22,12 @@ The RealMassive API is a RESTful API that communicates overs the HTTP protocol. 
 | `GET /api/v1/spaces/:id` | Get the space identified by uinque ID, `:id` |
 | `GET /api/v1/buildings/:id` | Get the building identified by uinque ID, `:id` |
 | `GET /api/v1/markets` | Get a list of all markets |
-| `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find markets near (30,-97) (central Texas) |
-| `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all spaces in Austin, TX |
+| `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find markets near (30,-97) with a 100 km radius (central Texas) |
+| `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all spaces with an Austin, TX address |
 
 ### Resources
-A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns,
-nouns that hopefully that make sense to the API consumer. All resources are returned in JSON, unless other formats are specifically
+A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns
+that hopefully that make sense to the API consumer. All resources are returned in JSON, unless other formats are specifically
 requested. Relations are used to specialize the results of a resource. For example, ``/markets/market-id/submarkets`` would return the Submarkets for
 the specific Market identified by its market-id value.
 
