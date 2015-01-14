@@ -37,12 +37,12 @@ The following resources are exposed and accessible via resource URIs.
 
 | Resource | URI | Notes |
 |---|---|---|
-| Building | `/building` | Represents a physical buildings in our database. |
-| Market | `/market` | Represents the markets in which we operate. |
-| Organization | `/organization` | Represents Users' organizations. |
-| Portfolio | `/portfolio` | Represents a collection of spaces. |
-| Space | `/space` | Represents and available Space for lease. |
-| User | `/user` | Represents Users on our system. |
+| Buildings | `/building` | Represents a physical buildings in our database. |
+| Markets | `/market` | Represents the markets in which we operate. |
+| Organizations | `/organization` | Represents Users' organizations. |
+| Portfolios | `/portfolio` | Represents a collection of spaces. |
+| Spaces | `/space` | Represents and available Space for lease. |
+| Users | `/user` | Represents Users on our system. |
 
 
 ## Group Buildings
@@ -86,7 +86,7 @@ attributes, more fields may be added in the future.
 
 ### Example: Fetch a Building by its unique ID [GET]
 
-Use this to retrieve a building by its unique ID.
+Use this to retrieve a `Building` by its unique ID.
 
 + Parameters
     + id (required, integer) ... the unique ID for this building
@@ -160,7 +160,8 @@ Use this to retrieve a building by its unique ID.
 ## Fetch all Buildings [/api/v1/buildings{?limit,cursor}]
 Use this to retrieve a list of all `Buildings` in the RealMassive database. 
 ### Notes
-  * This query isn’t optimized for speed, it’s optimized for sifting through the entire Building Collection. For speedy searches, you’ll want to use Building search.
+  * This query isn’t optimized for speed, it’s optimized for sifting through the entire `Building` Collection. For speedy searches, you’ll want
+  to use `Building` search.
   * Your results will be batched (the default batch size is 70).
   * To receive the next batch of results, rerun the query with the cursor provided in the results.
   * You may limit your batch size in the query by passing the optional `limit` parameter.
@@ -878,9 +879,9 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
         }
         
 ## Space Collection [/api/v1/spaces{?limit,cursor}]
-Use this to retrieve a list of all spaces in the RealMassive Database. 
+Use this to retrieve a list of all `Spaces` in the RealMassive Database. 
 ### Notes
-  * This query is not optimized for speed, it is optimized for sifting through the entire Space Collection. For speedy searches use Space Search.
+  * This query is not optimized for speed, it is optimized for sifting through the entire `Space` Collection. For speedy searches use `Space` Search.
   * Your results will be batched (the default batch size is 70).
   * To receive the next batch of results, rerun the query with the cursor provided in the results.
   * You may adjust your limit size on the query by passing the optional limit parameter.
