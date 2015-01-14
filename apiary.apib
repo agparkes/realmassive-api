@@ -3424,8 +3424,8 @@ Several specific HTTP request headers are used as described in the following tab
 
 | Header  | Supported Values  | Description | Required? | 
 |---|---|---|---|
-| Accept  | Comma-delimited list of media types or media type patterns.  | Indicates to the server what media type(s) this client is prepared to accept.  | Recommended, on requests that will produce a response message body.  |
-| Authorization | "Basic " plus username and password (per RFC 2617).  | Identifies the authorized user making this request.  | Yes, on all requests not using OAuth.  |
+| `Accept`  | Comma-delimited list of media types or media type patterns.  | Indicates to the server what media type(s) this client is prepared to accept.  | Recommended, on requests that will produce a response message body.  |
+| `Authorization` | "Basic " plus username and password (per RFC 2617).  | Identifies the authorized user making this request.  | Yes, on all requests not using OAuth.  |
 
 ### Response Headers
 API calls are rate limited. Read the response headers to determine how many calls you have left for a given time period
