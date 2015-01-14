@@ -9,39 +9,35 @@ Here are a few key ways our API can help you:
   * Create, share, and manage your market surveys
   * Create, share, and manage your organization’s inventory and availability listings
 
-TODO: FROM HERE
-
 ## Quickstart
 
 The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer) that communicates over the HTTP protocol. Here's what you need to know to get started quickly:
   * **Root endpoint**: [https://www.realmassive.com/api/v1](https://www.realmassive.com/api/v1)
-  * API token: You need an API token to make API calls. Apply for one in our [Developer's Area]().
-  * API call authorization: Use simple authorization (email/password) and/or your API token for API call authorization.
-  * URL encoding: All requests must be properly URL encoded, including parameters and values.
-
-If you need help using our API, please visit our [Developer's Area]() or email [dev-help@realmassive.com](mailto://dev-help@realmassive.com).
+  * **API token**: You’ll need an API token to make API calls. You can apply for one in our [Developer's Area](). We’ll assign and send your token immediately.
+  * **API call authorization**: You will use simple authorization (email/password) and/or your API token for API call authorization.
+  * **URL encoding**: All requests must be properly URL encoded, including parameters and values.
 
 ### A Few Example API Calls
 | API Call | Meaning |
 | -------- | ------- |
-| `GET /api/v1/spaces/:id` | Get the space identified by uinque ID, `:id` |
-| `GET /api/v1/buildings/:id` | Get the building identified by uinque ID, `:id` |
-| `GET /api/v1/markets` | Get a list of all markets |
-| `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find markets near (30,-97) with a 100 km radius (central Texas) |
-| `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all spaces with an Austin, TX address |
+| `GET /api/v1/spaces/:id` | Get the `Space` identified by unique ID, `:id` |
+| `GET /api/v1/buildings/:id` | Get the `Building` identified by unique ID, `:id` |
+| `GET /api/v1/markets` | Get a list of all `Markets` |
+| `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find `Markets` near (30,-97) with a 100 km radius (central Texas) |
+| `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all `Spaces` with an Austin, TX address |
 
 ### Resources
-A resource is a network-accessible data object or service accessed by a URI. A collection is a set of resources. Resources are presented as nouns
-that hopefully that make sense to the API consumer. All resources are returned in JSON, unless other formats are specifically
-requested. Relations are used to specialize the results of a resource. For example, ``/markets/market-id/submarkets`` would return the Submarkets for
-the specific Market identified by its market-id value.
+A resource is a network-accessible data object or service accessed by a uniform resource identifier (URI). A collection is a set of resources. 
+Resources are presented as nouns that hopefully make sense to the API consumer. All resources are returned in JSON, unless other formats are 
+specifically requested. Relations are used to specialize the results of a resource. For example, `/markets/market-id/submarkets` would return the 
+`Submarkets` for the specific `Market` identified by its market-id value.
 
 #### URI Space
 The following resources are exposed and accessible via resource URIs.
 
 | Resource | URI | Notes |
 |---|---|---|
-| Building | `/building` | Represents physical buildings in our database. |
+| Building | `/building` | Represents a physical buildings in our database. |
 | Market | `/market` | Represents the markets in which we operate. |
 | Organization | `/organization` | Represents Users' organizations. |
 | Portfolio | `/portfolio` | Represents a collection of spaces. |
@@ -51,9 +47,8 @@ The following resources are exposed and accessible via resource URIs.
 
 ## Group Buildings
 
-**Buildings** represent physical buildings. A building can have one or more spaces
-associated with it. Each building contains at least the following attributes, and more
-fields may be added.
+`Buildings` represent physical buildings. A `Building` can have one or more spaces associated with it. Each `Building` contains at least the following
+attributes, more fields may be added in the future.
 
 ## Building Attributes
  * `ac` - whether or not the building has air conditioning
@@ -87,11 +82,11 @@ fields may be added.
  * ``type`` - lease, sublease, for sale
  * ``year_built``
  
-## Fetch a Building by id [/api/v1/buildings/{id}]
+## Fetch a Building by ID [/api/v1/buildings/{id}]
 
-### Example: Fetch a building by its ID [GET]
+### Example: Fetch a Building by its unique ID [GET]
 
-Use this to retrieve a building by its unique id.
+Use this to retrieve a building by its unique ID.
 
 + Parameters
     + id (required, integer) ... the unique ID for this building
@@ -163,12 +158,12 @@ Use this to retrieve a building by its unique id.
 
 
 ## Fetch all Buildings [/api/v1/buildings{?limit,cursor}]
-Use this to retrieve a list of all buildings in the RealMassive Database. 
+Use this to retrieve a list of all `Buildings` in the RealMassive database. 
 ### Notes
-  * This query is not optimized for speed, it is optimized for sifting through the entire Building Collection. For speedy searches use Building Search.
-  * Results are batched (default batch size is 70).
-  * Rerun the query with the cursor provided in the results to receive the next batch.
-  * You may adjust your limit size on the query by passing the optional limit paramter.
+  * This query isn’t optimized for speed, it’s optimized for sifting through the entire Building Collection. For speedy searches, you’ll want to use Building search.
+  * Your results will be batched (the default batch size is 70).
+  * To receive the next batch of results, rerun the query with the cursor provided in the results.
+  * You may limit your batch size in the query by passing the optional `limit` parameter.
 
 ### Fetch all Buildings [GET]
 
@@ -414,7 +409,7 @@ Use this to retrieve a list of all buildings in the RealMassive Database.
 
 ## Building Search [/api/v1/buildings/search{?address%2Eaddress,address%2Ecity,address%2Efull_state,address%2Egeo,address%2Egeo%2Elatitude,address%2Egeo%2Elongitude,address%2Estate,address%2Estreet,address%2Ezipcode,building_class,building_parking_ratio,cover%2Eraw_url,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,key,location_url,lot_size,manager%2Eadmins%2Ecreated_at,manager%2Eadmins%2Eedited_at,manager%2Eadmins%2Efirst_name,manager%2Eadmins%2Eis_premium,manager%2Eadmins%2Elast_name,manager%2Eadmins%2Ephoto,manager%2Ekey,manager%2Emembers%2Ecreated_at,manager%2Emembers%2Eedited_at,manager%2Emembers%2Efirst_name,manager%2Emembers%2Eis_premium,manager%2Emembers%2Elast_name,manager%2Emembers%2Ephoto,manager%2Ename,manager%2Eowner%2Ecreated_at,manager%2Eowner%2Eedited_at,manager%2Eowner%2Efirst_name,manager%2Eowner%2Eis_premium,manager%2Eowner%2Elast_name,manager%2Eowner%2Ephoto,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Notes
-Building search is very flexible. You can search, filter, and sort.
+Our `Building` search is very flexible. You can use this to search, filter, and sort `Buildings` from our database.
 
 ### Search for a Building [GET]
 
@@ -624,8 +619,8 @@ Building search is very flexible. You can search, filter, and sort.
         {"error": "Wrong address parameters."}
 
 # Group Spaces
-## Fetch Spaces by id [/api/v1/spaces/{id}]
-### Fetch a space by id [GET]
+## Fetch Spaces by ID [/api/v1/spaces/{id}]
+### Fetch a Space by ID [GET]
 
 + Parameters
 
@@ -886,9 +881,9 @@ Building search is very flexible. You can search, filter, and sort.
 Use this to retrieve a list of all spaces in the RealMassive Database. 
 ### Notes
   * This query is not optimized for speed, it is optimized for sifting through the entire Space Collection. For speedy searches use Space Search.
-  * Results are batched (default batch size is 70).
-  * Rerun the query with the cursor provided in the results to receive the next batch.
-  * You may adjust your limit size on the query by passing the optional limit paramter.
+  * Your results will be batched (the default batch size is 70).
+  * To receive the next batch of results, rerun the query with the cursor provided in the results.
+  * You may adjust your limit size on the query by passing the optional limit parameter.
 
 ### List all Spaces [GET]
 
@@ -2051,7 +2046,7 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
           "number_found": 35191
         }
         
-## Search for a space [/api/v1/spaces/search{?building%2Eac,building%2Eaddress%2Eaddress,building%2Eaddress%2Ecity,building%2Eaddress%2Efull_state,building%2Eaddress%2Egeo,building%2Eaddress%2Egeo%2Elatitude,building%2Eaddress%2Egeo%2Elongitude,building%2Eaddress%2Estate,building%2Eaddress%2Estreet,building%2Eaddress%2Ezipcode,building%2Ebuilding_class,building%2Ebuilding_parking_ratio,building%2Eclear_height,building%2Ecreated_at,building%2Ecreated_by%2Emaster_key,building%2Ecreated_by%2Eis_premium,building%2Ecreated_by%2Elast_name,building%2Ecreated_by%2Efirst_name,building%2Eedited_at,building%2Elot_size,building%2Elot_size_units,building%2Emanager%2Ekey,building%2Emarket,building%2Emaster_key,building%2Emanager%2Ename,building%2Emanager%2Ekey,building%2Emanager%2Eowner%2Efirst_name,building%2Emanager%2Eowner%2Elast_name,building%2Emanager%2Eowner%2Ecreated_at,building%2Emanager%2Eowner%2Eedited_at,building%2Emanager%2Eowner%2Eis_premium,building%2Emanager%2Eowner%2Ephoto,building%2Emanager%2Emembers%2Ephoto,building%2Emanager%2Eadmins%2Ecreated_at,building%2Emanager%2Emembers%2Eis_premium,building%2Emanager%2Emembers%2Eedited_at,building%2Emanager%2Emembers%2Efirst_name,building%2Emanager%2Eadmins%2Efirst_name,building%2Emanager%2Eadmins%2Ephoto,building%2Emanager%2Eadmins%2Eis_premium,building%2Emanager%2Eadmins%2Elast_name,building%2Emanager%2Eadmins%2Eedited_at,building%2Emanager%2Emembers%2Ecreated_at,building%2Emanager%2Emembers%2Elast_name,building%2Eoperating_expenses,building%2Eparking_rate,building%2Eproperty_owner,building%2Esize,building%2Esize_units,building%2Esprinkler,building%2Esubmarket,building%2Etitle,building%2Etype,building%2Eyear_built,contacts%2Ecreated_at,contacts%2Eedited_at,contacts%2Efirst_name,contacts%2Elast_name,contacts%2Ephoto,contacts%2Eis_premium,cover%2Eurl,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,description,divisible,expiration_date,floor_number,is_promoted,key,lease_term,location_url,marketed_cost,num_parking_spaces,number_of_attachments,rate,reserved,search_rate,space_available,space_available_units,space_id,space_type,status,ti,title,total_cost,unit_number}]
+## Search for a Space [/api/v1/spaces/search{?building%2Eac,building%2Eaddress%2Eaddress,building%2Eaddress%2Ecity,building%2Eaddress%2Efull_state,building%2Eaddress%2Egeo,building%2Eaddress%2Egeo%2Elatitude,building%2Eaddress%2Egeo%2Elongitude,building%2Eaddress%2Estate,building%2Eaddress%2Estreet,building%2Eaddress%2Ezipcode,building%2Ebuilding_class,building%2Ebuilding_parking_ratio,building%2Eclear_height,building%2Ecreated_at,building%2Ecreated_by%2Emaster_key,building%2Ecreated_by%2Eis_premium,building%2Ecreated_by%2Elast_name,building%2Ecreated_by%2Efirst_name,building%2Eedited_at,building%2Elot_size,building%2Elot_size_units,building%2Emanager%2Ekey,building%2Emarket,building%2Emaster_key,building%2Emanager%2Ename,building%2Emanager%2Ekey,building%2Emanager%2Eowner%2Efirst_name,building%2Emanager%2Eowner%2Elast_name,building%2Emanager%2Eowner%2Ecreated_at,building%2Emanager%2Eowner%2Eedited_at,building%2Emanager%2Eowner%2Eis_premium,building%2Emanager%2Eowner%2Ephoto,building%2Emanager%2Emembers%2Ephoto,building%2Emanager%2Eadmins%2Ecreated_at,building%2Emanager%2Emembers%2Eis_premium,building%2Emanager%2Emembers%2Eedited_at,building%2Emanager%2Emembers%2Efirst_name,building%2Emanager%2Eadmins%2Efirst_name,building%2Emanager%2Eadmins%2Ephoto,building%2Emanager%2Eadmins%2Eis_premium,building%2Emanager%2Eadmins%2Elast_name,building%2Emanager%2Eadmins%2Eedited_at,building%2Emanager%2Emembers%2Ecreated_at,building%2Emanager%2Emembers%2Elast_name,building%2Eoperating_expenses,building%2Eparking_rate,building%2Eproperty_owner,building%2Esize,building%2Esize_units,building%2Esprinkler,building%2Esubmarket,building%2Etitle,building%2Etype,building%2Eyear_built,contacts%2Ecreated_at,contacts%2Eedited_at,contacts%2Efirst_name,contacts%2Elast_name,contacts%2Ephoto,contacts%2Eis_premium,cover%2Eurl,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,description,divisible,expiration_date,floor_number,is_promoted,key,lease_term,location_url,marketed_cost,num_parking_spaces,number_of_attachments,rate,reserved,search_rate,space_available,space_available_units,space_id,space_type,status,ti,title,total_cost,unit_number}]
 
 ### Fast search for spaces
 
@@ -2316,9 +2311,9 @@ Use this to retrieve a list of all spaces in the RealMassive Database.
     + unit_number (optional, string) ... The space's unit number
     
 
-## Search for a Space by full text query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
+## Search for a Space by Full Text Query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
-This search works, but is deprecated in favor of our fast search using the ```/search``` path.
+This search works, but is deprecated in favor of our fast search using the `/search` path.
 
 + Parameters
 
@@ -2404,14 +2399,15 @@ This search works, but is deprecated in favor of our fast search using the ```/s
 # Group Portfolios
 
 ## Introduction
-You can create market surveys by using our Portfolio resource. A portfolio, like a market survey, is a list of spaces under consideration. Spaces added to a Portfolio
-are copies of the original spaces; changes made to Portfolio spaces do not propagate down to the original space. You can use the Portfolio API to share, manage, and
-edit portfolio spaces with the portfolio. You can also use the API to receive real-time updates made in the portfolio or original spaces. Please note, changes to the
-original spaces may propagate down to the portfolio space if the portfolio owner allows it. The Portfolio Space has a revision system similiar to that which Spaces have. 
-When the original Space (called the master) is changed, all related Portfolio Spaces are checked for a conflict. If there is no conflict, changes from master are 
+Our Portfolio resource enables you to create market surveys or “portfolios,” which  are lists of spaces under consideration. You can use the 
+Portfolio API call to share, manage, and edit portfolio spaces. Portfolios are built for collaboration, so the portfolio owner and collaborators
+are able to make notes and edit space details for properties listed in their portfolios. Portfolios only include copies (denorms) of the original
+space listings, so changes and notes within the portfolios won’t affect the public (master)  space listings. However changes to master listings
+will be automatically carried over to portfolios, as long as they do not conflict with space details that have been entered by the portfolio owner
+or collaborators. If they do conflict with the portfolio owner’s information, the portfolio owner will be asked to accept or discard the changes
+manually.
 
-automatically applied to Portfolio Space. Otherwise, nothing happend and owner has to apply or discard this changes mannually.
-## Portfolio properties
+## Portfolio Attributes
 
 * ``agents``
 * ``archived``
@@ -2427,11 +2423,11 @@ automatically applied to Portfolio Space. Otherwise, nothing happend and owner h
 * ``viewers``
 
 ## View Portfolios [/portfolios]
-### Fetch all of the portfolios of the currently logged in user [GET]
+### Fetch all of the portfolios for the currently logged in user [GET]
 
 Note:
 
-* You must be logged into a user with the login cookies stored, review the User API for more information on this topic.
+* You’ll need to log in as a user with the login cookies stored. There’s more information on this topic in the User API.
 
 + Request
 
@@ -2477,10 +2473,9 @@ Note:
 ## Creating a Portfolio [/portfolios?title={title_string}]
 ### Create a portfolio with a given title [POST]
 
-Note
-
-* make sure you portfolio title is URL encoded
-* verify that you that your PUT is using the JSON/Application format
+Note:
+* You’ll need to make sure you portfolio title is URL encoded.
+* Verify that your `PUT` is using the JSON/Application format.
 
 + Request (application/json)
 
@@ -2490,8 +2485,8 @@ Note
 
 
 
-## Fetch Portfolios by id [/portfolios/{id}]
-### Fetch the details of a portfolio by id [GET]
+## Fetch Portfolios by ID [/portfolios/{id}]
+### Fetch the details of a portfolio by ID [GET]
 
 + Parameters
 
@@ -2555,7 +2550,7 @@ Note
         ]
         }
         
-### Delete portfolio by id [DELETE]
+### Delete portfolio by ID [DELETE]
 
 + Request
 
@@ -2564,7 +2559,7 @@ Note
 + Response 200
 
 ## Archive or Unarchive a Portfolio [/portfolios/{id}/{archive|unarchive}]
-### Archive or Unarchive a Portfolio by id and parameter [POST]
+### Archive or Unarchive a Portfolio by ID and parameter [POST]
 
 + Parameters
 
@@ -2578,7 +2573,7 @@ Note
 + Response 200
 
 ## Spaces within a Portfolio [/portfolios/{id}/spaces]
-### Fetch all the space data from a  portfolio by id [GET]
+### Fetch all the Space data from a  portfolio by ID [GET]
 
 + Parameters
 
@@ -2833,7 +2828,7 @@ Note
         }
 
         
-### Adding a space to a portfolio [POST]
+### Add a Space to a Portfolio [POST]
 
 Required Headers:
 
@@ -2846,7 +2841,7 @@ Required Body:
 Note:
 
 * Make sure the body is url encoded
-* Content-Length may be required, if so, use the length of "Body"
+* `Content-Length` may be required, if so, use the length of "Body"
 
 + Request (application/json)
 
@@ -3093,11 +3088,11 @@ Note:
         }
     
 ## Spaces within a Portfolio [/portfolios/{id}/spaces/{key}]    
-### Deleting a space from a portfolio [DELETE]
+### Deleting a Space from a Portfolio [DELETE]
 
 Note:
 
-* To remove a space from a portfolio you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+* To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
 
 + Request (application/json)
 
@@ -3109,8 +3104,10 @@ Note:
             "message": ""
         }
         
-##  History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history={building|lease_term|description|title|expiration_date|rate_units|floor_number|availability_date|rate|space_available_units|office_finish_percentage|ti|space_available|space_type|unit_number}]    
-### Changes can be made to a portfolio space allowing collaboration, to get the history of the changes use this request [GET]
+## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history={building|lease_term|description|title|expiration_date|rate_units|floor_number|availability_date|rate|space_available_units|office_finish_percentage|ti|space_available|space_type|unit_number}]    
+### Get the history of a Portfolio Space’s changes
+
+Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
 
 Note:
 
@@ -3133,7 +3130,6 @@ Note:
     + space_available (string)
     + space_type (string)
     + unit_number (string)
-
 
 + Request (application/json)
 
@@ -3171,11 +3167,11 @@ Note:
         }
 
 ##  Portfolio Space Notifications [/portfolios/{id}/spaces/{key}/notifications]    
-### When a space is collaborated upon, a notification is sent to the other viewers of the portfolio to inform them something has changed [GET]
+### When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
 
 Note:
 
-* To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+* To view the notifications of a Portfolio Space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
 
 + Request (application/json)
 
@@ -3198,7 +3194,7 @@ Note:
 + Response 200 (application/json)
 
 ##  Portfolio Collaborators [/portfolios/{id}/collaborators]    
-### Fetch all of the collaborators on a given portfolio [GET]
+### Fetch all of the collaborators on a given Portfolio [GET]
 
 + Request (application/json)
 
@@ -3226,9 +3222,9 @@ Note:
 
 Note:
 
-* set the permissions for a user using the 'write' property, to allow them to be a collaborate use 'write'
-* Make sure the body is url encoded
-* Content-Length may be required, if so, use the length of "Body"
+* You can set the permissions for a user using the “write” property---to allow them to collaborate, use ”write”
+* Make sure the body is URL encoded
+* `Content-Length` may be required; if so, use the length of "Body"
 
 + Request (application/json)
 
@@ -3261,9 +3257,10 @@ Note:
 
 ## Group Users
 
-The **User API** is used for logging into a preexisting “manually registered” RealMassive user. Logging in allows you to obtaining access to a users contact information, surveys, and organizations.
+The User API is used for logging into a preexisting “manually registered” RealMassive user’s data. Logging in allows you to obtain access
+to a User’s contact information, surveys (Portfolios), and Organizations.
 
-Note: Creation of a RealMassive user is in development and will be documented upon completion.
+Note: Creation of a RealMassive User is in development and will be documented upon completion.
 
 ## User Attributes
 # Read only
@@ -3303,8 +3300,8 @@ Required Body:
 
 Note:
 
-* Make sure the body is url encoded
-* Content-Length may be required, if so, use the length of "Body"
+* You’ll need to make sure the body is URL encoded
+* `Content-Length` may be required, if so, use the length of "Body"
 
 + Request
 
@@ -3326,7 +3323,7 @@ Note:
         }
         
 ## Fetch Current User [/api/v1/users/current]
-### Accessing user information [GET]
+### Access User information [GET]
 
 + Request (application/json)
 
@@ -3368,29 +3365,57 @@ Note:
         
 ## Group Version
 
-The **Version** call is used to determine which verison of the RealMassive webapp and API are serving.
-
-## Version Attributes
-# Read only
-* ``last_commit_time``
-* ``commit_hash``
-* ``version_string``
+The **Version** call is used to determine which verison of the RealMassive WebApp and API are serving. If the User is logged in, basic User
+information will also be returned with this call.
 
 ## Version [/version]
 ### Accessing version information [GET]
 
 + Request (application/json)
 
-        https://www.realmassive.com/api/v1/version
+        https://www.realmassive.com/api/version
 
 + Response 200 (application/json)
 
         {
-            "last_commit_time": "Thu Oct 9 11:50:33 2014 -0500",
-            "commit_hash": "16c4e17634d7546e1499b073fcb0b4514fd8cf14",
-            "version_str": "4.1-43-g16c4e17"
+          "gae": {
+            "instance_id": "00c61b117c78bc038823f151a77781ba055b1c",
+            "datacenter": "us2",
+            "tz": "UTC",
+            "user": {
+              "user_organization": "realmassive.com",
+              "user_id": "107763493984165479516",
+              "user_is_admin": "1",
+              "user_nickname": "jason.vertrees"
+            },
+            "http": {
+              "http_accept": "*/*",
+              "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36",
+              "http_host": "www.realmassive.com",
+              "remote_addr": "24.155.161.125",
+              "http_accept_language": "en-US,en;q=0.8",
+              "http_cache_control": "no-cache",
+              "http_x_appengine_country": "US"
+            },
+            "application_id": "s~realmassive-prod",
+            "runtime": "python27",
+            "current_version_id": "rc-5-2-4.381498508053125006",
+            "server": {
+              "server_software": "Google App Engine/1.9.17",
+              "server_port": "443",
+              "server_name": "www.realmassive.com",
+              "server_protocol": "HTTP/1.1"
+            }
+          },
+          "latest_api": "https://www.realmassive.com/api/v1",
+          "versions": {
+            "last_commit_time": "Tue Jan 13 17:34:24 2015 -0600",
+            "search_version": "RealMassive v1",
+            "commit_hash": "b76bf4ce80f940b00152d725c162b3ee02db6428",
+            "git_version": "5.2.4",
+            "api_version": "v1"
+          }
         }
-
 
 ## Group HTTP Transport Details
 ### Request Headers
@@ -3406,12 +3431,12 @@ API calls are rate limited. Read the response headers to determine how many call
 
 | Response Header | Meaning |
 | --------------- | ------- |
-| cache-control | We cache agressively for best performance |
-| content-encoding | We gzip most responses for reduced payload size |
-| content-type | The format of the data we're returning, usually, "application/json" |
-| status | See the Standard HTTP Status Codes below |
-| x-ratelimit-limit | You starting rate limit for this time period|
-| x-ratelimit-remaining | How many API calls left you have this rate period. |
+| `Cache-Control` | We cache agressively for best performance |
+| `Content-Encoding` | We gzip most responses for reduced payload size |
+| `Content-Type` | The format of the data we're returning, usually, "application/json" |
+| `Status` | See the Standard HTTP Status Codes below |
+| `X-Ratelimit-Limit` | You starting rate limit for this time period|
+| `X-Ratelimit-Remaining` | How many API calls left you have this rate period. |
 
 
 ### Standard HTTP Status Codes
@@ -3432,13 +3457,14 @@ API calls will return standard HTTP response codes as described in the following
 
 ### Error Response Message Bodies
 #### Introduction
-Successful requests will generally return an HTTP status code of 200 (OK), 201 (Created), or 204 (No Content), to indicate that 
-the requested action has been successfully performed. In addition, they might include a response message body (with an appropriate media type)
-containing a representation of the requested information. However, it is possible for a number of things to go wrong. The various underlying
-causes are described (as discussed in the previous section) by various HTTP status codes in the range 400-499 (for client side errors)
-or 500-599 (for server side problems). The description of each request type should list the possible status codes returned by that request type.
-If a response is returned with an error status code (400-499 or 500-599), the server should also return a response message body containing
-a messages data model, containing zero or more message data models, describing what went wrong. The text values of such messages might be used,
-for example, to communicate with a human user of the client side application.
+Successful requests will generally return an HTTP status code of 200 (OK), 201 (Created), or 204 (No Content), to indicate that the requested action has been successfully performed. In addition, they might include a response message body (with an appropriate media type) containing a representation of the requested information. 
+
+In the case that something goes wrong, we’ve included codes for communicating the various underlying causes by various HTTP status codes in
+the range 400-499 (for client side errors) or 500-599 (for server side problems). Each API call documented here, lists the possible status codes
+returned by that request type. If a response is returned with an error status code (400-499 or 500-599), the server should also return a response
+message body containing an encoded description describing what went wrong. The text values of such messages might be used, for example, to
+communicate with a human user of the client side application.
+
+Anything else you’d like us to include in our API? Let us know at [dev-help@realmassive.com](dev-help@realmassive.com).
 
 
