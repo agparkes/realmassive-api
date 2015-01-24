@@ -3419,6 +3419,15 @@ information will also be returned with this call.
         }
 
 ## Group HTTP Transport Details
+
+### Requests
+#### GET
+When you search, using any of the ```/search``` routes, you will receive a cursor in the payload. This cursor can sometimes be very long (eg >1300 characters) which may be
+too long for some browsers. Instead of passing the cursor on the URI you may also pass it in the HTTP request header titled "Cursor".
+
+#### POST
+When you POST data to the server, make sure you send it in the request body and make sure it's properly-formatted JSON. Also, set 'Content-Type' to 'application/json'.
+
 ### Request Headers
 Several specific HTTP request headers are used as described in the following table:
 
