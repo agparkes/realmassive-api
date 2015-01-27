@@ -47,11 +47,11 @@ The following resources are exposed and accessible via resource URIs.
 
 # Group Buildings
 
-`Buildings` represent physical buildings. A `Building` can have one or more spaces associated with it. Each `Building` contains at least the following
+`Buildings` represent physical buildings. A `Building` can have one or more `Space`s associated with it. Each `Building` contains at least the following
 attributes, more fields may be added in the future.
 
 ## Building Attributes
- * `ac` - whether or not the building has air conditioning
+ * ``ac`` - whether or not the building has air conditioning
  * ``address`` - structured address with the following format. See [Address].
  * ``attachments`` - a list of media attachments. See [Attachments].
  * ``building_class`` - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
@@ -81,81 +81,8 @@ attributes, more fields may be added in the future.
  * ``title`` - building's title
  * ``type`` - lease, sublease, for sale
  * ``year_built``
- 
-## Fetch a Building by ID [/api/v1/buildings/{id}]
 
-### Example: Fetch a Building by its unique ID [GET]
-
-Use this to retrieve a `Building` by its unique ID.
-
-+ Parameters
-    + id (required, number, `5786770113298432`) ... the unique ID for this building
-
-+ Request
-
-        https://rm-api-sandbox.appspot.com/api/v1/buildings/5786770113298432
-
-+ Response 200 (application/json)
-
-        {
-          "edited_at": "2014-11-10T07:06:40.461965+00:00",
-          "ac": "",
-          "reserved": "",
-          "attachments": [],
-          "lot_size_units": "",
-          "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAyMWh_QsM",
-          "clear_height": "",
-          "size_units": "SF",
-          "submarket": "",
-          "notification_email": "",
-          "id": "5786770113298432",
-          "market": "ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICAkJO-jgsM",
-          "size": "25134",
-          "sprinkler": "",
-          "title": "10 Lowell Junction Rd",
-          "building_class": "",
-          "created_by": {
-            "first_name": "Boston",
-            "last_name": "MA",
-            "title": "",
-            "photo": "/static/img/default_profile.jpg",
-            "company": "RealMassive",
-            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgPDx2IgJDA",
-            "is_premium": false,
-            "id": ""
-          },
-          "property_owner": "",
-          "leed": "",
-          "space_keys": [
-            "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgIDIvPHyCgw"
-          ],
-          "type": "Industrial",
-          "operating_expenses": "0.0",
-          "parking_rate": "",
-          "key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIDIluGjCgw",
-          "address": {
-            "city": "Andover",
-            "state": "MA",
-            "street": "10 Lowell Junction Road",
-            "geo": {
-              "latitude": "42.615032",
-              "longitude": "-71.156878"
-            },
-            "zipcode": "01810"
-          },
-          "location_url": "/us/ma/andover/10-lowell-junction-rd/5786770113298432",
-          "permissions": [
-            "Read"
-          ],
-          "promoted_spaces": "",
-          "year_built": "1978",
-          "created_at": "2014-11-10T07:06:39.954695+00:00",
-          "cover": null,
-          "lot_size": "",
-          "building_parking_ratio": ""
-        }
-
-## Fetch all Buildings [/api/v1/buildings{?limit,cursor}]
+## Buildings Collection [/api/v1/buildings{?limit,cursor}]
 Use this to retrieve a list of all `Buildings` in the RealMassive database. 
 ### Notes
   * This query isn’t optimized for speed, it’s optimized for sifting through the entire `Building` Collection. For speedy searches, you’ll want
@@ -164,7 +91,7 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
   * To receive the next batch of results, rerun the query with the cursor provided in the results.
   * You may limit your batch size in the query by passing the optional `limit` parameter.
 
-### Fetch all Buildings [GET]
+### Buildings Collection [GET]
 
 + Parameters
     + limit = `70` (optional, integer) ... Number of results to return in this batch
@@ -174,7 +101,7 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
 
         https://rm-api-sandbox.appspot.com/api/v1/buildings?limit=2
 
-+ Response 200 (application/json)
++ Response 200
 
         {
           "cursor": "False:CpY...M",
@@ -290,7 +217,81 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
           ],
           "number_found": 30612
         }
-        
+ 
+## Building [/api/v1/buildings/{id}]
+
+### Building [GET]
+
+Use this to retrieve a `Building` by its unique ID.
+
++ Parameters
+
+    + id (required, number, `5786770113298432`) ... the unique ID for this building
+
++ Request
+
+        https://rm-api-sandbox.appspot.com/api/v1/buildings/5786770113298432
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2014-11-10T07:06:40.461965+00:00",
+          "ac": "",
+          "reserved": "",
+          "attachments": [],
+          "lot_size_units": "",
+          "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAyMWh_QsM",
+          "clear_height": "",
+          "size_units": "SF",
+          "submarket": "",
+          "notification_email": "",
+          "id": "5786770113298432",
+          "market": "ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICAkJO-jgsM",
+          "size": "25134",
+          "sprinkler": "",
+          "title": "10 Lowell Junction Rd",
+          "building_class": "",
+          "created_by": {
+            "first_name": "Boston",
+            "last_name": "MA",
+            "title": "",
+            "photo": "/static/img/default_profile.jpg",
+            "company": "RealMassive",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgPDx2IgJDA",
+            "is_premium": false,
+            "id": ""
+          },
+          "property_owner": "",
+          "leed": "",
+          "space_keys": [
+            "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgIDIvPHyCgw"
+          ],
+          "type": "Industrial",
+          "operating_expenses": "0.0",
+          "parking_rate": "",
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIDIluGjCgw",
+          "address": {
+            "city": "Andover",
+            "state": "MA",
+            "street": "10 Lowell Junction Road",
+            "geo": {
+              "latitude": "42.615032",
+              "longitude": "-71.156878"
+            },
+            "zipcode": "01810"
+          },
+          "location_url": "/us/ma/andover/10-lowell-junction-rd/5786770113298432",
+          "permissions": [
+            "Read"
+          ],
+          "promoted_spaces": "",
+          "year_built": "1978",
+          "created_at": "2014-11-10T07:06:39.954695+00:00",
+          "cover": null,
+          "lot_size": "",
+          "building_parking_ratio": ""
+        }
+
 ## Building Search [/api/v1/buildings/search{?address%2Eaddress,address%2Ecity,address%2Efull_state,address%2Egeo,address%2Egeo%2Elatitude,address%2Egeo%2Elongitude,address%2Estate,address%2Estreet,address%2Ezipcode,building_class,building_parking_ratio,cover%2Eraw_url,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,key,location_url,lot_size,manager%2Eadmins%2Ecreated_at,manager%2Eadmins%2Eedited_at,manager%2Eadmins%2Efirst_name,manager%2Eadmins%2Eis_premium,manager%2Eadmins%2Elast_name,manager%2Eadmins%2Ephoto,manager%2Ekey,manager%2Emembers%2Ecreated_at,manager%2Emembers%2Eedited_at,manager%2Emembers%2Efirst_name,manager%2Emembers%2Eis_premium,manager%2Emembers%2Elast_name,manager%2Emembers%2Ephoto,manager%2Ename,manager%2Eowner%2Ecreated_at,manager%2Eowner%2Eedited_at,manager%2Eowner%2Efirst_name,manager%2Eowner%2Eis_premium,manager%2Eowner%2Elast_name,manager%2Eowner%2Ephoto,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Notes
 Our `Building` search is very flexible. You can use this to search, filter, and sort `Buildings` from our database.
@@ -3247,7 +3248,7 @@ Note:
         }
         
         
-## Group Version
+# Group Version
 
 The **Version** call is used to determine which verison of the RealMassive WebApp and API are serving. If the User is logged in, basic User
 information will also be returned with this call.
@@ -3257,7 +3258,7 @@ information will also be returned with this call.
 
 + Request (application/json)
 
-        https://www.realmassive.com/api/version
+        https://rm-api-sandbox.appspot.com/api/version
 
 + Response 200 (application/json)
 
