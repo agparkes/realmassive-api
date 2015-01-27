@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://rm-api-sandbox.appspot.com/
+HOST: https://rm-api-sandbox.appspot.com
 
 # RealMassive API — The API for real-time commercial real estate information
 
@@ -45,7 +45,7 @@ The following resources are exposed and accessible via resource URIs.
 | Users | `/users` | Represents Users on our system. |
 
 
-## Group Buildings
+# Group Buildings
 
 `Buildings` represent physical buildings. A `Building` can have one or more spaces associated with it. Each `Building` contains at least the following
 attributes, more fields may be added in the future.
@@ -89,7 +89,7 @@ attributes, more fields may be added in the future.
 Use this to retrieve a `Building` by its unique ID.
 
 + Parameters
-    + id (required, integer) ... the unique ID for this building
+    + id (required, number, `5786770113298432`) ... the unique ID for this building
 
 + Request
 
@@ -2989,13 +2989,13 @@ Note:
         }
         
 ## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history={building,lease_term,description,title,expiration_date,rate_units,floor_number,availability_date,rate,space_available_units,office_finish_percentage,ti,space_available,space_type,unit_number}]
-### Get the history of a Portfolio Space’s changes
-
 Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
 
 Note:
 
 * To view the history of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
+
+### Get the history of a Portfolio Space’s changes [GET]
 
 + Parameters
 
