@@ -94,14 +94,10 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
 ### Buildings Collection [GET]
 
 + Parameters
-    + limit = `70` (optional, integer) ... Number of results to return in this batch
+    + limit = `70` (optional, integer, `3`) ... Number of results to return in this batch
     + cursor (optional, cursor) ... Provide the cursor to continue to your next batch of results
 
-+ Request
-
-        https://rm-api-sandbox.appspot.com/api/v1/buildings?limit=2
-
-+ Response 200
++ Response 200 (application/json)
 
         {
           "cursor": "False:CpY...M",
@@ -217,7 +213,8 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
           ],
           "number_found": 30612
         }
- 
+
+
 ## Building [/api/v1/buildings/{id}]
 
 ### Building [GET]
@@ -227,10 +224,6 @@ Use this to retrieve a `Building` by its unique ID.
 + Parameters
 
     + id (required, number, `5786770113298432`) ... the unique ID for this building
-
-+ Request
-
-        https://rm-api-sandbox.appspot.com/api/v1/buildings/5786770113298432
 
 + Response 200 (application/json)
 
@@ -301,7 +294,7 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
 + Parameters
     + k (optional, string) ... A token keyword associated with this building
     + address%2Eaddress (optional, string) ... The full building address
-    + address%2Ecity (optional, string) ... The building's city
+    + address%2Ecity (optional, string, `Austin`) ... The building's city
     + address%2Efull_state (optional, string) ...The building's state; currently only in the United States
     + address%2Egeo (optional, string) ... The building's geolocation
     + address%2Egeo%2Elatitude (optional, string) ... The building's latitude
@@ -358,11 +351,7 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
             + `indsutrial`
             + `flex space`
             + `medical office`
-    + limit =`10` (optional,integer) ... limit of results length
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/buildings/search?address.city=Austin&limit=2
+    + limit =`10` (optional,integer, `2`) ... limit of results length
 
 + Response 200 (application/json)
 
