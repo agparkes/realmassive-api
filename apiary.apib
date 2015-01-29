@@ -3123,14 +3123,6 @@ Note: Creation of a RealMassive User is in development and will be documented up
 ## User Authentication [/auth]
 ### Logging into a preexisting, manually registered user [POST]
 
-Required Headers:
-
-* **Content-Type:** application/x-www-form-urlencoded
-
-Required Body:
-
-* **Body:** email=johndoe@realmassive.com&password=123
-
 Note:
 
 * You’ll need to make sure the body is URL encoded
@@ -3138,8 +3130,6 @@ Note:
 
 + Request
 
-        https://www.realmassive.com/auth
-        
     + Headers
 
             Content-Type: application/x-www-form-urlencoded
@@ -3157,10 +3147,6 @@ Note:
         
 ## Fetch Current User [/api/v1/users/current]
 ### Access User information [GET]
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/users/current
 
 + Response 200 (application/json)
 
@@ -3203,10 +3189,6 @@ information will also be returned with this call.
 
 ## Version [/version]
 ### Accessing version information [GET]
-
-+ Request (application/json)
-
-        https://rm-api-sandbox.appspot.com/api/version
 
 + Response 200 (application/json)
 
