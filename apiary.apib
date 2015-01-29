@@ -2178,14 +2178,14 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
     + limit (optional, number, `2`) ... Maximum number of spaces to return
     
 
-## Search for a Space by Full Text Query [/api/v1/spaces/search_fts/{query}{?limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
+## Search for a Space by Full Text Query [/api/v1/spaces/search_fts/{?query,limit,rate_min,rate_max,space_min,space_max,types,submarkets}]
 ### Full text space search [GET]
 This search works, but is deprecated in favor of our fast search using the `/search` path.
 
 + Parameters
 
-    + query (string) ... urlencoded string
-    + limit = `80` (optional, integer) ... constrain the results to _limit_
+    + query (required, string, `austin`) ... urlencoded string
+    + limit = `80` (optional, integer, `1`) ... constrain the results to _limit_
     + rate_min = `0` (optional, integer) ... minimum rate
     + rate_max = `unlimited` (optional, integer) ... maximum rate
     + space_min = `0` (optional, integer) ... minimum available space
@@ -2215,11 +2215,6 @@ This search works, but is deprecated in favor of our fast search using the `/sea
             + `Southwest`
             + `West Central`
             + `North Central`
-
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/spaces/search/austin?limit=1
 
 + Response 200 (application/json)
 
@@ -2357,11 +2352,7 @@ Note:
 
 + Parameters
 
-    + id (string) ... unique id
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544
+    + id (required, string, `5669562083180544`) ... unique id
 
 + Response 200 (application/json)
 
@@ -2417,38 +2408,25 @@ Note:
         ]
         }
         
-### Delete portfolio by ID [DELETE]
-
-+ Request
-
-        https://www.realmassive.com/portfolios/{id}
-
-+ Response 200
-
-## Archive or Unarchive a Portfolio [/portfolios/{id}/{archive|unarchive}]
+## Archive or Unarchive a Portfolio [/portfolios/{id}/action]
 ### Archive or Unarchive a Portfolio by ID and parameter [POST]
 
 + Parameters
-
-    + unarchive (string) ... unarchive
-    + archive (string) ... archive
-
-+ Request
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544/unarchive
+    + id (required, string, `5669562083180544`) ... portfolio id
+    + action (required, string, `archive`) ... archive or unarchive
+        + Values
+            + `archive`
+            + `unarchive`
 
 + Response 200
+
 
 ## Spaces within a Portfolio [/portfolios/{id}/spaces]
 ### Fetch all the Space data from a  portfolio by ID [GET]
 
 + Parameters
 
-    + id (string) ... unique id
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/5669562083180544/spaces
+    + id (required, string, `5669562083180544`) ... unique id
 
 + Response 200 (application/json)
 
@@ -2696,27 +2674,23 @@ Note:
 
         
 ### Add a Space to a Portfolio [POST]
-
-Required Headers:
-
-* **Content-Type:** application/json
-
-Required Body:
-
-* **Body:** space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3
-
 Note:
-
 * Make sure the body is url encoded
 * `Content-Length` may be required, if so, use the length of "Body"
 
++ Parameters
+    + id (required, string, ``5669562083180544`) ... portfolio id
+
+
 + Request (application/json)
 
-        https://www.realmassive.com/portfolio/{id}/spaces
-
+    + Headers
+    
+            Content-Type: application/json
+        
     + Body
-
-            space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA
+    
+            space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3
             
 + Response 200 (application/json)
 
