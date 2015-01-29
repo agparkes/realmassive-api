@@ -2683,14 +2683,10 @@ Note:
 
 
 + Request (application/json)
-
-    + Headers
-    
-            Content-Type: application/json
         
     + Body
     
-            space_key=ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3
+            { 'space_key' : 'ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3' }
             
 + Response 200 (application/json)
 
@@ -2930,14 +2926,11 @@ Note:
     
 ## Spaces within a Portfolio [/portfolios/{id}/spaces/{key}]    
 ### Deleting a Space from a Portfolio [DELETE]
+To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
 
-Note:
-
-* To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/id/spaces/key
++ Parameters
+    + id (required, string, `5669562083180544`) ... portfolio id
+    + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key for space to remove
 
 + Response 200 (application/json)
 
@@ -2945,7 +2938,7 @@ Note:
             "message": ""
         }
         
-## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history={building,lease_term,description,title,expiration_date,rate_units,floor_number,availability_date,rate,space_available_units,office_finish_percentage,ti,space_available,space_type,unit_number}]
+## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history}]
 Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
 
 Note:
@@ -2955,22 +2948,26 @@ Note:
 ### Get the history of a Portfolio Space’s changes [GET]
 
 + Parameters
+    + id (required, string, `5669562083180544`) ... portfolio id
+    + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
+    + history (optional, list)
+        + Values
+            + `building` (optional, string)
+            + `lease_term` (optional, string)
+            + `description` (optional, string)
+            + `title` (optional, string)
+            + `expiration_date` (optional, string)
+            + `rate_units` (optional, string)
+            + `floor_number` (optional, string)
+            + `availability_date` (optional, string)
+            + `rate` (optional, string)
+            + `space_available_units` (optional, string)
+            + `office_finish_percentage` (optional, string)
+            + `ti` (optional, string)
+            + `space_available` (optional, string)
+            + `space_type` (optional, string)
+            + `unit_number` (optional, string)
 
-    + building (string)
-    + lease_term (string)
-    + description (string)
-    + title (string)
-    + expiration_date (string)
-    + rate_units (string)
-    + floor_number (string)
-    + availability_date (string)
-    + rate (string)
-    + space_available_units (string)
-    + office_finish_percentage (string)
-    + ti (string)
-    + space_available (string)
-    + space_type (string)
-    + unit_number (string)
 
 + Request (application/json)
 
