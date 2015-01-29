@@ -392,7 +392,7 @@ Use this to retrieve a `Building` by its unique ID.
         }
 
 ### Building [PUT]
-This API call edits the `Building` specified by keystring with request payload. (Please note you must always pass in the `Building`'s `size` and `address` fields.) 
+This API call edits the `Building` specified by keystring with request payload. (Please note you must always pass in the `Building`'s and `address` field.) 
 Only editable fields are allowed. You only need to send the attributes you want to change. If you don't want to update the building's `parking_ratio`, for example, don't send it in the request body.
 
 You may only send editable fields. You cannot edit the following fields:
@@ -725,12 +725,8 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
 
 + Parameters
 
-    + limit = `70` (optional, integer) ... Number of results to return in this batch
+    + limit = `70` (optional, integer, `3`) ... Number of results to return in this batch
     + cursor (optional, cursor) ... Provide the cursor to continue to your next batch of results
-
-+ Request
-
-        https://www.realmassive.com/api/v1/spaces?limit=3
 
 + Response 200 (application/json)
 
@@ -1880,6 +1876,150 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
             }
           ],
           "number_found": 35191
+        }
+
+### Create a Spaces [POST]
+This API call creates a new `Space` with parameters specified in request payload. Please note, `building_key` is mandatory parameter which is keystring of `Building` associated with `Space`.
+
+This call returns the newly created Space as JSON.
+
++ Request (application/json)
+
+        {
+          "building_key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIC0xb6XCww",
+          "contiguous": false,
+          "rate": "3.25",
+          "notification_email": "",
+          "lease_term": "",
+          "is_promoted": false,
+          "title": "Como Commons, Suite 330",
+          "rate_type": "single_net",
+          "editors": [],
+          "space_available_units": "SF",
+          "ti": "",
+          "space_available": "6910",
+          "unit_number": "330",
+          "analysts": [],
+          "status": "Public",
+          "edited_by": null,
+          "description": "",
+          "rate_frequency": "Yearly",
+          "rate_units": "",
+          "availability_date": "",
+          "floor_number": "",
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgICEgcecCww",
+          "availableBuildingSquareFeet": 13183,
+          "divisible": false,
+          "expiration_date": "",
+          "contacts": [],
+          "office_finish_percentage": "",
+          "min_divisible": "",
+          "space_type": "lease"
+        }
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2015-01-29T17:56:42.586110+00:00",
+          "attachments": [],
+          "short_url": "",
+          "contiguous": false,
+          "rate": "3.25",
+          "notification_email": "",
+          "id": "6318034608193536",
+          "location_url": "/us/ga/buford/industrial-space/hamilton-mill-business-center/330/6318034608193536",
+          "lease_term": "",
+          "portfolio_space_keys": [],
+          "is_promoted": false,
+          "title": "Hamilton Mill Business Center, Suite 330",
+          "rate_type": "single_net",
+          "editors": [],
+          "created_by": {
+            "first_name": "Jason",
+            "last_name": "Vertrees",
+            "title": "CTO",
+            "photo": "https://media.licdn.com/mpr/mprx/0_abYbNekKWNYHqSWgdQtWcWFr2z2elS5gdFhotd4YXTSwzuc1wB0wrizTyAq",
+            "company": "RealMassive",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgMDm_csJDA",
+            "is_premium": true,
+            "id": ""
+          },
+          "space_available_units": "SF",
+          "ti": "",
+          "space_available": "6910",
+          "unit_number": "330",
+          "analysts": [],
+          "status": "Public",
+          "edited_by": {
+            "first_name": "Jason",
+            "last_name": "Vertrees",
+            "title": "CTO",
+            "photo": "https://media.licdn.com/mpr/mprx/0_abYbNekKWNYHqSWgdQtWcWFr2z2elS5gdFhotd4YXTSwzuc1wB0wrizTyAq",
+            "company": "RealMassive",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgMDm_csJDA",
+            "is_premium": true,
+            "id": ""
+          },
+          "description": "",
+          "rate_frequency": "Yearly",
+          "rate_units": "",
+          "availability_date": "",
+          "floor_number": "",
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgICEgcecCww",
+          "permissions": [
+            "Delete",
+            "Write",
+            "Read",
+            "ChangePermissions",
+            "Create"
+          ],
+          "building": {
+            "ac": false,
+            "reserved": "None",
+            "attachments": [],
+            "lot_size_units": "",
+            "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAwMPhrAoM",
+            "clear_height": "31",
+            "size_units": "SF",
+            "submarket": "",
+            "notification_email": "",
+            "id": "",
+            "market": "",
+            "size": "195180",
+            "sprinkler": "ESFR",
+            "title": "Hamilton Mill Business Center",
+            "building_class": "A",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIC0xb6XCww",
+            "property_owner": "",
+            "leed": "None",
+            "type": "Industrial",
+            "operating_expenses": "",
+            "parking_rate": "",
+            "number_of_spaces": "",
+            "address": {
+              "city": "Buford",
+              "state": "GA",
+              "street": "2475 Hamilton Mill Road",
+              "geo": {
+                "latitude": "34.0740361",
+                "longitude": "-83.9176744"
+              },
+              "zipcode": "30519"
+            },
+            "year_built": "",
+            "cover": null,
+            "lot_size": "",
+            "building_parking_ratio": ""
+          },
+          "divisible": false,
+          "expiration_date": "",
+          "created_at": "2015-01-29T17:56:42.586910+00:00",
+          "contacts": [],
+          "cover": null,
+          "search_rate": "3.25",
+          "office_finish_percentage": "",
+          "min_divisible": "",
+          "space_type": "lease"
         }
 
 ## Space [/api/v1/spaces/{id}]
