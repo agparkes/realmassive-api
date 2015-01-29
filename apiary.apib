@@ -43,10 +43,12 @@ The following resources are exposed and accessible via resource URIs.
 | Portfolios | `/portfolios` | Represents a collection of spaces. |
 | Spaces | `/spaces` | Represents and available Space for lease. |
 | Users | `/users` | Represents Users on our system. |
+| Auth | `/auth` | User authentication. |
+| Version | `/version` | API version information. |
+
 
 
 # Group Buildings
-
 `Buildings` represent physical buildings. A `Building` can have one or more `Space`s associated with it. Each `Building` contains at least the following
 attributes, more fields may be added in the future.
 
@@ -214,11 +216,116 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
           "number_found": 30612
         }
 
+### Create a Building [POST]
+
++ Request (application/json)
+
+        {
+          "ac": false,
+          "reserved": "None",
+          "lot_size_units": "",
+          "clear_height": "31",
+          "size_units": "SF",
+          "submarket": "",
+          "notification_email": "",
+          "size": "195180",
+          "sprinkler": "ESFR",
+          "title": "Hamilton Mill Business Center",
+          "building_class": "A",
+          "property_owner": "",
+          "leed": "None",
+          "space_keys": [],
+          "type": "Industrial",
+          "operating_expenses": "",
+          "parking_rate": "",
+          "address": {
+            "city": "Buford",
+            "state": "GA",
+            "street": "2475 Hamilton Mill Road",
+            "geo": {
+              "latitude": "34.0740361",
+              "longitude": "-83.9176744"
+            },
+            "zipcode": "30519"
+          },
+          "year_built": "",
+          "lot_size": "",
+          "building_parking_ratio": ""
+        }
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2015-01-29T17:15:39.735280+00:00",
+          "ac": false,
+          "reserved": "None",
+          "attachments": [],
+          "lot_size_units": "",
+          "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAwMPhrAoM",
+          "clear_height": "31",
+          "size_units": "SF",
+          "submarket": "",
+          "notification_email": "",
+          "id": "6300396955893760",
+          "market": "",
+          "size": "195180",
+          "sprinkler": "ESFR",
+          "title": "Hamilton Mill Business Center",
+          "building_class": "A",
+          "created_by": {
+            "first_name": "Jason",
+            "last_name": "Vertrees",
+            "title": "CTO",
+            "photo": "https://media.licdn.com/mpr/mprx/0_abYbNekKWNYHqSWgdQtWcWFr2z2elS5gdFhotd4YXTSwzuc1wB0wrizTyAq",
+            "company": "RealMassive",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgMDm_csJDA",
+            "is_premium": true,
+            "id": ""
+          },
+          "property_owner": "",
+          "leed": "None",
+          "space_keys": [],
+          "type": "Industrial",
+          "operating_expenses": "",
+          "parking_rate": "",
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIDU18WYCww",
+          "address": {
+            "city": "Buford",
+            "state": "GA",
+            "street": "2475 Hamilton Mill Road",
+            "geo": {
+              "latitude": "34.0740361",
+              "longitude": "-83.9176744"
+            },
+            "zipcode": "30519"
+          },
+          "location_url": "/us/ga/buford/hamilton-mill-business-center/6300396955893760",
+          "permissions": [
+            "Delete",
+            "Write",
+            "Read",
+            "ChangePermissions",
+            "Create"
+          ],
+          "promoted_spaces": "",
+          "year_built": "",
+          "created_at": "2015-01-29T17:15:39.740650+00:00",
+          "cover": null,
+          "lot_size": "",
+          "building_parking_ratio": ""
+        }
+
++ Response 400 (application/json)
+
+        {
+            "type": "HTTPForbidden",
+            "error": "PermissionDenied: Permission denied for this user."
+        }
+
 
 ## Building [/api/v1/buildings/{id}]
-Use this to retrieve a `Building` by its unique ID.
-
 ### Building [GET]
+Use this to retrieve a `Building` by its unique ID.
 
 + Parameters
 
@@ -283,6 +390,120 @@ Use this to retrieve a `Building` by its unique ID.
           "lot_size": "",
           "building_parking_ratio": ""
         }
+
+### Building [PUT]
+This API call edits the `Building` specified by keystring with request payload. (Please note you must always pass in the `Building`'s `size` and `address` fields.) 
+Only editable fields are allowed. You only need to send the attributes you want to change. If you don't want to update the building's `parking_ratio`, for example, don't send it in the request body.
+
+You may only send editable fields. You cannot edit the following fields:
+  * `key`
+  * `manager`
+  * `created_by`
+  * `attachments`
+
+This call returns the edited object.
+
++ Parameters
+
+    + id (required, number, `6300396955893760`) ... the unique ID for this building
+
++ Request (application/json)
+
+        {
+          "size": "195180",
+          "building_parking_ratio": "5.6",
+          "address": {
+            "city": "Buford",
+            "state": "GA",
+            "street": "2475 Hamilton Mill Road",
+            "geo": {
+              "latitude": "34.0740361",
+              "longitude": "-83.9176744"
+            },
+            "zipcode": "30519"
+          }
+        }
+ 
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2015-01-29T17:34:00.038920+00:00",
+          "ac": false,
+          "reserved": "None",
+          "attachments": [],
+          "lot_size_units": "",
+          "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAwMPhrAoM",
+          "clear_height": "31",
+          "size_units": "SF",
+          "submarket": "",
+          "notification_email": "",
+          "id": "6300396955893760",
+          "market": "",
+          "size": "195180",
+          "sprinkler": "ESFR",
+          "title": "Hamilton Mill Business Center",
+          "building_class": "A",
+          "created_by": {
+            "first_name": "Jason",
+            "last_name": "Vertrees",
+            "title": "CTO",
+            "photo": "https://media.licdn.com/mpr/mprx/0_abYbNekKWNYHqSWgdQtWcWFr2z2elS5gdFhotd4YXTSwzuc1wB0wrizTyAq",
+            "company": "RealMassive",
+            "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgMDm_csJDA",
+            "is_premium": true,
+            "id": ""
+          },
+          "property_owner": "",
+          "leed": "None",
+          "space_keys": [],
+          "type": "Industrial",
+          "operating_expenses": "",
+          "parking_rate": "",
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIDU18WYCww",
+          "address": {
+            "city": "Buford",
+            "state": "GA",
+            "street": "2475 Hamilton Mill Road",
+            "geo": {
+              "latitude": "34.0740361",
+              "longitude": "-83.9176744"
+            },
+            "zipcode": "30519"
+          },
+          "location_url": "/us/ga/buford/hamilton-mill-business-center/6300396955893760",
+          "permissions": [
+            "Delete",
+            "Write",
+            "Read",
+            "ChangePermissions",
+            "Create"
+          ],
+          "promoted_spaces": "",
+          "year_built": "",
+          "created_at": "2015-01-29T17:15:39.740650+00:00",
+          "cover": null,
+          "lot_size": "",
+          "building_parking_ratio": "5.6"
+        }
+
++ Response 500 (application/json)
+
+        {
+            "type": "TypeError",
+            "error": "MetaModel object argument after ** must be a mapping, not NoneType"
+        }
+
+
+### Building [DELETE]
+Deletes Building specified by keystring and associated `Spaces`.
+
++ Parameters
+
+    + id (required, number, `6300396955893760`) ... the unique ID for this building
+
++ Response 200 (application/json)
+
+
 
 ## Building Search [/api/v1/buildings/search{?address%2Eaddress,address%2Ecity,address%2Efull_state,address%2Egeo,address%2Egeo%2Elatitude,address%2Egeo%2Elongitude,address%2Estate,address%2Estreet,address%2Ezipcode,building_class,building_parking_ratio,cover%2Eraw_url,created_at,created_by%2Emaster_key,created_by%2Eis_premium,created_by%2Elast_name,created_by%2Efirst_name,key,location_url,lot_size,manager%2Eadmins%2Ecreated_at,manager%2Eadmins%2Eedited_at,manager%2Eadmins%2Efirst_name,manager%2Eadmins%2Eis_premium,manager%2Eadmins%2Elast_name,manager%2Eadmins%2Ephoto,manager%2Ekey,manager%2Emembers%2Ecreated_at,manager%2Emembers%2Eedited_at,manager%2Emembers%2Efirst_name,manager%2Emembers%2Eis_premium,manager%2Emembers%2Elast_name,manager%2Emembers%2Ephoto,manager%2Ename,manager%2Eowner%2Ecreated_at,manager%2Eowner%2Eedited_at,manager%2Eowner%2Efirst_name,manager%2Eowner%2Eis_premium,manager%2Eowner%2Elast_name,manager%2Eowner%2Ephoto,market,operating_expenses,real_score_val,size,space_keys,submarket,title,type,limit}]
 ### Notes
@@ -2938,7 +3159,7 @@ To remove a space from a portfolio you will need to use the `key` provided for t
             "message": ""
         }
         
-## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?history}]
+## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}?{history}]
 Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
 
 Note:
@@ -3290,5 +3511,3 @@ message body containing an encoded description describing what went wrong. The t
 communicate with a human user of the client side application.
 
 Anything else you’d like us to include in our API? Let us know at [dev-help@realmassive.com](dev-help@realmassive.com).
-
-
