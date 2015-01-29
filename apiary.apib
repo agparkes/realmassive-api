@@ -2950,7 +2950,7 @@ Note:
 + Parameters
     + id (required, string, `5669562083180544`) ... portfolio id
     + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
-    + history (optional, list)
+    + history (optional, list, `space_available`)
         + Values
             + `building` (optional, string)
             + `lease_term` (optional, string)
@@ -2967,11 +2967,6 @@ Note:
             + `space_available` (optional, string)
             + `space_type` (optional, string)
             + `unit_number` (optional, string)
-
-
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}?history=space_available
 
 + Response 200 (application/json)
 
@@ -3005,38 +3000,37 @@ Note:
         }
 
 ##  Portfolio Space Notifications [/portfolios/{id}/spaces/{key}/notifications]    
-### When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
+### Retrieve notifications for a portfolio [GET]
+When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
 
 Note:
 
 * To view the notifications of a Portfolio Space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
 
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}/notifications
++ Parameters
+    + id (required, string, `5669562083180544`) ... portfolio id
+    + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
 
 + Response 200 (application/json)
 
         []
 
 ### This request is to delete all of the notifications for a user [DELETE]
-
 Note:
 
 * To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
 
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/{id}/spaces/{key}/notifications
++ Parameters
+    + id (required, string, `5669562083180544`) ... portfolio id
+    + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
 
 + Response 200 (application/json)
 
 ##  Portfolio Collaborators [/portfolios/{id}/collaborators]    
 ### Fetch all of the collaborators on a given Portfolio [GET]
 
-+ Request (application/json)
-
-        https://www.realmassive.com/api/v1/portfolios/{id}/collaborators
++ Parameters
+    + id (required, string, `5669562083180544`) ... portfolio id
 
 + Response 200 (application/json)
            
@@ -3064,15 +3058,16 @@ Note:
 * Make sure the body is URL encoded
 * `Content-Length` may be required; if so, use the length of "Body"
 
++ Parameters
+    + id (required, string, `572366123456096`) ... portfolio id
+
+
 + Request (application/json)
 
-        https://www.realmassive.com/api/v1/portfolios/{id}/collaborators
-        
-    + Body
-
-            email=johndoe@realmassive.com
-            write=write
-
+        {
+            'email' : 'johndoe@realmassive.com',
+            'write' : 'write'
+        }
 
 
 + Response 200 (application/json)
