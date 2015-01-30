@@ -711,6 +711,66 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
 
         {"error": "Wrong address parameters."}
 
+
+## Building Search Fields Collection [/api/v1/buildings/search/fields]
+### Get Searchable Building Fields [GET]
+
++ Response 200 (application/json)
+
+        [
+          "address.address",
+          "address.city",
+          "address.full_state",
+          "address.geo",
+          "address.geo.latitude",
+          "address.geo.longitude",
+          "address.state",
+          "address.street",
+          "address.zipcode",
+          "building_class",
+          "building_parking_ratio",
+          "cover.raw_url",
+          "created_at",
+          "created_by.master_key",
+          "created_by.is_premium",
+          "created_by.last_name",
+          "created_by.first_name",
+          "key",
+          "location_url",
+          "lot_size",
+          "manager.admins.created_at",
+          "manager.admins.edited_at",
+          "manager.admins.first_name",
+          "manager.admins.is_premium",
+          "manager.admins.last_name",
+          "manager.admins.photo",
+          "manager.key",
+          "manager.members.created_at",
+          "manager.members.edited_at",
+          "manager.members.first_name",
+          "manager.members.is_premium",
+          "manager.members.last_name",
+          "manager.members.photo",
+          "manager.name",
+          "manager.owner.created_at",
+          "manager.owner.edited_at",
+          "manager.owner.first_name",
+          "manager.owner.is_premium",
+          "manager.owner.last_name",
+          "manager.owner.photo",
+          "market",
+          "operating_expenses",
+          "real_score_val",
+          "size",
+          "space_keys",
+          "submarket",
+          "tag_list.tags.name",
+          "title",
+          "type"
+        ]
+
+
+
 # Group Spaces
 ## Spaces Collection [/api/v1/spaces{?limit,cursor}]
 ### List all Spaces [GET]
@@ -2615,6 +2675,109 @@ This search works, but is deprecated in favor of our fast search using the `/sea
           ],
           "number_found": 1175
         }
+
+
+## Space Search Fields Collection [/api/v1/spaces/search/fields]
+### Get Searchable Space Fields [GET]
+
++ Response 200 (application/json)
+
+        [
+          "availability_date",
+          "building.ac",
+          "building.address.address",
+          "building.address.city",
+          "building.address.full_state",
+          "building.address.geo",
+          "building.address.geo.latitude",
+          "building.address.geo.longitude",
+          "building.address.state",
+          "building.address.street",
+          "building.address.zipcode",
+          "building.building_class",
+          "building.building_parking_ratio",
+          "building.clear_height",
+          "building.created_at",
+          "building.created_by.first_name",
+          "building.created_by.is_premium",
+          "building.created_by.last_name",
+          "building.created_by.master_key",
+          "building.edited_at",
+          "building.leed",
+          "building.lot_size",
+          "building.lot_size_units",
+          "building.manager.admins.created_at",
+          "building.manager.admins.edited_at",
+          "building.manager.admins.first_name",
+          "building.manager.admins.is_premium",
+          "building.manager.admins.last_name",
+          "building.manager.admins.photo",
+          "building.manager.key",
+          "building.manager.members.created_at",
+          "building.manager.members.edited_at",
+          "building.manager.members.first_name",
+          "building.manager.members.is_premium",
+          "building.manager.members.last_name",
+          "building.manager.members.photo",
+          "building.manager.name",
+          "building.manager.owner.created_at",
+          "building.manager.owner.edited_at",
+          "building.manager.owner.first_name",
+          "building.manager.owner.is_premium",
+          "building.manager.owner.last_name",
+          "building.manager.owner.photo",
+          "building.market",
+          "building.master_key",
+          "building.operating_expenses",
+          "building.parking_rate",
+          "building.property_owner",
+          "building.reserved",
+          "building.size",
+          "building.size_units",
+          "building.sprinkler",
+          "building.submarket",
+          "building.title",
+          "building.type",
+          "building.year_built",
+          "contacts.created_at",
+          "contacts.edited_at",
+          "contacts.first_name",
+          "contacts.is_premium",
+          "contacts.last_name",
+          "contacts.photo",
+          "cover.url",
+          "created_at",
+          "created_by.first_name",
+          "created_by.is_premium",
+          "created_by.last_name",
+          "created_by.master_key",
+          "description",
+          "divisible",
+          "expiration_date",
+          "floor_number",
+          "is_promoted",
+          "key",
+          "lease_term",
+          "location_url",
+          "marketed_cost",
+          "num_parking_spaces",
+          "number_of_attachments",
+          "office_finish_percentage",
+          "rate",
+          "rate_frequency",
+          "reserved",
+          "search_rate",
+          "space_available",
+          "space_available_units",
+          "space_id",
+          "space_type",
+          "status",
+          "tag_list.tags.name",
+          "ti",
+          "title",
+          "total_cost",
+          "unit_number"
+        ]
 
 # Group Markets
 ## Introduction
@@ -7973,9 +8136,6 @@ A market is geographic area in which we hold data.
         ]
 
 
-
-
-
 # Group Portfolios
 ## Introduction
 Our Portfolio resource enables you to create market surveys or “portfolios,” which  are lists of spaces under consideration. You can use the 
@@ -8115,6 +8275,91 @@ Note:
             }
         ]
         }
+
+## Portfolio Search [/api/v1/portfolios/search{?agents%2Ecreated_at,agents%2Eedited_at,agents%2Efirst_name,agents%2Eis_premium,agents%2Elast_name,agents%2Emaster_key,agents%2Ephoto,archived,collaborators%2Ecreated_at,collaborators%2Eedited_at,collaborators%2Efirst_name,collaborators%2Eis_premium,collaborators%2Elast_name,collaborators%2Emaster_key,collaborators%2Ephoto,id,key,listeners%2Ecreated_at,listeners%2Eedited_at,listeners%2Efirst_name,listeners%2Eis_premium,listeners%2Elast_name,listeners%2Emaster_key,listeners%2Ephoto,number_of_spaces,master_space,owner%2Ecreated_at,owner%2Eedited_at,owner%2Efirst_name,owner%2Eis_premium,owner%2Elast_name,owner%2Emaster_key,owner%2Ephoto,title}]
+### Get Searchable Fields for Portfolios [GET]
+
++ Parameters
+    + agents%2Ecreated_at (optional, string) ... 
+    + agents%2Eedited_at (optional, string) ... 
+    + agents%2Efirst_name (optional, string) ... 
+    + agents%2Eis_premium (optional, string) ... 
+    + agents%2Elast_name (optional, string) ... 
+    + agents%2Emaster_key (optional, string) ... 
+    + agents%2Ephoto (optional, string) ... 
+    + archived (optional, string) ... 
+    + collaborators%2Ecreated_at (optional, string) ... 
+    + collaborators%2Eedited_at (optional, string) ... 
+    + collaborators%2Efirst_name (optional, string) ... 
+    + collaborators%2Eis_premium (optional, string) ... 
+    + collaborators%2Elast_name (optional, string) ... 
+    + collaborators%2Emaster_key (optional, string) ... 
+    + collaborators%2Ephoto (optional, string) ... 
+    + id (optional, string) ... 
+    + key (optional, string) ... 
+    + listeners%2Ecreated_at (optional, string) ... 
+    + listeners%2Eedited_at (optional, string) ... 
+    + listeners%2Efirst_name (optional, string) ... 
+    + listeners%2Eis_premium (optional, string) ... 
+    + listeners%2Elast_name (optional, string) ... 
+    + listeners%2Emaster_key (optional, string) ... 
+    + listeners%2Ephoto (optional, string) ... 
+    + number_of_spaces (optional, string) ... 
+    + master_space (optional, string) ... 
+    + owner%2Ecreated_at (optional, string) ... 
+    + owner%2Eedited_at (optional, string) ... 
+    + owner%2Efirst_name (optional, string) ... 
+    + owner%2Eis_premium (optional, string) ... 
+    + owner%2Elast_name (optional, string) ... 
+    + owner%2Emaster_key (optional, string) ... 
+    + owner%2Ephoto (optional, string) ... 
+    + title (optional, string) ... 
+
++ Response 200 (application/json)
+
+
+
+## Portfolio Search Fields Collection [/api/v1/portfolios/search/fields]
+### Get Searchable Fields for Portfolios [GET]
+
++ Response 200 (application/json)
+
+        [
+          "agents.created_at",
+          "agents.edited_at",
+          "agents.first_name",
+          "agents.is_premium",
+          "agents.last_name",
+          "agents.master_key",
+          "agents.photo",
+          "archived",
+          "collaborators.created_at",
+          "collaborators.edited_at",
+          "collaborators.first_name",
+          "collaborators.is_premium",
+          "collaborators.last_name",
+          "collaborators.master_key",
+          "collaborators.photo",
+          "id",
+          "key",
+          "listeners.created_at",
+          "listeners.edited_at",
+          "listeners.first_name",
+          "listeners.is_premium",
+          "listeners.last_name",
+          "listeners.master_key",
+          "listeners.photo",
+          "number_of_spaces",
+          "master_space",
+          "owner.created_at",
+          "owner.edited_at",
+          "owner.first_name",
+          "owner.is_premium",
+          "owner.last_name",
+          "owner.master_key",
+          "owner.photo",
+          "title"
+        ]
         
 ## Archive or Unarchive a Portfolio [/api/v1//portfolios/{id}/action]
 ### Archive or Unarchive a Portfolio by ID and parameter [POST]
@@ -8880,10 +9125,13 @@ Note:
         ],
         "available_positions": []
         }
-        
+
+# Group Media
+Media are pictures and flyers for marketing commercial properties. Each building needs at least one cover photo. Please provide high quality
+images to market your properties.
+
         
 # Group Version
-
 The **Version** call is used to determine which verison of the RealMassive WebApp and API are serving. If the User is logged in, basic User
 information will also be returned with this call.
 
