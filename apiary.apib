@@ -6677,6 +6677,42 @@ A market is geographic area in which we hold data.
           "number_found": 89
         }
 
+## Market [/api/v1/markets/{key}]
+### Get a Market [GET]
+
++ Parameters
+    + key (required, string, `ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICA0Kbk2wkM`) ... market's key
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2014-10-16T22:44:26.547940",
+          "cbd_centers": [
+            "ahBzfnJtLWFwaS1zYW5kYm94chYLEglDQkRDZW50ZXIYgICAkPeWigoM"
+          ],
+          "submarkets": [
+            "BWI Airport",
+            "Greater Annapolis Area",
+            "Baltimore City East",
+            "Suburban West",
+            "Central Business District",
+            "Suburban North",
+            "Howard County",
+            "Baltimore City North",
+            "Harford County",
+            "Baltimore City West"
+          ],
+          "searchable": true,
+          "market_name": "Baltimore",
+          "created_at": "2014-10-16T22:44:26.548340",
+          "corrected_at": null,
+          "special_permissions": {},
+          "key": "ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICA0Kbk2wkM",
+          "tag_list": null,
+          "id": 5470218155458560
+        }
+
+
 ## Market Search [/api/v1/markets/search{?cbd_centers,market_name,key}]
 ### Search for a Market [GET]
 
@@ -6702,7 +6738,7 @@ A market is geographic area in which we hold data.
         }
 
 ## Market Search [/api/v1/markets/search_fts]
-### Search for a Market [GET]
+### Full Text Search for a Market [GET]
 
 + Response 200 (application/json)
 
@@ -6762,41 +6798,6 @@ A market is geographic area in which we hold data.
             "key",
             "market_name"
         ]
-
-## Market [/api/v1/markets/{key}]
-### Get a Market [GET]
-
-+ Parameters
-    + key (required, string, `ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICA0Kbk2wkM`) ... market's key
-
-+ Response 200 (application/json)
-
-        {
-          "edited_at": "2014-10-16T22:44:26.547940",
-          "cbd_centers": [
-            "ahBzfnJtLWFwaS1zYW5kYm94chYLEglDQkRDZW50ZXIYgICAkPeWigoM"
-          ],
-          "submarkets": [
-            "BWI Airport",
-            "Greater Annapolis Area",
-            "Baltimore City East",
-            "Suburban West",
-            "Central Business District",
-            "Suburban North",
-            "Howard County",
-            "Baltimore City North",
-            "Harford County",
-            "Baltimore City West"
-          ],
-          "searchable": true,
-          "market_name": "Baltimore",
-          "created_at": "2014-10-16T22:44:26.548340",
-          "corrected_at": null,
-          "special_permissions": {},
-          "key": "ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICA0Kbk2wkM",
-          "tag_list": null,
-          "id": 5470218155458560
-        }
 
 ## Submarkets in a Market [/api/v1/markets/{key}/submarkets]
 ### Get a Submarkets in a Market [GET]
