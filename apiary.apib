@@ -85,14 +85,15 @@ attributes, more fields may be added in the future.
  * ``year_built``
 
 ## Buildings Collection [/api/v1/buildings{?limit,cursor}]
-### Get all Buildings [GET]
-Use this to retrieve a list of all `Buildings` in the RealMassive database. 
 ### Notes
   * This query isn’t optimized for speed, it’s optimized for sifting through the entire `Building` Collection. For speedy searches, you’ll want
   to use `Building` search.
   * Your results will be batched (the default batch size is 70).
   * To receive the next batch of results, rerun the query with the cursor provided in the results.
   * You may limit your batch size in the query by passing the optional `limit` parameter.
+
+### Get all Buildings [GET]
+Use this to retrieve a list of all `Buildings` in the RealMassive database. 
 
 + Parameters
     + limit = `70` (optional, integer, `3`) ... Number of results to return in this batch
