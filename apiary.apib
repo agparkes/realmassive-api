@@ -395,10 +395,10 @@ This API call edits the `Building` specified by keystring with request payload. 
 Only editable fields are allowed. You only need to send the attributes you want to change. If you don't want to update the building's `parking_ratio`, for example, don't send it in the request body.
 
 You may only send editable fields. You cannot edit the following fields:
-  * `key`
-  * `manager`
-  * `created_by`
-  * `attachments`
+* `key`
+* `manager`
+* `created_by`
+* `attachments`
 
 This call returns the edited object.
 
@@ -493,7 +493,7 @@ This call returns the edited object.
         }
 
 
-### Building [DELETE]
+### Delete a Building [DELETE]
 Deletes Building specified by keystring and associated `Spaces`.
 
 + Parameters
@@ -713,14 +713,13 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
 
 # Group Spaces
 ## Spaces Collection [/api/v1/spaces{?limit,cursor}]
+### List all Spaces [GET]
 Use this to retrieve a list of all `Spaces` in the RealMassive Database. 
 ### Notes
-  * This query is not optimized for speed, it is optimized for sifting through the entire `Space` Collection. For speedy searches use `Space` Search.
-  * Your results will be batched (the default batch size is 70).
-  * To receive the next batch of results, rerun the query with the cursor provided in the results.
-  * You may adjust your limit size on the query by passing the optional limit parameter.
-
-### List all Spaces [GET]
+* This query is not optimized for speed, it is optimized for sifting through the entire `Space` Collection. For speedy searches use `Space` Search.
+* Your results will be batched (the default batch size is 70).
+* To receive the next batch of results, rerun the query with the cursor provided in the results.
+* You may adjust your limit size on the query by passing the optional limit parameter.
 
 + Parameters
 
@@ -1878,7 +1877,8 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
         }
 
 ### Create a Spaces [POST]
-This API call creates a new `Space` with parameters specified in request payload. Please note, `building_key` is mandatory parameter which is keystring of `Building` associated with `Space`.
+This API call creates a new `Space` with parameters specified in request payload. Please note, `building_key` is mandatory 
+parameter which is keystring of `Building` associated with `Space`.
 
 This call returns the newly created Space as JSON.
 
