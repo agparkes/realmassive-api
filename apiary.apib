@@ -6737,10 +6737,35 @@ A market is geographic area in which we hold data.
           "number_found": 1
         }
 
-## Full Text Market Search [/api/v1/markets/search_fts]
+## Full Text Market Search [/api/v1/markets/search_fts{?query}]
 ### Full Text Search for a Market [GET]
 
++ Parameters
+    + query (required, string, `Boston`) ... Query prefix string. This can be the first 3 to 5 character prefixes of the market_name. For example
+    to search for "Boston" you could enter any of the following: "Bos", "Bost", "Bosto" or the complete string, "Boston". Please note that 
+    failed searches return all potential matches.
+
 + Response 200 (application/json)
+
+        {
+          "cursor": null,
+          "results": [
+            {
+              "cbd_centers": [
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCUNCRENlbnRlchiAgIDQ2fmeCgw"
+              ],
+              "keyword": [
+                "Bost",
+                "Boston",
+                "Bos",
+                "Bosto"
+              ],
+              "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQk76OCww",
+              "market_name": "Boston"
+            }
+          ],
+          "number_found": 1
+        }
 
 ## Market Search by Geopoint [/api/v1/markets/geo{?latitude,longitude}]
 ### Search for nearest Market to a Geopoint [GET]
