@@ -2772,7 +2772,7 @@ Note:
 + Response 200
 
 
-## Spaces within a Portfolio [/api/v1/portfolios/{id}/spaces/{key}]
+## Portfolio Spaces Collection [/api/v1/portfolios/{id}/spaces]
 ### Fetch all the Space data from a  portfolio by ID [GET]
 
 + Parameters
@@ -3274,7 +3274,8 @@ Note:
             title = "Domain 5, Suite 1";
             "unit_number" = 1;
         }
-    
+
+## Portfolio Spaces [/api/v1/portfolios/{id}/spaces/{key}{?history}]
 ### Delete a Space from a Portfolio [DELETE]
 To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
 
@@ -3288,13 +3289,10 @@ To remove a space from a portfolio you will need to use the `key` provided for t
             "message": ""
         }
         
-## History of Portfolio Spaces [/portfolios/{id}/spaces/{key}{?history}]
+### Get the history of a Portfolio Space’s changes [GET]
 Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
-
 Note:
 * To view the history of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
-
-### Get the history of a Portfolio Space’s changes [GET]
 
 + Parameters
     + id (required, string, `5669562083180544`) ... portfolio id
