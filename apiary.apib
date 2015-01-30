@@ -8135,7 +8135,92 @@ A market is geographic area in which we hold data.
           }
         ]
 
-### Search for Cities in a Market by Geopoint [api/v1/markets/cities/geo{?latitude,longitude}]
+## Search for Cities in a Market by Geopoint [/api/v1/markets/cities/geo{?latitude,longitude}]
+The name of the closest city will be in the returned `name` field.
+
+### Search for the home city in a Market by Geopoint [GET]
+
++ Parameters
+    + latitude (required, number, `32.77`) ... latitude
+    + longitude (required, number, `-96.8`) ... longitude
+
++ Response 200 (application/json)
+
+        {
+          "edited_at": "2015-01-07T22:10:09.786273",
+          "submarkets": [
+            "Central Business District",
+            "Central Expressway",
+            "East",
+            "Far North",
+            "LBJ Freeway",
+            "Las Colinas",
+            "Lewisville/Denton",
+            "Preston Center",
+            "Richardson/Plano",
+            "Southwest Dallas",
+            "Stemmons Freeway",
+            "Uptown/Turtle Creek"
+          ],
+          "name": "Dallas, TX",
+          "created_at": "2014-09-30T23:59:02.692934",
+          "corrected_at": null,
+          "special_permissions": {},
+          "launched_status": "live",
+          "location": {
+            "latitude": 32.769459,
+            "longitude": -96.804801
+          },
+          "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCUNCRENlbnRlchiAgIDgo7SDCQw",
+          "tag_list": null,
+          "id": 5081540023287808,
+          "launched": true
+        }
+
+## Get a Market's Home City [/api/v1/markets/{keystring}/cities]
+The name of the home city will be in the returned `name` field.
+
+### Search for the home city in a Market by Geopoint [GET]
+
++ Parameters
+    + keystring (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQ94KTCgw`) ... unique keystring of the market
+
++ Response 200 (application/json)
+
+        [
+          {
+            "edited_at": "2015-01-07T22:10:09.794154",
+            "submarkets": [
+              "Buckhead",
+              "Central Perimeter",
+              "Cumberland",
+              "Downtown",
+              "East Atlanta",
+              "East Cobb/Johnson Ferry",
+              "Midtown",
+              "North Fulton",
+              "Northeast Atlanta",
+              "Northlake",
+              "Northwest Atlanta",
+              "Peachtree Corners",
+              "South Atlanta",
+              "West Atlanta"
+            ],
+            "name": "Atlanta, GA",
+            "created_at": "2014-10-16T22:44:21.937210",
+            "corrected_at": null,
+            "special_permissions": {},
+            "launched_status": "live",
+            "location": {
+              "latitude": 33.755255,
+              "longitude": -84.388761
+            },
+            "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCUNCRENlbnRlchiAgIDQ2YqWCgw",
+            "tag_list": null,
+            "id": 5726624213368832,
+            "launched": true
+          }
+        ]
 
 # Group Portfolios
 ## Introduction
