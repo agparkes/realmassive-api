@@ -2022,7 +2022,7 @@ This call returns the newly created Space as JSON.
         }
 
 ## Space [/api/v1/spaces/{id}]
-### Space [GET]
+### Get a Space [GET]
 
 + Parameters
 
@@ -2644,16 +2644,10 @@ manually.
 * ``title``
 * ``viewers``
 
-## View Portfolios [/portfolios]
-### Fetch all of the portfolios for the currently logged in user [GET]
-
+## Portfolios Collection [/api/v1/portfolios]
+### Get all Portfolios for current user [GET]
 Note:
-
 * You’ll need to log in as a user with the login cookies stored. There’s more information on this topic in the User API.
-
-+ Request
-
-        https://www.realmassive.com/portfolios
 
 + Response 200 (application/json)
 
@@ -2692,23 +2686,20 @@ Note:
           "error": "This server could not verify that you are authorized to access the document you requested. Either you supplied the wrong credentials (e.g., bad password), or your browser does not understand how to supply the credentials required."
         }
 
-## Creating a Portfolio [/portfolios?title={title_string}]
-### Create a portfolio with a given title [POST]
-
+### Create a Named Portfolio [POST]
 Note:
 * You’ll need to make sure you portfolio title is URL encoded.
 * Verify that your `PUT` is using the JSON/Application format.
 
 + Request (application/json)
 
-        https://www.realmassive.com/api/v1/portfolios?title=Example%20Portfolio
+        { 'title' : 'My Example Portfolio' }
 
 + Response 200 (application/json)
 
 
-
-## Fetch Portfolios by ID [/portfolios/{id}]
-### Fetch the details of a portfolio by ID [GET]
+## Fetch Portfolios by ID [/api/v/1/portfolios/{id}]
+### Fetch a Portfolio by ID [GET]
 
 + Parameters
 
