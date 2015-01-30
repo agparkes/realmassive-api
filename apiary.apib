@@ -3346,8 +3346,8 @@ Note:
             "unit_number": []
         }
 
-##  Portfolio Space Notifications [/portfolios/{id}/spaces/{key}/notifications]    
-### Retrieve notifications for a portfolio [GET]
+##  Portfolio Space Notifications Collection [/api/v1/portfolios/{id}/spaces/{key}/notifications]    
+### Retrieve Portfolio Space Notifications [GET]
 When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
 
 Note:
@@ -3361,9 +3361,9 @@ Note:
 
         []
 
-### Delete Portfolio Notifications [DELETE]
+### Delete Portfolio Space Notifications [DELETE]
 Note:
-* To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
+* To view the notifications of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
 
 + Parameters
     + id (required, string, `5669562083180544`) ... portfolio id
@@ -3371,7 +3371,7 @@ Note:
 
 + Response 200 (application/json)
 
-##  Portfolio Collaborators [/portfolios/{id}/collaborators]    
+##  Portfolio Collaborators Collection [/api/v1/portfolios/{id}/collaborators]    
 ### Get Portfolio Collaborators [GET]
 
 + Parameters
