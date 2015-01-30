@@ -2698,8 +2698,8 @@ Note:
 + Response 200 (application/json)
 
 
-## Fetch Portfolios by ID [/api/v/1/portfolios/{id}]
-### Fetch a Portfolio by ID [GET]
+## Portfolio [/api/v/1/portfolios/{id}]
+### Get a Portfolio by ID [GET]
 
 + Parameters
 
@@ -2759,7 +2759,7 @@ Note:
         ]
         }
         
-## Archive or Unarchive a Portfolio [/portfolios/{id}/action]
+## Archive or Unarchive a Portfolio [/api/v1//portfolios/{id}/action]
 ### Archive or Unarchive a Portfolio by ID and parameter [POST]
 
 + Parameters
@@ -2772,7 +2772,7 @@ Note:
 + Response 200
 
 
-## Spaces within a Portfolio [/portfolios/{id}/spaces]
+## Spaces within a Portfolio [/api/v1/portfolios/{id}/spaces]
 ### Fetch all the Space data from a  portfolio by ID [GET]
 
 + Parameters
@@ -3276,7 +3276,7 @@ Note:
         }
     
 ## Spaces within a Portfolio [/portfolios/{id}/spaces/{key}]    
-### Deleting a Space from a Portfolio [DELETE]
+### Delete a Space from a Portfolio [DELETE]
 To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
 
 + Parameters
@@ -3293,7 +3293,6 @@ To remove a space from a portfolio you will need to use the `key` provided for t
 Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
 
 Note:
-
 * To view the history of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
 
 ### Get the history of a Portfolio Space’s changes [GET]
@@ -3355,7 +3354,6 @@ Note:
 When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
 
 Note:
-
 * To view the notifications of a Portfolio Space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
 
 + Parameters
@@ -3366,9 +3364,8 @@ Note:
 
         []
 
-### This request is to delete all of the notifications for a user [DELETE]
+### Delete Portfolio Notifications [DELETE]
 Note:
-
 * To view the notifications of a portfolio space, you will need to use the key provided for the space from portfolios/{portfolio_key}/spaces
 
 + Parameters
@@ -3378,7 +3375,7 @@ Note:
 + Response 200 (application/json)
 
 ##  Portfolio Collaborators [/portfolios/{id}/collaborators]    
-### Fetch all of the collaborators on a given Portfolio [GET]
+### Get Portfolio Collaborators [GET]
 
 + Parameters
     + id (required, string, `5669562083180544`) ... portfolio id
@@ -3402,9 +3399,7 @@ Note:
         }
 
 ### Adding a collaborator to a portfolio [POST]
-
 Note:
-
 * You can set the permissions for a user using the “write” property---to allow them to collaborate, use ”write”
 * Make sure the body is URL encoded
 * `Content-Length` may be required; if so, use the length of "Body"
