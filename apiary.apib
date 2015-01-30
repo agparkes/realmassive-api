@@ -93,7 +93,7 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
   * To receive the next batch of results, rerun the query with the cursor provided in the results.
   * You may limit your batch size in the query by passing the optional `limit` parameter.
 
-### Buildings Collection [GET]
+### Get all Buildings [GET]
 
 + Parameters
     + limit = `70` (optional, integer, `3`) ... Number of results to return in this batch
@@ -324,7 +324,7 @@ Use this to retrieve a list of all `Buildings` in the RealMassive database.
 
 
 ## Building [/api/v1/buildings/{id}]
-### Building [GET]
+### Get a Building [GET]
 Use this to retrieve a `Building` by its unique ID.
 
 + Parameters
@@ -391,7 +391,7 @@ Use this to retrieve a `Building` by its unique ID.
           "building_parking_ratio": ""
         }
 
-### Building [PUT]
+### Edit a Building [PUT]
 This API call edits the `Building` specified by keystring with request payload. (Please note you must always pass in the `Building`'s and `address` field.) 
 Only editable fields are allowed. You only need to send the attributes you want to change. If you don't want to update the building's `parking_ratio`, for example, don't send it in the request body.
 
