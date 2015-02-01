@@ -46,7 +46,35 @@ The following resources are exposed and accessible via resource URIs.
 | Auth | `/auth` | User authentication. |
 | Version | `/version` | API version information. |
 
+# Group Attachments
+To successfully market your availabilities you need beautiful media. `Spaces` and `Buildings` need `Attachments` in the form of images and
+movies. Here is how you add images to your `Buildings` or `Spaces`:
+  1. Create your `Building` or `Space`
+  1. Upon creation, store that object's keystring (aka 'key')
+  1. For each image you want to associate with that given `Building` or `Space` you POST that image to the `/upload` route as a multipart
+     form encoded upload specifying two parameters: `file` which is the encoded data and `target` which is the given `Space`s or `Building`s
+     keystring.
 
+## Uploading Media [/upload]
+### Uploading Media to a Space or Building [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+        
+
+
+
++ Response
+
+        {
+          "gs_path": "/gs/realmassive-local-images/us-tx-austin-flex-space-4020-red-river-89j-6484988300099584-1422750602-06.png",
+          "raw_url": "http://localhost:8080/_ah/img/encoded_gs_file:cmVhbG1hc3NpdmUtbG9jYWwtaW1hZ2VzL3VzLXR4LWF1c3Rpbi1mbGV4LXNwYWNlLTQwMjAtcmVkLXJpdmVyLTg5ai02NDg0OTg4MzAwMDk5NTg0LTE0MjI3NTA2MDItMDYucG5n",
+          "url": "http://localhost:8080/_ah/img/encoded_gs_file:cmVhbG1hc3NpdmUtbG9jYWwtaW1hZ2VzL3VzLXR4LWF1c3Rpbi1mbGV4LXNwYWNlLTQwMjAtcmVkLXJpdmVyLTg5ai02NDg0OTg4MzAwMDk5NTg0LTE0MjI3NTA2MDItMDYucG5n",
+          "size": 3281,
+          "mime_type": "application/octet-stream",
+          "preview_info": {},
+          "blobkey": "encoded_gs_file:cmVhbG1hc3NpdmUtbG9jYWwtaW1hZ2VzL3VzLXR4LWF1c3Rpbi1mbGV4LXNwYWNlLTQwMjAtcmVkLXJpdmVyLTg5ai02NDg0OTg4MzAwMDk5NTg0LTE0MjI3NTA2MDItMDYucG5n"
+        }
 
 # Group Buildings
 `Buildings` represent physical buildings. A `Building` can have one or more `Space`s associated with it. Each `Building` contains at least the following
@@ -768,7 +796,6 @@ Our `Building` search is very flexible. You can use this to search, filter, and 
           "title",
           "type"
         ]
-
 
 # Group Markets
 ## Introduction
