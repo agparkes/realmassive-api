@@ -25,6 +25,9 @@ The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representati
 | `GET /api/v1/markets` | Get a list of all `Markets` |
 | `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find `Markets` near (30,-97) with a 100 km radius (central Texas) |
 | `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all `Spaces` with an Austin, TX address |
+| `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available` | Searches for Space in the Austin Market that has a rate of $23 to $25 per square foot, inclusive, is a sublease, and is sorted by the available space in ascending order |
+| `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost` | To search for a space, and only return its Title, Space, and Lat/Lon, that is advertised at a search_rate of $10–$20/SF/YR inclusive, is Industrial or Flex Space, with results sorted by decreasing cost |
+| `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)` | To search for all submarkets within a 25k circle around Houston, TX |
 
 ### How to quickly make a Space
   1. Make sure you have an account on RealMassive or the RealMassive Sandbox server & login to that account
@@ -40,12 +43,12 @@ The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representati
 You can filter search results by providing a list of keyword-value pairs in the request for any field that implements filtering. The next sections
 describe how to specify various types of filters.
 
-##### Single Values
+##### Single Value Filters
 Each resource maintains its list of filterable fields (keywords) and values (via the `api/v1/model-name/search/fields` routes). 
 An example is that `Spaces` can be filtered by `space_type` (eg. `lease`, `sublease`, `coworking`). To search for all subleases, 
 that is Spaces with `space_type` equal to `sublease`, one would perform a GET on `/spaces/search?space_type=sublease`.
 
-##### Lists of Values
+##### Filtering on Lists of Values
 To filter on a list of values, one can supply that list as a pipe-separated list of quoted values. For example, to find all spaces in Austin 
 or San Antonio, one would pass in market=”Austin, TX”|”San Antonio, TX”.
 
@@ -56,21 +59,25 @@ RealMassive provides two types of geospatial filtering: (1) point and radius; an
   1. latitude
   1. longitude
   1. radius in meters
-  
-For example, to search for markets we serve within a 5k circle around the center of Dallas, TX one would use,
-/markets/search?geo=(32.7758,-96.7967,5000). To perform geo-queries using the second method, a box-bounded geosearch, use the geo keyword with four parameters, the lat/lon of two points defining the box in which to search. For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth, one would provide the search query, /spaces/search/geo=(32.775:-96.796,30.307:-97.753).
+
+For example, to search for markets we serve within a 5k circle around the center of Dallas, TX one would use, `/markets/search?geo=(32.7758,-96.7967,5000)`. 
+
+**Bounded Rectangles Filtering**: To perform geo-queries using this method, a box-bounded geosearch, use the geo keyword with four parameters, the lat/lon
+of two points defining the box in which to search. For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth,
+one would provide the search query, `/spaces/search/geo=(32.775:-96.796,30.307:-97.753)`.
 
 ##### Ranges
 **Bounded Exclusive Ranges**: To filter on a range of values, specify that range in parentheses: `rate=(20:25)`, will search for all rates between 20 and 25 exclusive. 
-**Bounded Inclusive Ranegs**: Inclusive ranges are specified by placing the extrema in brackets: `rate=[20:25]`, will search for all rates between 20 and 25 inclusive. 
+**Bounded Inclusive Ranges**: Inclusive ranges are specified by placing the extrema in brackets: `rate=[20:25]`, will search for all rates between 20 and 25 inclusive. 
 **Unbounded Ranges**: To remove upper or lower bounds on a search, simply remove one of the extremum. For example, to search all rates greater than or equal to 
 $20: `rate=[20:]`; and to search for all rates less than 52 dollars use `rate=[:52)`. 
 
-
-##### Geospatial Filtering
-
 ##### Sorting
-
+You can request that search results be ordered in some specific way by using the sort keyword and assigning a value by which to sort. For example, to sort 
+Markets by size, one would perform a GET on `/markets/search?sort=size`. To reverse the sorting direction, prepend a “-” to the sorted field . For example,
+to reverse the aforementioned sort, one would perform a GET on  `/markets/search?sort=-size`. (Note the - before the word ‘sort’.) To sort on multiple fields,
+one can reuse the sort keyword. For example, to sort Markets by `size` and `market_name`, one would perform a GET on `/markets/search?sort=size&sort=market_name`.
+In this case, results would be sorted first by size, then by market_name within size. Here, order in the query matters.
 
 #### Tips
 1. To discover what fields you can search by, call `/api/v1/model-name/search/fields`. For example, `/api/v1/markets/search/fields`, 
