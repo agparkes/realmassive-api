@@ -26,6 +26,15 @@ The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representati
 | `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find `Markets` near (30,-97) with a 100 km radius (central Texas) |
 | `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all `Spaces` with an Austin, TX address |
 
+### How to quickly make a Space
+  1. Make sure you have an account on RealMassive or the RealMassive Sandbox server & login to that account
+  1. Create a Building using the `/api/v1/buildings` POST route
+  1. Store that Building's key when in the previous call's response
+  1. Create a Space using the `api/v1/spaces` POST route, passing in `building_key` from the previous step
+  1. Store the Spaces's key returned in the previous response.
+  1. Now, upload your attachments/cover photos/floorplans using the `/upload` POST route. Make sure you pass in a `target` which is either the building key or
+     space key from the previous steps
+
 ### Resources
 A resource is a network-accessible data object or service accessed by a uniform resource identifier (URI). A collection is a set of resources. 
 Resources are presented as nouns that hopefully make sense to the API consumer. All resources are returned in JSON, unless other formats are 
@@ -7417,7 +7426,7 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
           "number_found": 35191
         }
 
-### Create a Spaces [POST]
+### Create a Space [POST]
 This API call creates a new `Space` with parameters specified in request payload. Please note, `building_key` is mandatory 
 parameter which is keystring of `Building` associated with `Space`.
 
