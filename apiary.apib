@@ -62,15 +62,6 @@ For example, to search for markets we serve within a 5k circle around the center
 of two points defining the box in which to search. For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth,
 one would provide the search query, `/spaces/search/geo=(32.775:-96.796,30.307:-97.753)`.
 
-#### Advanced Search Examples
-1. This query searches for `Space` in the Austin `Market` that has a rate of $23 to $25 per square foot, inclusive, is a `Sublease`, with results sorted by the available space in ascending order:
-  * `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available`
-1. This query searches for a `Space` with a rate of $10–$20/SF/YR, in an industrial or flex space building, returning only the building's title, geolocation, and space available, sorted by
-   decreasing cost:
-  * `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost`
-1. This query searches for all submarkets within a 25k raduius around Houston, TX:
-  * `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)`
-
 ##### Ranges
 **Bounded Exclusive Ranges**: To filter on a range of values, specify that range in parentheses: `rate=(20:25)`, will search for all rates between 20 and 25 exclusive. 
 **Bounded Inclusive Ranges**: Inclusive ranges are specified by placing the extrema in brackets: `rate=[20:25]`, will search for all rates between 20 and 25 inclusive. 
@@ -88,6 +79,15 @@ In this case, results would be sorted first by size, then by market_name within 
 1. To discover what fields you can search by, call `/api/v1/model-name/search/fields`. For example, `/api/v1/markets/search/fields`, 
 and `/api/v1/spaces/search/fields`.
 1. Most models support keyword searching. Perform keyword searches with, `/api/v1/model/search?k=keyword`. For example, `/api/v1/spaces/search?k=CBRE`.
+
+#### Advanced Search Examples
+1. This query searches for `Space` in the Austin `Market` that has a rate of $23 to $25 per square foot, inclusive, is a `Sublease`, with results sorted by the available space in ascending order:
+  * `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available`
+1. This query searches for a `Space` with a rate of $10–$20/SF/YR, in an industrial or flex space building, returning only the building's title, geolocation, and space available, sorted by
+   decreasing cost:
+  * `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost`
+1. This query searches for all submarkets within a 25k raduius around Houston, TX:
+  * `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)`
 
 ### Resources
 A resource is a network-accessible data object or service accessed by a uniform resource identifier (URI). A collection is a set of resources. 
