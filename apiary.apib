@@ -63,11 +63,12 @@ of two points defining the box in which to search. For example, to search for av
 one would provide the search query, `/spaces/search/geo=(32.775:-96.796,30.307:-97.753)`.
 
 #### Advanced Search Examples
-1. This query searches for Space in the Austin Market that has a rate of $23 to $25 per square foot, inclusive, is a sublease, and is sorted by the available space in ascending order:
+1. This query searches for `Space` in the Austin `Market` that has a rate of $23 to $25 per square foot, inclusive, is a `Sublease`, with results sorted by the available space in ascending order:
   * `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available`
-1. To search for a space, and only return its Title, Space, and Lat/Lon, that is advertised at a search_rate of $10–$20/SF/YR inclusive, is Industrial or Flex Space, with results sorted by decreasing cost
+1. This query searches for a `Space` with a rate of $10–$20/SF/YR, in an industrial or flex space building, returning only the building's title, geolocation, and space available, sorted by
+   decreasing cost:
   * `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost`
-1. To search for all submarkets within a 25k circle around Houston, TX
+1. This query searches for all submarkets within a 25k raduius around Houston, TX:
   * `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)`
 
 ##### Ranges
