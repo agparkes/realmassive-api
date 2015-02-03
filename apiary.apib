@@ -25,9 +25,6 @@ The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representati
 | `GET /api/v1/markets` | Get a list of all `Markets` |
 | `GET /api/v1/markets/geo?latitude=30&longitude=-97` | Find `Markets` near (30,-97) with a 100 km radius (central Texas) |
 | `GET /api/v1/spaces/search?building.address.city=Austin&building.address.state=TX` | Find all `Spaces` with an Austin, TX address |
-| `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available` | Searches for Space in the Austin Market that has a rate of $23 to $25 per square foot, inclusive, is a sublease, and is sorted by the available space in ascending order |
-| `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost` | To search for a space, and only return its Title, Space, and Lat/Lon, that is advertised at a search_rate of $10–$20/SF/YR inclusive, is Industrial or Flex Space, with results sorted by decreasing cost |
-| `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)` | To search for all submarkets within a 25k circle around Houston, TX |
 
 ### How to quickly make a Space
   1. Make sure you have an account on RealMassive or the RealMassive Sandbox server & login to that account
@@ -65,6 +62,14 @@ For example, to search for markets we serve within a 5k circle around the center
 **Bounded Rectangles Filtering**: To perform geo-queries using this method, a box-bounded geosearch, use the geo keyword with four parameters, the lat/lon
 of two points defining the box in which to search. For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth,
 one would provide the search query, `/spaces/search/geo=(32.775:-96.796,30.307:-97.753)`.
+
+#### Advanced Search Examples
+| Query | Result |
+| ----- | ------ |
+| `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available` | Searches for Space in the Austin Market that has a rate of $23 to $25 per square foot, inclusive, is a sublease, and is sorted by the available space in ascending order |
+| `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost` | To search for a space, and only return its Title, Space, and Lat/Lon, that is advertised at a search_rate of $10–$20/SF/YR inclusive, is Industrial or Flex Space, with results sorted by decreasing cost |
+| `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)` | To search for all submarkets within a 25k circle around Houston, TX |
+
 
 ##### Ranges
 **Bounded Exclusive Ranges**: To filter on a range of values, specify that range in parentheses: `rate=(20:25)`, will search for all rates between 20 and 25 exclusive. 
