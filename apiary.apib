@@ -60,9 +60,10 @@ RealMassive provides two types of geospatial filtering: (1) point and radius; an
   1. radius in meters
 For example, to search for markets we serve within a 5k circle around the center of Dallas, TX one would use, `/markets/search?geo=(32.7758,-96.7967,5000)`. 
 
-**Bounded Rectangles Filtering**: To perform geo-queries using this method, a box-bounded geosearch, use the geo keyword with four parameters, the lat/lon
-of two points defining the box in which to search. For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth,
-one would provide the search query, `/spaces/search/geo=(32.775:-96.796,30.307:-97.753)`.
+**Bounded Rectangles Filtering**: To perform geo-queries using this method, a box-bounded geosearch, use the geolocation specified with four parameters: the lat/lon
+of two points defining the box in which to search, specified as `building.address.geo.latitude=[MIN:MAX]` and `building.address.geo.longitude=[MIN:MAX]`. (Please note, -97<-96; please ensure MIN is truly less than MAX.)
+For example, to search for availabilities inside the thin I-30 corridor between Dallas and Fort Worth,
+one would provide the search query, `https://www.realmassive.com/api/v1/spaces/search?building.address.geo.latitude=[30.307:32.307]&building.address.geo.longitude=[-97.7:-96.7]&building.market=ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQgoSOCww`.
 
 ##### Ranges
 **Bounded Exclusive Ranges**: To filter on a range of values, specify that range in parentheses: `rate=(20:25)`, will search for all rates between 20 and 25 exclusive. 
