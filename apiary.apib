@@ -112,6 +112,41 @@ The following resources are exposed and accessible via resource URIs.
 | Auth | `/auth` | User authentication. |
 | Version | `/version` | API version information. |
 
+## Known Issues
+1. Arrays within arrays are incorrectly structured on return. Instead of a list of nested objects, 
+the data are returned serialized with the fields. See the example below.
+
+### Proper Response
+
+        {
+          "contacts": [
+            {
+              "first_name": "Joe",
+              "last_name": "Agent",
+            },
+            {
+              "first_name": "Jane",
+              "last_name": "Broker",
+            }
+          ]
+        }
+
+### Our Improper Response
+
+        {
+          "contacts": {
+            "first_name": [
+              "Joe",
+              "Jane",
+            ],
+            "last_name": [
+              "Agent",
+              "Broker",
+            ]
+          }
+        }
+
+
 # Group Attachments
 To successfully market your availabilities you need beautiful media. `Spaces` and `Buildings` need `Attachments` in the form of images and
 movies. Here is how you add images to your `Buildings` or `Spaces`:
