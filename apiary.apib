@@ -153,48 +153,57 @@ We use API Tokens to identify users making API calls. You can apply for your API
 We offer two types of token: Development and Production. For Development, your API Token request is immediately granted and you make API calls against [https://rm-api-sandbox.appspot.com/api/v1](https://rm-api-sandbox.appspot.com/api/v1). 
 For Production, you make API calls against our root production endpoint: [https://www.realmassive.com/api/v1](https://www.realmassive.com/api/v1). Production applications are reviewed by a RealMasive team member before approval.
 
-The flavor of token we use is the [JSON Web Token (JWT)](http://jwt.io/). JWT is a flexible solution, allowing you to choose from a list of encoding algorithms to suit your needs.
+The flavor of token we use is the [JSON Web Token (JWT)](http://jwt.io/). JWT is a flexible solution, allowing you
+to choose from a list of encoding algorithms to suit your needs and development languages.
 
 ### Using your API Token
   1. Apply for and receive your API token. Your API Token will consist of two parts: a "ClientID" and a "Secret".
-  1. Grab a JWT encoding [library for your application language](http://jwt.io/#libraries).
+  1. Grab a JWT encoding [library for your application](http://jwt.io/#libraries).
   1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }``` Don't worry, there's a Python example below.
   1. In your HTTP request set the following two headers: ```X-Authorization: TOKEN-ENCODED-REQUEST``` and ```X-Client-Id: YOUR-CLIENT-ID```
   1. Reap the rewards of the first open API in Commercial Real Estate.
 
-### Example 1.
+### Example
 The following Python example encodes a sample API call. To test this, copy and paste this into a script and set your
 Client ID and secret for the Development Environment.
 ```python
-    import jwt
-    import requests
+import jwt
+import requests
 
-    __ENDPOINT = "https://rm-api-sandbox.appspot.com/api/v1"
+__ENDPOINT = "https://rm-api-sandbox.appspot.com"
 
-    __CLIENT_ID = YOUR-CLIENT-ID
-    __SECRET = YOUR-SECRET
+__CLIENT_ID = YOUR-CLIENT-ID
+__SECRET = YOUR-SECRET
 
-    def jwt_encode(relative_url, algorithm):
-        """Encode the relative URL using the algorithm, 
-           Client ID, and secret.
-        
-           RETURNS
-              Request headers as a dictionary appropriate
-              for an API call.
-        """
-        encoded = jwt.encode({'jti': __CLIENT_ID,
-                              'url': relative_url},
-                             __SECRET,
-                             algorithm)
-        return {'X-Client-Id': __CLIENT_ID, 
-                'X-Authorization': encoded}
+def jwt_encode(relative_url, algorithm):
+    """Encode the relative URL using the algorithm, 
+        ClientID, and secret.
 
-    def test():
-        url = '/api/v1/markets'
-        jwt_headers = jwt_encode(url)
-        response = requests.get(__ENCDPONIT + url,
-                                headers=jwt_headers)
-        assert response.status_code == 200
+       PARAMETERS
+        relative_url : (string) query URL
+        algorithm : (string) algorithm name used for encoding
+
+       RETURNS
+        Request headers as a dictionary appropriate
+        for an API call.
+    """
+    encoded = jwt.encode({'jti': __CLIENT_ID,
+                          'url': relative_url},
+                        __SECRET,
+                        algorithm)
+    return {'X-Client-Id': __CLIENT_ID, 
+            'X-Authorization': encoded}
+
+def test():
+    url = '/api/v1/markets'
+    jwt_headers = jwt_encode(url, algorithm="HS256")
+    response = requests.get(__ENDPOINT + url,
+                            headers=jwt_headers)
+    assert response.status_code == 200
+
+if __name__ == '__main__':
+    test()
+
 ```
 
 # Group Attachments
