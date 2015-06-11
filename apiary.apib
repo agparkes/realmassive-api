@@ -158,10 +158,8 @@ The flavor of token we use a the [JSON Web Token (JWT)](http://jwt.io/). You may
 ### Using your API Token
   1. Apply for and receive your API token.
   1. Grab a JWT encoding [library for your application language](http://jwt.io/#libraries).
-  1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }```. Don't worry, there's a Python example below.
-  1. In your HTTP request set the following two headers
-    1.1 Foo
-    1.1 Bar
+  1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }``` Don't worry, there's a Python example below.
+  1. In your HTTP request set the following two headers: ```X-Authorization: TOKEN-ENCODED-REQUEST``` and ```X-Client-Id: YOUR-CLIENT-ID```
   1. Reap the rewards of the first open API in Commercial Real Estate.
 
 ### Example
