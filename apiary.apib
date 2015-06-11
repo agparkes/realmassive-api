@@ -13,7 +13,7 @@ Here are a few key ways our API can help you:
 The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer) that communicates over the HTTP protocol. Here's what you need to know to get started quickly:
   * **Root endpoint for Testing**: [https://rm-api-sandbox.appspot.com/api/v1](https://rm-api-sandbox.appspot.com/api/v1)
   * **Root endpoint for Production**: [https://www.realmassive.com/api/v1](https://www.realmassive.com/api/v1)
-  * **API token**: You’ll need an API token to make API calls. You can apply for one in our [Developer's Area](). We’ll assign and send your token immediately.
+  * **API token**: You’ll need an API token to make API calls. You can apply for one in our [Developer's Area](https://www.realmassive.com/developer-center/). See the API Tokens Section below for using.
   * **API call authorization**: You will use simple authorization (email/password) and/or your API token for API call authorization.
   * **URL encoding**: All requests must be properly URL encoded, including parameters and values.
 
@@ -145,6 +145,26 @@ the data are returned serialized with the fields. See the example below.
             ]
           }
         }
+
+## Group API Tokens
+### Understanding API Tokens
+We use API Tokens to identify users making API calls. You can apply for your API Token in our [Developers Area](https://www.realmassive.com/developer-center/). 
+
+We offer two types of token: Development and Production. For Development your API Token request is immediately granted and you make API calls against [https://rm-api-sandbox.appspot.com/api/v1](https://rm-api-sandbox.appspot.com/api/v1). 
+Production applications are reviewed by a RealMasive team member before approval. For Production you make API calls against our root production endpoint: [https://www.realmassive.com/api/v1](https://www.realmassive.com/api/v1).
+
+The flavor of token we use a the [JSON Web Token (JWT)](http://jwt.io/). You may choose from a list of encoding algorithms to suit your needs.
+
+### Using your API Token
+  1. Apply for and receive your API token.
+  1. Grab a JWT encoding [library for your application language](http://jwt.io/#libraries).
+  1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }```. Don't worry, there's a Python example below.
+  1. In your HTTP request set the following two headers
+    1.1 Foo
+    1.1 Bar
+  1. Reap the rewards of the first open API in Commercial Real Estate.
+
+### Example
 
 
 # Group Attachments
