@@ -156,14 +156,46 @@ Production applications are reviewed by a RealMasive team member before approval
 The flavor of token we use a the [JSON Web Token (JWT)](http://jwt.io/). You may choose from a list of encoding algorithms to suit your needs.
 
 ### Using your API Token
-  1. Apply for and receive your API token.
+  1. Apply for and receive your API token. Your API Token will consist of two parts: a "ClientID" and a "Secret".
   1. Grab a JWT encoding [library for your application language](http://jwt.io/#libraries).
   1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }``` Don't worry, there's a Python example below.
   1. In your HTTP request set the following two headers: ```X-Authorization: TOKEN-ENCODED-REQUEST``` and ```X-Client-Id: YOUR-CLIENT-ID```
   1. Reap the rewards of the first open API in Commercial Real Estate.
 
-### Example
+### Example 1.
+The following Python example encodes a sample API call. To test this, copy and paste this into a script and set your
+Client ID and secret for the Development Environment.
+```python
+    import jwt
+    import requests
 
+    __ENDPOINT = "https://rm-api-sandbox.appspot.com/api/v1"
+
+    __CLIENT_ID = YOUR-CLIENT-ID
+    __SECRET = YOUR-SECRET
+
+    def jwt_encode(relative_url, algorithm):
+        """Encode the relative URL using the algorithm, 
+           Client ID, and secret.
+        
+           RETURNS
+              Request headers as a dictionary appropriate
+              for an API call.
+        """
+        encoded = jwt.encode({'jti': __CLIENT_ID,
+                              'url': relative_url},
+                             __SECRET,
+                             algorithm)
+        return {'X-Client-Id': __CLIENT_ID, 
+                'X-Authorization': encoded}
+
+    def test():
+        url = '/api/v1/markets'
+        jwt_headers = jwt_encode(url)
+        response = requests.get(__ENCDPONIT + url,
+                                headers=jwt_headers)
+        assert response.status_code == 200
+```
 
 # Group Attachments
 To successfully market your availabilities you need beautiful media. `Spaces` and `Buildings` need `Attachments` in the form of images and
