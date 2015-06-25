@@ -296,8 +296,8 @@ TODO: Document payload. Route documented for users.
 
         []
 
- 
-## Building Brochures Collection [/api/v1/buildings/{building_key}/brochures/{brochure_key}]
+
+## Building Brochure [/api/v1/buildings/{building_key}/brochures/{brochure_key}]
 ### Get a Specific Brochure for this Building [GET]
 
 TODO: Document payload. Route documented for users.
@@ -6440,6 +6440,32 @@ The name of the home city will be in the returned `name` field.
         ]
 
 # Group Spaces
+## Space Brochures Collection [/api/v1/spaces/{key}/brochures]
+### Get all Brochures for this Space [GET]
+
+TODO: Document payload. Route documented for users.
+
++ Parameters
+    + key (required, string) ... A specific Space's keystring.
+
++ Response 200 (application/json)
+
+        []
+
+
+## Space Brochure [/api/v1/space/{space_key}/brochures/{brochure_key}]
+### Get a Specific Brochure for this Space [GET]
+
+TODO: Document payload. Route documented for users.
+
++ Parameters
+    + space_key (required, string) ... A specific Space's keystring.
+    + brochure_key (required, string) ... A specific brochure's keystring.
+
++ Response 200 (application/json)
+
+        []
+
 ## Spaces Collection [/api/v1/spaces{?limit,cursor}]
 ### List all Spaces [GET]
 Use this to retrieve a list of all `Spaces` in the RealMassive Database. 
