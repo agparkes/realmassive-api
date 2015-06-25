@@ -283,6 +283,33 @@ attributes, more fields may be added in the future.
  * ``title`` - building's title
  * ``type`` - lease, sublease, for sale
  * ``year_built``
+ 
+## Building Brochures Collection [/api/v1/buildings/{key}/brochures]
+### Get all Brochures for this Building [GET]
+
+TODO: Document payload. Route documented for users.
+
++ Parameters
+    + key (required, string) ... A specific Building's keystring.
+
++ Response 200 (application/json)
+
+        []
+
+ 
+## Building Brochures Collection [/api/v1/buildings/{building_key}/brochures/{brochure_key}]
+### Get a Specific Brochure for this Building [GET]
+
+TODO: Document payload. Route documented for users.
+
++ Parameters
+    + building_key (required, string) ... A specific Building's keystring.
+    + brochure_key (required, string) ... A specific brochure's keystring.
+
++ Response 200 (application/json)
+
+        []
+
 
 ## Buildings Collection [/api/v1/buildings{?limit,cursor}]
 ### Get all Buildings [GET]
