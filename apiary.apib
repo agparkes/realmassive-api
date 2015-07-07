@@ -106,7 +106,7 @@ The following resources are exposed and accessible via resource URIs.
 | Buildings | `/buildings` | Represents a physical buildings in our database. |
 | Markets | `/markets` | Represents the markets in which we operate. |
 | Organizations | `/organizations` | Represents Users' organizations. |
-| Portfolios | `/portfolios` | Represents a collection of spaces. |
+| Surveys | `/surveys` | Represents a collection of spaces. |
 | Spaces | `/spaces` | Represents and available Space for lease. |
 | Users | `/users` | Represents Users on our system. |
 | Auth | `/auth` | User authentication. |
@@ -6755,7 +6755,7 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
                     "min_divisible": "", 
                     "notification_email": "", 
                     "office_finish_percentage": "10", 
-                    "portfolio_space_keys": [], 
+                    "survey_space_keys": [], 
                     "rate": "0.5", 
                     "rate_frequency": "", 
                     "rate_type": "triple_net", 
@@ -7022,7 +7022,7 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
                     "min_divisible": "", 
                     "notification_email": "", 
                     "office_finish_percentage": "10", 
-                    "portfolio_space_keys": [], 
+                    "survey_space_keys": [], 
                     "rate": "0.5", 
                     "rate_frequency": "", 
                     "rate_type": "triple_net", 
@@ -7629,7 +7629,7 @@ Use this to retrieve a list of all `Spaces` in the RealMassive Database.
                     "min_divisible": "", 
                     "notification_email": "", 
                     "office_finish_percentage": "10", 
-                    "portfolio_space_keys": [], 
+                    "survey_space_keys": [], 
                     "rate": "0.5", 
                     "rate_frequency": "", 
                     "rate_type": "triple_net", 
@@ -7699,7 +7699,7 @@ This call returns the newly created Space as JSON.
           "id": "6318034608193536",
           "location_url": "/us/ga/buford/industrial-space/hamilton-mill-business-center/330/6318034608193536",
           "lease_term": "",
-          "portfolio_space_keys": [],
+          "survey_space_keys": [],
           "is_promoted": false,
           "title": "Hamilton Mill Business Center, Suite 330",
           "rate_type": "single_net",
@@ -8029,7 +8029,7 @@ This call returns the newly created Space as JSON.
                 "Create", 
                 "Read"
             ], 
-            "portfolio_space_keys": [
+            "survey_space_keys": [
                 "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICg0I2YCQwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgICACgw", 
                 "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgICAn7D3CgwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgMOVCgw", 
                 "ahJzfnJlYWxtYXNzaXZlLXByb2RyMQsSCVBvcnRmb2xpbxiAgIDA8anHCAwLEg5Qb3J0Zm9saW9TcGFjZRiAgICAgPKICgw"
@@ -8491,17 +8491,17 @@ This search works, but is deprecated in favor of our fast search using the `/sea
           "unit_number"
         ]
 
-# Group Portfolios
+# Group Surveys
 ## Introduction
-Our Portfolio resource enables you to create market surveys or “portfolios,” which  are lists of spaces under consideration. You can use the 
-Portfolio API call to share, manage, and edit portfolio spaces. Portfolios are built for collaboration, so the portfolio owner and collaborators
-are able to make notes and edit space details for properties listed in their portfolios. Portfolios only include copies (denorms) of the original
-space listings, so changes and notes within the portfolios won’t affect the public (master)  space listings. However changes to master listings
-will be automatically carried over to portfolios, as long as they do not conflict with space details that have been entered by the portfolio owner
-or collaborators. If they do conflict with the portfolio owner’s information, the portfolio owner will be asked to accept or discard the changes
+Our Survey resource enables you to create market surveys or “surveys,” which  are lists of spaces under consideration. You can use the 
+Survey API call to share, manage, and edit survey spaces. Surveys are built for collaboration, so the survey owner and collaborators
+are able to make notes and edit space details for properties listed in their surveys. Surveys only include copies (denorms) of the original
+space listings, so changes and notes within the surveys won’t affect the public (master)  space listings. However changes to master listings
+will be automatically carried over to surveys, as long as they do not conflict with space details that have been entered by the survey owner
+or collaborators. If they do conflict with the survey owner’s information, the survey owner will be asked to accept or discard the changes
 manually.
 
-## Portfolio Attributes
+## Survey Attributes
 
 * ``agents``
 * ``archived``
@@ -8516,8 +8516,8 @@ manually.
 * ``title``
 * ``viewers``
 
-## Portfolios Collection [/api/v1/portfolios]
-### Get all Portfolios for current user [GET]
+## Surveys Collection [/api/v1/surveys]
+### Get all Surveys for current user [GET]
 Note:
 * You’ll need to log in as a user with the login cookies stored. There’s more information on this topic in the User API.
 
@@ -8546,7 +8546,7 @@ Note:
                     }, 
                     "public": false, 
                     "short_url": "http://real.ma/123456", 
-                    "title": "Example Portfolio", 
+                    "title": "Example Survey", 
                     "viewers": []
                 }
             ]
@@ -8559,20 +8559,20 @@ Note:
           "error": "This server could not verify that you are authorized to access the document you requested. Either you supplied the wrong credentials (e.g., bad password), or your browser does not understand how to supply the credentials required."
         }
 
-### Create a Named Portfolio [POST]
+### Create a Named Survey [POST]
 Note:
-* You’ll need to make sure you portfolio title is URL encoded.
+* You’ll need to make sure you survey title is URL encoded.
 * Verify that your `PUT` is using the JSON/Application format.
 
 + Request (application/json)
 
-        { 'title' : 'My Example Portfolio' }
+        { 'title' : 'My Example Survey' }
 
 + Response 200 (application/json)
 
 
-## Portfolio [/api/v/1/portfolios/{id}]
-### Get a Portfolio by ID [GET]
+## Survey [/api/v/1/surveys/{id}]
+### Get a Survey by ID [GET]
 
 + Parameters
 
@@ -8603,7 +8603,7 @@ Note:
                     }, 
                     "public": false, 
                     "short_url": "http://real.ma/1sBnkoa", 
-                    "title": "Example Portfolio", 
+                    "title": "Example Survey", 
                     "viewers": []
                 }, 
                 {
@@ -8632,8 +8632,8 @@ Note:
             ]
         }
 
-## Portfolio Search [/api/v1/portfolios/search{?agents%2Ecreated_at,agents%2Eedited_at,agents%2Efirst_name,agents%2Eis_premium,agents%2Elast_name,agents%2Emaster_key,agents%2Ephoto,archived,collaborators%2Ecreated_at,collaborators%2Eedited_at,collaborators%2Efirst_name,collaborators%2Eis_premium,collaborators%2Elast_name,collaborators%2Emaster_key,collaborators%2Ephoto,id,key,listeners%2Ecreated_at,listeners%2Eedited_at,listeners%2Efirst_name,listeners%2Eis_premium,listeners%2Elast_name,listeners%2Emaster_key,listeners%2Ephoto,number_of_spaces,master_space,owner%2Ecreated_at,owner%2Eedited_at,owner%2Efirst_name,owner%2Eis_premium,owner%2Elast_name,owner%2Emaster_key,owner%2Ephoto,title}]
-### Get Searchable Fields for Portfolios [GET]
+## Survey Search [/api/v1/surveys/search{?agents%2Ecreated_at,agents%2Eedited_at,agents%2Efirst_name,agents%2Eis_premium,agents%2Elast_name,agents%2Emaster_key,agents%2Ephoto,archived,collaborators%2Ecreated_at,collaborators%2Eedited_at,collaborators%2Efirst_name,collaborators%2Eis_premium,collaborators%2Elast_name,collaborators%2Emaster_key,collaborators%2Ephoto,id,key,listeners%2Ecreated_at,listeners%2Eedited_at,listeners%2Efirst_name,listeners%2Eis_premium,listeners%2Elast_name,listeners%2Emaster_key,listeners%2Ephoto,number_of_spaces,master_space,owner%2Ecreated_at,owner%2Eedited_at,owner%2Efirst_name,owner%2Eis_premium,owner%2Elast_name,owner%2Emaster_key,owner%2Ephoto,title}]
+### Get Searchable Fields for Surveys [GET]
 
 + Parameters
     + agents%2Ecreated_at (optional, string) ... 
@@ -8675,8 +8675,8 @@ Note:
 
 
 
-## Portfolio Search Fields Collection [/api/v1/portfolios/search/fields]
-### Get Searchable Fields for Portfolios [GET]
+## Survey Search Fields Collection [/api/v1/surveys/search/fields]
+### Get Searchable Fields for Surveys [GET]
 
 + Response 200 (application/json)
 
@@ -8717,11 +8717,11 @@ Note:
           "title"
         ]
         
-## Archive or Unarchive a Portfolio [/api/v1//portfolios/{id}/action]
-### Archive or Unarchive a Portfolio by ID and parameter [POST]
+## Archive or Unarchive a Survey [/api/v1//surveys/{id}/action]
+### Archive or Unarchive a Survey by ID and parameter [POST]
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
     + action (required, string, `archive`) ... archive or unarchive
         + Values
             + `archive`
@@ -8730,8 +8730,8 @@ Note:
 + Response 200
 
 
-## Portfolio Spaces Collection [/api/v1/portfolios/{id}/spaces]
-### Fetch all the Space data from a  portfolio by ID [GET]
+## Survey Spaces Collection [/api/v1/surveys/{id}/spaces]
+### Fetch all the Space data from a  survey by ID [GET]
 
 + Parameters
 
@@ -8922,7 +8922,7 @@ Note:
                 "number_of_attachments": "", 
                 "office_finish_percentage": "", 
                 "orphaned": false, 
-                "portfolio": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
+                "survey": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
                 "rank": "1.0", 
                 "rate": "14.25", 
                 "rate_frequency": "", 
@@ -9677,7 +9677,7 @@ Note:
                 "number_of_attachments": "", 
                 "office_finish_percentage": "", 
                 "orphaned": false, 
-                "portfolio": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
+                "survey": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
                 "rank": "3.31412257092", 
                 "rate": "30.0", 
                 "rate_frequency": "Yearly", 
@@ -9962,7 +9962,7 @@ Note:
                 "number_of_attachments": "", 
                 "office_finish_percentage": "", 
                 "orphaned": false, 
-                "portfolio": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
+                "survey": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw", 
                 "rank": "4.32265573214", 
                 "rate": "25.0", 
                 "rate_frequency": "Yearly", 
@@ -9982,13 +9982,13 @@ Note:
         ]
 
         
-### Add a Space to a Portfolio [POST]
+### Add a Space to a Survey [POST]
 Note:
 * Make sure the body is url encoded
 * `Content-Length` may be required, if so, use the length of "Body"
 
 + Parameters
-    + id (required, string, ``5669562083180544`) ... portfolio id
+    + id (required, string, ``5669562083180544`) ... survey id
 
 
 + Request (application/json)
@@ -10218,7 +10218,7 @@ Note:
                 Write,
                 Delete
             );
-            portfolio = ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw;
+            survey = ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw;
             rate = "26.0";
             "rate_frequency" = Yearly;
             "rate_units" = "";
@@ -10233,12 +10233,12 @@ Note:
             "unit_number" = 1;
         }
 
-## Portfolio Spaces [/api/v1/portfolios/{id}/spaces/{key}{?history}]
-### Delete a Space from a Portfolio [DELETE]
-To remove a space from a portfolio you will need to use the `key` provided for the space from portfolios/{portfolio_key}/spaces
+## Survey Spaces [/api/v1/surveys/{id}/spaces/{key}{?history}]
+### Delete a Space from a Survey [DELETE]
+To remove a space from a survey you will need to use the `key` provided for the space from surveys/{survey_key}/spaces
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
     + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key for space to remove
 
 + Response 200 (application/json)
@@ -10247,13 +10247,13 @@ To remove a space from a portfolio you will need to use the `key` provided for t
             "message": ""
         }
         
-### Get a Portfolio Space's History [GET]
-Spaces that are in Portfolios can be changed by portfolio owners and collaborators.
+### Get a Survey Space's History [GET]
+Spaces that are in Surveys can be changed by survey owners and collaborators.
 Note:
-* To view the history of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
+* To view the history of a survey space, you will need to use the key provided for the space from `surveys/{survey_key}/spaces`
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
     + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
     + history (optional, list, `space_available`)
         + Values
@@ -10304,36 +10304,36 @@ Note:
             "unit_number": []
         }
 
-##  Portfolio Space Notifications Collection [/api/v1/portfolios/{id}/spaces/{key}/notifications]    
-### Retrieve Portfolio Space Notifications [GET]
+##  Survey Space Notifications Collection [/api/v1/surveys/{id}/spaces/{key}/notifications]    
+### Retrieve Survey Space Notifications [GET]
 When data on a space has changed, notifications will be sent to all collaborators informing them of the change.
 
 Note:
-* To view the notifications of a Portfolio Space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
+* To view the notifications of a Survey Space, you will need to use the key provided for the space from `surveys/{survey_key}/spaces`
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
     + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
 
 + Response 200 (application/json)
 
         []
 
-### Delete Portfolio Space Notifications [DELETE]
+### Delete Survey Space Notifications [DELETE]
 Note:
-* To view the notifications of a portfolio space, you will need to use the key provided for the space from `portfolios/{portfolio_key}/spaces`
+* To view the notifications of a survey space, you will need to use the key provided for the space from `surveys/{survey_key}/spaces`
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
     + key (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMCp3p8KDA3`) ... space key
 
 + Response 200 (application/json)
 
-##  Portfolio Collaborators Collection [/api/v1/portfolios/{id}/collaborators]    
-### Get Portfolio Collaborators [GET]
+##  Survey Collaborators Collection [/api/v1/surveys/{id}/collaborators]    
+### Get Survey Collaborators [GET]
 
 + Parameters
-    + id (required, string, `5669562083180544`) ... portfolio id
+    + id (required, string, `5669562083180544`) ... survey id
 
 + Response 200 (application/json)
            
@@ -10353,14 +10353,14 @@ Note:
             "viewers": []
         }
 
-### Adding a collaborator to a portfolio [POST]
+### Adding a collaborator to a survey [POST]
 Note:
 * You can set the permissions for a user using the “write” property---to allow them to collaborate, use ”write”
 * Make sure the body is URL encoded
 * `Content-Length` may be required; if so, use the length of "Body"
 
 + Parameters
-    + id (required, string, `572366123456096`) ... portfolio id
+    + id (required, string, `572366123456096`) ... survey id
 
 
 + Request (application/json)
@@ -10392,7 +10392,7 @@ Note:
 ## Group Users
 
 The User API is used for logging into a preexisting “manually registered” RealMassive user’s data. Logging in allows you to obtain access
-to a User’s contact information, surveys (Portfolios), and Organizations.
+to a User’s contact information, surveys (Surveys), and Organizations.
 
 Note: Creation of a RealMassive User is in development and will be documented upon completion.
 
