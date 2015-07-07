@@ -7677,7 +7677,6 @@ This call returns the newly created Space as JSON.
           "rate_units": "",
           "availability_date": "",
           "floor_number": "",
-          "key": "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgICEgcecCww",
           "availableBuildingSquareFeet": 13183,
           "divisible": false,
           "expiration_date": "",
@@ -8562,7 +8561,7 @@ Note:
 ### Create a Named Survey [POST]
 Note:
 * You’ll need to make sure you survey title is URL encoded.
-* Verify that your `PUT` is using the JSON/Application format.
+* Verify that the body of your request is a JSON payload (application/json).
 
 + Request (application/json)
 
@@ -8570,6 +8569,39 @@ Note:
 
 + Response 200 (application/json)
 
+        {
+            "agents": [], 
+            "archived": false, 
+            "created_at": "2015-07-07T21:56:16.135820+00:00", 
+            "edited_at": "2015-07-07T21:56:16.032270+00:00", 
+            "id": "4780...952", 
+            "key": "ahJzfnJlYWxtYXNzaX...Rmb2xpbxiAgICJxPy-CAw", 
+            "number_of_spaces": "0", 
+            "owner": {
+                "company": "RealMassive", 
+                "company_role": "", 
+                "company_size": "", 
+                "first_name": "Jason", 
+                "is_premium": true, 
+                "last_name": "Vertrees", 
+                "master_key": "ahJzfnJlYWxt...VzZXIYgICAwJSjnwoM", 
+                "photo": "https://lh3.ggpht.com/CBHK4yuV8kzv2AQFriwSFf_iEXki2jFdOXXaOF2nyeeiQZdX1Ezc2U6DZYIp6DL-sqKh5PKQeZoX2k8gzAtEerw9Jk3HKg", 
+                "title": "CTO"
+            }, 
+            "permissions": [
+                "Write", 
+                "Read", 
+                "Detail", 
+                "ChangePermissions", 
+                "Create", 
+                "Delete"
+            ], 
+            "print_preferences": [], 
+            "public": false, 
+            "short_url": "", 
+            "title": "", 
+            "viewers": []
+        }
 
 ## Survey [/api/v/1/surveys/{id}]
 ### Get a Survey by ID [GET]
@@ -8588,8 +8620,8 @@ Note:
                     "archived": false, 
                     "created_at": "2014-10-13T16:48:22.924680+00:00", 
                     "edited_at": "2014-10-13T16:48:26.283250+00:00", 
-                    "id": "5669562083180544", 
-                    "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDQ_I2JCgw", 
+                    "id": "56695...80544", 
+                    "key": "ahJzfnJlYWxtYXNzaXZ...SCVBvcnRmb2xpbxiAgIDQ_I2JCgw", 
                     "number_of_spaces": "1", 
                     "owner": {
                         "company": "RealMassive", 
@@ -8597,7 +8629,7 @@ Note:
                         "id": "", 
                         "is_premium": false, 
                         "last_name": "Armstrong", 
-                        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM", 
+                        "master_key": "ahJzfnJlYWxtYXN...2RyEQsSBFVzZXIYgICA4OeiggkM", 
                         "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw", 
                         "title": "iOS Developer"
                     }, 
@@ -8612,7 +8644,7 @@ Note:
                     "created_at": "2014-10-07T14:55:22.919510+00:00", 
                     "edited_at": "2014-10-08T14:01:37.032590+00:00", 
                     "id": "5729041608867840", 
-                    "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgICQh9GWCgw", 
+                    "key": "ahJzfnJlYWxtYXNzaXZ...cnRmb2xpbxiAgICQh9GWCgw", 
                     "number_of_spaces": "2", 
                     "owner": {
                         "company": "RealMassive", 
@@ -8620,7 +8652,7 @@ Note:
                         "id": "", 
                         "is_premium": false, 
                         "last_name": "Armstrong", 
-                        "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA4OeiggkM", 
+                        "master_key": "ahJzfnJlYWxtYXNza...QsSBFVzZXIYgICA4OeiggkM", 
                         "photo": "https://lh4.ggpht.com/ayV0Av7bZBZk4qDSEMWwfM_uvMpy2NcXjBCbw65-7tyeT5vTul3N82yiZgdPthtlzbKbbXIWi1kq_kBWWdRpPb5wygloHw", 
                         "title": "iOS Developer"
                     }, 
@@ -8738,7 +8770,6 @@ Note:
     + id (required, string, `ahJzfnJlYWxtYXNzaXZlLXByb2RyFgsSCVBvcnRmb2xpbxiAgIDAoduWCgw`) ... unique id or keystring
 
 + Response 200 (application/json)
-
 
         [
             {
