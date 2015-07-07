@@ -83,7 +83,7 @@ In this case, results would be sorted first by size, then by market_name within 
 and `/api/v1/spaces/search/fields`.
 1. Most models support keyword searching. Perform keyword searches with, `/api/v1/model/search?k=keyword`. For example, `/api/v1/spaces/search?k=CBRE`.
 
-#### <a name="advanced-search-examples"></a> Advanced Search Examples ####
+#### Advanced Search Examples<a name="advanced-search-examples"></a> ####
 1. This query searches for `Space` in the Austin `Market` that has a rate of $23 to $25 per square foot, inclusive, is a `Sublease`, with results sorted by the available space in ascending order:
   * `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available`
 1. This query searches for a `Space` with a rate of $10–$20/SF/YR, in an industrial or flex space building, returning only the building's title, geolocation, and space available, sorted by
@@ -147,7 +147,7 @@ the data are returned serialized with the fields. See the example below.
         }
 
 # Group Address
-###<a name="address-model"></a> Addresses
+### Addresses<a name="address-model"></a>
 Addresses are structured properties on Buildings. As such, they have no direct API routes. You simply create them as JSON dictionaries when needed, for example when creating a Building. The structure of an Address is,
 ```
 "address": {
@@ -163,7 +163,7 @@ Addresses are structured properties on Buildings. As such, they have no direct A
       }
 ```
 
-# <a name="api-tokens"></a> Group API Tokens
+# Group API Tokens<a name="api-tokens"></a>
 ### Understanding API Tokens
 We use API Tokens to identify users making API calls. You can apply for your API Token in our [Developers Area](https://www.realmassive.com/developer-center/). 
 
@@ -180,7 +180,7 @@ to choose from a list of encoding algorithms that best suit your needs and devel
   1. In your HTTP request set the following two headers: ```X-Authorization: TOKEN-ENCODED-REQUEST``` and ```X-Client-Id: YOUR-CLIENT-ID```
   1. Reap the rewards of the first open API in Commercial Real Estate.
 
-###  <a name="api-token-example"></a> Example
+### Example<a name="api-token-example"></a> 
 The following Python example encodes a sample API call. To test this, copy and paste this into a script and set your
 Client ID and Secret for the Development Environment.
 ```python
@@ -223,7 +223,7 @@ if __name__ == '__main__':
 
 ```
 
-#<a name="attachments-model"></a> Group Attachments
+# Group Attachments<a name="attachments-model"></a>
 To successfully market your availabilities you need beautiful media. `Spaces` and `Buildings` need `Attachments` in the form of images and
 movies. Here is how you add images to your `Buildings` or `Spaces`:
   1. Create your `Building` or `Space`
