@@ -146,6 +146,23 @@ the data are returned serialized with the fields. See the example below.
           }
         }
 
+## Group Address
+###  <a name="address-model"></a>  Addresses
+Addresses are structured properties on Buildings. As such, they have no direct API routes. You simply create them as JSON dictionaries when needed, for example when creating a Building. The structure of an Address is,
+```
+"address": {
+        "city": "(string) city name",
+        "zipcode": "(string) zip code",
+        "county": "(string) county name",
+        "state": "(string) state abbreviation",
+        "street": "(string) street name",
+        "geo": {
+          "latitude": "(float) latitude",
+          "longitude": "(float) longitude"
+        }
+      }
+```
+
 ## Group API Tokens
 ### Understanding API Tokens
 We use API Tokens to identify users making API calls. You can apply for your API Token in our [Developers Area](https://www.realmassive.com/developer-center/). 
@@ -254,7 +271,7 @@ attributes, more fields may be added in the future.
 
 ## Building Attributes
  * ``ac`` - whether or not the building has air conditioning
- * ``address`` - structured address with the following format. See [Address].
+ * ``address`` - structured address with the following format. See [Address](#address-model).
  * ``attachments`` - a list of media attachments. See [Attachments].
  * ``building_class`` - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
  * ``building_parking_ratio`` - number of available parking spots, usually per thousand square feet
