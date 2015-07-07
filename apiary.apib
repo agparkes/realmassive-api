@@ -13,7 +13,7 @@ Here are a few key ways our API can help you:
 The RealMassive API is a [RESTful API](http://en.wikipedia.org/wiki/Representational_state_transfer) that communicates over the HTTP protocol. Here's what you need to know to get started quickly:
   * **Root endpoint for Testing**: [https://rm-api-sandbox.appspot.com/api/v1](https://rm-api-sandbox.appspot.com/api/v1)
   * **Root endpoint for Production**: [https://www.realmassive.com/api/v1](https://www.realmassive.com/api/v1)
-  * **API token**: You’ll need an API token to make API calls. You can apply for one in our [Developer's Area](https://www.realmassive.com/developer-center/). See the API Tokens Section below for using.
+  * **API token**: You’ll need an API token to make API calls. You can apply for one in our [Developer's Area](https://www.realmassive.com/developer-center/). See the [API Tokens Section](#api-tokens) below for using.
   * **API call authorization**: You will use simple authorization (email/password) and/or your API token for API call authorization.
   * **URL encoding**: All requests must be properly URL encoded, including parameters and values.
 
@@ -163,7 +163,7 @@ Addresses are structured properties on Buildings. As such, they have no direct A
       }
 ```
 
-## Group API Tokens
+##  <a name="api-tokens"></a> Group API Tokens
 ### Understanding API Tokens
 We use API Tokens to identify users making API calls. You can apply for your API Token in our [Developers Area](https://www.realmassive.com/developer-center/). 
 
@@ -176,11 +176,11 @@ to choose from a list of encoding algorithms that best suit your needs and devel
 ### Using your API Token
   1. Apply for and receive your API token. Your API Token will consist of two parts: a "ClientID" and a "Secret".
   1. Grab a JWT encoding [library for your application](http://jwt.io/#libraries).
-  1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }``` see Python example below.
+  1. When making API calls, use the above library and your ClientID to encode the relative portion of the URL and all of the request parameters as follows: ```{ 'jti': <client_id>, 'url': <relative_url_plus_params> }``` see [Python example below](#api-token-example).
   1. In your HTTP request set the following two headers: ```X-Authorization: TOKEN-ENCODED-REQUEST``` and ```X-Client-Id: YOUR-CLIENT-ID```
   1. Reap the rewards of the first open API in Commercial Real Estate.
 
-### Example
+###  <a name="api-token-example"></a> Example
 The following Python example encodes a sample API call. To test this, copy and paste this into a script and set your
 Client ID and Secret for the Development Environment.
 ```python
