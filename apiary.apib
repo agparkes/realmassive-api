@@ -226,7 +226,6 @@ if __name__ == '__main__':
 
 
 # Group Attachments
-<a name="attachments-model"></a>
 To successfully market your availabilities you need beautiful media. `Spaces` and `Buildings` need `Attachments` in the form of images and
 movies. Here is how you add images to your `Buildings` or `Spaces`:
   1. Create your `Building` or `Space`
@@ -274,8 +273,8 @@ attributes, more fields may be added in the future.
 
 ## Building Attributes
  * ``ac`` - whether or not the building has air conditioning
- * ``address`` - structured address with the following format. See [Address](#address-model).
- * ``attachments`` - a list of media attachments. See [Attachments](#attachments-model).
+ * ``address`` - structured address with the following format. See [Address](#/address).
+ * ``attachments`` - a list of media attachments. See [Attachments](#/attachments).
  * ``building_class`` - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
  * ``building_parking_ratio`` - number of available parking spots, usually per thousand square feet
  * ``clear_height`` - used in industrial space, the actual height from steel girders to the interior of the building.
@@ -6463,13 +6462,13 @@ The name of the home city will be in the returned `name` field.
 
 ## Space Attributes
  * ``analysts`` - (array of contacts)
- * ``attachments`` - (array of attachments) See [Attachments](#attachments-model).
+ * ``attachments`` - (array of attachments) See [Attachments](/#attachments).
  * ``availability_date`` - (date) date at which this space comes on the market. 
  * ``availableBuildingSquareFeet`` - (read only, number) Number of leasable SF at this building. 
  * ``building`` - (read only, Building denorm) This is created for you when you create a space.
  * ``contacts`` - (list of users) List of brokers or contacts representing this space.
  * ``contiguous`` - (boolean) is this space contiguous with another?
- * ``cover`` - (string) URL pointing to the cover image for this space. See [Attachments](#attachment-model).
+ * ``cover`` - (string) URL pointing to the cover image for this space. See [Attachments](/#attachments).
  * ``created_at`` - (date) Date this space was created.
  * ``created_by`` - (read only, User denorm) This is created for you when you create the space. 
  * ``custom_title`` - (string) 
