@@ -10500,29 +10500,32 @@ Note: Creation of a RealMassive User is in development and will be documented up
 * ``company``
 * ``phone``
 
-## User Authentication [/auth]
+## User Authentication [/api/v1/auth]
 ### Logging into a preexisting, manually registered user [POST]
-
-Note:
-
-* You’ll need to make sure the body is URL encoded
-* `Content-Length` may be required, if so, use the length of "Body"
 
 + Request
 
     + Headers
 
+            X-Client-Id: YOUR-TOKEN-HERE
+            Cache-Control: no-cache
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            email=johndoe@realmassive.com&password=123
+            email=johndoe%40realmassive.com&password=123
 
 + Response 200 (application/json)
 
         {
             "login_success" = 1,
             "redirect_to" = "/",
+        }
+        
++ Response 401 (application/json)
+
+        {
+          "login_error": "Incorrect e-mail and password combination"
         }
         
 ## Fetch Current User [/api/v1/users/current]
