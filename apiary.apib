@@ -10500,8 +10500,28 @@ Note: Creation of a RealMassive User is in development and will be documented up
 * ``company``
 * ``phone``
 
+## User Authentication [/auth/signup]
+### Create a new User [POST]
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+    
+            first_name=Jason&last_name=Vertrees&company=RealMassive&title=CTO&email=jason.vertrees%2Bapi5%40realmassive.com&password=a123123123
+
++ Response 200 (application/json)
+
+        {
+            "register_success": true
+        }
+        
+
 ## User Authentication [/api/v1/auth]
-### Logging into a preexisting, manually registered user [POST]
+### Login to a User [POST]
 
 + Request
 
@@ -10509,11 +10529,12 @@ Note: Creation of a RealMassive User is in development and will be documented up
 
             X-Client-Id: YOUR-TOKEN-HERE
             Cache-Control: no-cache
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: x-www-form-encoded
 
     + Body
 
-            email=johndoe%40realmassive.com&password=123
+            email=your.user%40realmassive.com&password=a123123123
+
 
 + Response 200 (application/json)
 
@@ -10527,7 +10548,8 @@ Note: Creation of a RealMassive User is in development and will be documented up
         {
           "login_error": "Incorrect e-mail and password combination"
         }
-        
+
+    
 ## Fetch Current User [/api/v1/users/current]
 ### Access User information [GET]
 
