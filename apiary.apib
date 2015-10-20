@@ -272,36 +272,57 @@ movies. Here is how you add images to your `Buildings` or `Spaces`:
 attributes, more fields may be added in the future.
 
 ## Building Attributes
- * ``ac`` - whether or not the building has air conditioning
- * ``address`` - structured address with the following format. See [Address](#reference/address).
- * ``attachments`` - a list of media attachments. See [Attachments](#reference/attachments).
- * ``building_class`` - a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
- * ``building_parking_ratio`` - number of available parking spots, usually per thousand square feet
- * ``clear_height`` - used in industrial space, the actual height from steel girders to the interior of the building.
+ * ``ac`` - (string) whether or not the building has air conditioning
+ * ``address`` - ([Address](#reference/address)) structured address with the following format. See [Address](#reference/address).
+ * ``assessor_parcel_number`` - (string) unique APN for this building.
+ * ``attachments`` - (array) a list of media attachments. See [Attachments](#reference/attachments).
+ * ``build_status`` - (string) one of "Existing", "Planned/Propose", or "In Development"
+ * ``building_class`` - (string) a subjective rating of quality specified as 'A', 'B', or 'C' where 'A' is highest quality and 'C' is lowest.
+ * ``building_parking_ratio`` - (string) number of available parking spots, usually per thousand square feet
+ * ``clear_height`` - (string) used in industrial space, the actual height from steel girders to the interior of the building.
+ * ``contacts`` - (list) list of contacts for this Building
+ * ``core_factor`` - (string) Core factor size
  * ``cover`` - 
- * ``created_at`` - datetime
- * ``created_by`` - database key pointing to the original author
- * ``edited_at`` - datetime
- * ``id`` - this record's unique identifier
+ * ``created_at`` - (string) datetime
+ * ``created_by`` - (string) database key pointing to the original author
+ * ``current_opex_total`` - (string) OPEX for the current year
+ * ``description`` - (string) building's description
+ * ``edited_at`` - (string) datetime
+ * ``financial`` - [FinancialInfo](#reference/financial)
+ * ``floor_count`` - (string) number of floors
+ * ``floor_plate_size`` - Stock floor plate size (if all equivalent)
+ * ``freshness_date`` - (string) date this building was last updated
+ * ``id`` - (string) this record's unique identifier
  * ``key`` - 
- * ``leed`` - LEED rating: None, Certified, Gold, Silver, Platinum
+ * ``leed`` - (string) LEED rating: None, Certified, Gold, Silver, Platinum
+ * ``location_url`` - (string) unique URL at which one can find this building when prepended with "https://realmassive.com".
  * ``lot_size`` - 
- * ``lot_size_units`` - units in which lot size is reported. Currently, square feet: 'SF'
- * ``manager`` - database key pointing to the contact for this building's manager
- * ``notification_email`` - database key pointing to this building's representative(s)
- * ``operating_expenses`` - operating expenses for this building.
- * ``parking_rate`` - Parking rate ($) per space.
- * ``promoted_spaces`` - List of promoted spaces in this building.
- * ``property_owner`` - database key pointing to this building's owner
- * ``reserved`` - 
- * ``size`` - building size in units listed below
- * ``size_units`` - units in which the building size is reported
- * ``space_keys`` - a list of database keys pointing to the spaces inside this building.
- * ``sprinkler`` - whether or not this building has sprinklers
- * ``submarket`` - the submarket in which this building resides
- * ``title`` - building's title
- * ``type`` - lease, sublease, for sale
- * ``year_built``
+ * ``lot_size_units`` - (string) units in which lot size is reported. Currently, square feet: 'SF'
+ * ``manager`` - (string) database key pointing to the contact for this building's manager
+ * ``market`` - (string) market key for this building
+ * ``notification_email`` - (string) database key pointing to this building's representative(s)
+ * ``occupancy_rate`` - (string)
+ * ``operating_expenses`` - (string) operating expenses for this building.
+ * ``parking`` - (array) of structured [Parking](#reference/parking).
+ * ``parking_rate`` - (string) Parking rate ($) per space.
+ * ``promoted_spaces`` - (string) List of promoted spaces in this building.
+ * ``property_owner`` - (string) database key pointing to this building's owner
+ * ``reserved`` - (string) 
+ * ``signage`` - (string) Description of sigange options for tenants
+ * ``size`` - (string) building size in units listed below
+ * ``size_units`` - (string) units in which the building size is reported
+ * ``space_available`` - (string) Number of unleased square feet in this building.
+ * ``space_keys`` - (list) a list of database keys pointing to the spaces inside this building.
+ * ``sprinkler`` - (string) whether or not this building has sprinklers
+ * ``submarket`` - (string) the submarket in which this building resides
+ * ``tax_municipality_code`` - (string) tax minucipality code
+ * ``tax_municipality_name`` - (string) tax municipality name
+ * ``title`` - (string) building's title
+ * ``tenancy`` - (string) Multiple or Single tenancy.
+ * ``type`` - (string) one of, "Office", "Retail", "Flex Space", "Industrial", "Land", "Medical Office"
+ * ``year_built`` - (string) 4-digit year this building was built
+ * ``year_renovated`` - (string) 4-digit year this building was last renovated
+ * ``zoning`` - (string) zoning codes
  
 ## Building Brochures Collection [/api/v1/buildings/{key}/brochures]
 ### Get all Brochures for this Building [GET]
@@ -580,61 +601,91 @@ Use this to retrieve a `Building` by its unique ID.
 + Response 200 (application/json)
 
         {
-            "ac": "", 
+            "ac": "",
             "address": {
-                "city": "Andover", 
+                "city": "Andover",
+                "zipcode": "01810",
+                "geo_lat": "42.6149894",
+                "county": "",
+                "state": "MA",
+                "street": "10 Lowell Junction Road",
+                "geo_lon": "-71.1573257",
                 "geo": {
-                    "latitude": "42.615032", 
-                    "longitude": "-71.156878"
-                }, 
-                "state": "MA", 
-                "street": "10 Lowell Junction Road", 
-                "zipcode": "01810"
-            }, 
-            "attachments": [], 
-            "building_class": "", 
-            "building_parking_ratio": "", 
-            "clear_height": "", 
-            "cover": null, 
-            "created_at": "2014-11-10T07:06:39.954695+00:00", 
+                    "latitude": "42.6149894",
+                    "longitude": "-71.1573257"
+                }
+            },
+            "assessor_parcel_number": "",
+            "attachments": [],
+            "build_status": "Existing",
+            "building_class": "A",
+            "building_parking_ratio": "4.2"
+            "clear_height": "14'",
+            "contacts": [],
+            "core_factor": "",
+            "cover": null,
+            "created_at": "2014-11-10T07:06:39.954695",
             "created_by": {
-                "company": "RealMassive", 
-                "first_name": "Boston", 
-                "id": "", 
-                "is_premium": false, 
-                "last_name": "MA", 
-                "master_key": "ahBzfnJtLWFwaS1zYW5kYm94chELEgRVc2VyGICAgPDx2IgJDA", 
-                "photo": "/static/img/default_profile.jpg", 
-                "title": ""
-            }, 
-            "edited_at": "2014-11-10T07:06:40.461965+00:00", 
-            "id": "5786770113298432", 
-            "key": "ahBzfnJtLWFwaS1zYW5kYm94chULEghCdWlsZGluZxiAgIDIluGjCgw", 
-            "leed": "", 
-            "location_url": "/us/ma/andover/10-lowell-junction-rd/5786770113298432", 
-            "lot_size": "", 
-            "lot_size_units": "", 
-            "manager": "ahBzfnJtLWFwaS1zYW5kYm94chkLEgxPcmdhbml6YXRpb24YgICAyMWh_QsM", 
-            "market": "ahBzfnJtLWFwaS1zYW5kYm94chMLEgZNYXJrZXQYgICAkJO-jgsM", 
-            "notification_email": "", 
-            "operating_expenses": "0.0", 
-            "parking_rate": "", 
+                "first_name": "RealMassive",
+                "last_name": "Boston",
+                "company_role": "",
+                "title": "",
+                "photo": "/static/img/default_profile.jpg",
+                "company": "RealMassive",
+                "master_key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEQsSBFVzZXIYgICA8PHYiAkM",
+                "subscription": {
+                    "status": "Valid",
+                    "kind": "Free"
+                },
+                "company_size": ""
+            },
+            "current_opex_total": "",
+            "description": "",
+            "edited_at": "2015-09-05T19:33:27.186770",
+            "edited_by": null,
+            "financial": null,
+            "floor_count": "",
+            "floor_plate_size": null,
+            "freshness_date": "2014-11-10T07:06:40.107845",
+            "id": "5786770113298432",
+            "key": "ahJzfnJlYWxtYXNzaXZlLXByb2RyFQsSCEJ1aWxkaW5nGICAgMiW4aMKDA",
+            "leed": "",
+            "location_url": "/us/ma/andover/10-lowell-junction-rd/5786770113298432",
+            "lot_size": "0.0",
+            "lot_size_units": "",
+            "manager": "ahJzfnJlYWxtYXNzaXZlLXByb2RyGQsSDE9yZ2FuaXphdGlvbhiAgIDIxaH9Cww",
+            "market": "ahJzfnJlYWxtYXNzaXZlLXByb2RyEwsSBk1hcmtldBiAgICQk76OCww",
+            "notification_email": "",
+            "occupancy_rate": "",
+            "operating_expenses": "",
+            "opex": [],
+            "parking": [],
+            "parking_rate": "",
             "permissions": [
+                "Create",
                 "Read"
-            ], 
-            "promoted_spaces": "", 
-            "property_owner": "", 
-            "reserved": "", 
-            "size": "25134", 
-            "size_units": "SF", 
+            ],
+            "promoted_spaces": "",
+            "property_owner": "",
+            "reserved": "",
+            "signage": "",
+            "size": "25134",
+            "size_units": "SF",
+            "space_available": "25134",
             "space_keys": [
-                "ahBzfnJtLWFwaS1zYW5kYm94chILEgVTcGFjZRiAgIDIvPHyCgw"
-            ], 
-            "sprinkler": "", 
-            "submarket": "", 
-            "title": "10 Lowell Junction Rd", 
-            "type": "Industrial", 
-            "year_built": "1978"
+                "ahJzfnJlYWxtYXNzaXZlLXByb2RyEgsSBVNwYWNlGICAgMi88fIKDA"
+            ],
+            "sprinkler": "",
+            "submarket": "",
+            "tax_municipality_code": "",
+            "tax_municipality_name": "",
+            "tenancy": "",
+            "title": "10 Lowell Junction Rd",
+            "type": "Industrial",
+            "user_edited_at": "",
+            "year_built": "1978",
+            "year_renovated": "",
+            "zoning": "",
         }
 
 ### Edit a Building [PUT]
