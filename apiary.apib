@@ -2613,9 +2613,9 @@ The name of the home city will be in the returned `name` field.
  * ``analysts`` - (array of contacts)
  * ``attachments`` - (array of attachments) See [Attachments](#reference/attachments).
  * ``availability_date`` - (date) date at which this space comes on the market. 
- * ``availableBuildingSquareFeet`` - (read only, number) Number of leasable SF at this building. 
  * ``building`` - (read only, Building denorm) This is created for you when you create a space.
  * ``contacts`` - (list of users) List of brokers or contacts representing this space.
+ * ``contacts_blacklist`` -  (array of users) 
  * ``contiguous`` - (boolean) is this space contiguous with another?
  * ``cover`` - (string) URL pointing to the cover image for this space. See [Attachments](#reference/attachments).
  * ``created_at`` - (date) Date this space was created.
@@ -2628,7 +2628,8 @@ The name of the home city will be in the returned `name` field.
  * ``editors`` - (list) List of Users who can edit this space. 
  * ``expiration_date`` - (date) Date this lease expires. (Useful for subleases.) 
  * ``featured_rank`` - (read only, number) If this space is a featured space, this shows its rank. 
- * ``floor_number`` - (number) Floor number for this space. 
+ * ``floor_number`` - (number) Floor number for this space.
+ * ``freshness_date`` - (string) date of last update
  * ``id`` - (read only, number) Unique ID for this space 
  * ``is_featured`` - (read only, boolean) whether or not this space is featured 
  * ``is_promoted`` - (boolean) Whether or not this space is a Promoted Space. 
@@ -2639,7 +2640,6 @@ The name of the home city will be in the returned `name` field.
  * ``min_divisible`` - (number) Minimum size this space may be divisible down to. 
  * ``notification_email`` - (string) email address to receive notifications for this space 
  * ``office_finish_percentage`` - (number, 0-100) A number representing the %-age finished. 
- * ``permissions`` - (read only) 
  * ``rate_frequency`` - (string) "Yearly" or "Monthly" 
  * ``rate_type`` - (string) Options: 'full_service_gross', 'industrial_gross', 'modified_gross', 'single_net', 'double_net', 'triple_net', 'other', 'n/a'
  * ``rate_units`` - (string) $ 
@@ -2653,7 +2653,8 @@ The name of the home city will be in the returned `name` field.
  * ``status`` - (string) Options: "Public", "Archive" 
  * ``ti`` - (number) Tenant improvement value.
  * ``title`` - (string) Title of this space. 
- * ``unit_number`` - (string) Unit number. 
+ * ``unit_number`` - (string) Unit number.
+ 
 ## Space Brochures Collection [/api/v1/spaces/{key}/brochures]
 ### Get all Brochures for this Space [GET]
 
