@@ -89,7 +89,7 @@ and `/api/v1/spaces/search/fields`.
   * `GET /spaces/search?market_name=Austin&rate=[23:25]&space_type=sublease&sort=-space_available`
 1. This query searches for a `Space` with a rate of $10–$20/SF/YR, in an industrial or flex space building, returning only the building's title, geolocation, and space available, sorted by
    decreasing cost:
-  * `GET /spaces/search?search_rate=[10:20]&building.type=industrial,flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost`
+  * `GET /spaces/search?search_rate=[10:20]&building.type=industrial|flex&fields=[building.title,building.address.geo.latitude,building.address.geo.longitude,space_available]&sort=-total_cost`
 1. This query searches for all submarkets within a 25k raduius around Houston, TX:
   * `GET /markets/submarkets/search?geo=(29.7628,-95.3831,25000)`
 
